@@ -1,0 +1,248 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* ****************************
+    Common Buttons
+    **************************** */
+  .primary-btn {
+    @apply bg-[#4E31AA] border-[#4E31AA] text-[#FFFFFF] text-[14px] font-semibold rounded-[4px] hover:shadow-none;
+  }
+  .primary-btn-cancel {
+    @apply border-[#EF2F88] text-[#EF2F88] text-[14px] font-semibold rounded-[4px] hover:shadow-none bg-transparent;
+  }
+  .seconday-btn {
+    @apply border-[#727272] text-[#727272] text-[14px]  rounded-[4px] hover:shadow-none bg-transparent;
+  }
+  .ternary-btn {
+    @apply border-[#4E31AA] text-[#4E31AA] text-[14px]  rounded-[4px] hover:shadow-none bg-transparent;
+  }
+
+  .primary-button {
+    @apply bg-[#0dd19d] border-[#0dd19d] text-[#FFFFFF] text-[14px] font-semibold rounded-[2px] hover:bg-[#07a279] border-[#07a279] shadow-none;
+  }
+
+  .primary-button-cancel {
+    @apply bg-[#f64e60] border-[#f64e60] text-[#FFFFFF] text-[14px] font-semibold rounded-[2px] hover:bg-[#f5364a] border-[#f5364a] shadow-none;
+  }
+
+  .black-button {
+    @apply bg-[#101010] border-[#101010] text-[#FFFFFF] text-[14px] font-semibold rounded-[2px] hover:bg-[#000000] border-[#000000] shadow-none;
+  }
+
+  /* .btn {
+    @apply rounded-full font-semibold shadow-none;
+  } */
+  /* ****************************
+    website fonts
+    **************************** */
+
+  /* @font-face {
+    font-family: "cairo-regular";
+    src: url(../assets/fonts/Cairo-Regular.ttf) format("truetype");
+  } */
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  user-select: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #374a5e;
+}
+
+div.dashboardCardList {
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--auto-grid-min-size), 1fr)
+  );
+  --auto-grid-min-size: 20rem;
+  grid-gap: 2rem;
+  display: grid;
+}
+
+div.productList {
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--auto-grid-min-size), 1fr)
+  );
+  --auto-grid-min-size: 12rem;
+  grid-gap: 15px;
+  display: grid;
+  padding: 0 10px;
+}
+
+div.kitchenTables {
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--auto-grid-min-size), 1fr)
+  );
+  --auto-grid-min-size: 20rem;
+  grid-gap: 30px;
+  display: grid;
+}
+
+table.billingTable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.billingTable tbody > tr > td,
+table.billingTable thead > tr > th {
+  /* border: 1px solid #ddd; */
+  padding: 0.5rem;
+}
+
+table.billingTable tr > td {
+  border: none;
+  padding: 0;
+}
+
+table.billingTable tr {
+  border: 0;
+}
+
+table.billingTable tr {
+  border-bottom: 1px solid #f8f4ec;
+}
+table.billingTable td,
+th {
+  /* padding: 8px; */
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+table.billingTable td {
+  text-transform: capitalize;
+  color: #454859;
+  font-weight: 400;
+}
+
+table.billingTable2 td {
+  color: #454859;
+  font-weight: 500;
+}
+
+/* table.billingTable tbody tr {
+  margin: 10px 0;
+} */
+
+table.billingTable th {
+  font-weight: 500;
+  /* border: 1px solid #374a5e; */
+}
+/* table.billingTable thead tr {
+  border-radius: 5px !important;
+} */
+
+table.billingTable2 {
+  /* border-collapse: collapse; */
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.billingTable3 {
+  /* border-collapse: collapse; */
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+}
+table.billingTable2 tbody td {
+  padding: 5px 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+table.billingTable3 tbody td {
+  padding: 5px 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 0px;
+  position: relative;
+  left: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #f9f7f7;
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 14px;
+  border: 3px solid var(--primary);
+  background: #454859;
+}
+
+input[type="radio"] {
+  padding: 0.4em;
+  -webkit-appearance: none;
+  outline: 0.1em solid black;
+  outline-offset: 0.1em;
+}
+
+input[type="radio"]:checked {
+  display: inline-block;
+  background-color: #000;
+  position: relative;
+}
+
+input[type="radio"]:checked::after {
+  background-image: url("https://img.icons8.com/glyph-neue/64/FFFFFF/checkmark.png");
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -1px;
+  width: 11px;
+  height: 20px;
+  background-size: 14px 16px;
+  background-repeat: no-repeat;
+}
+
+
+.table.ordersTable :where(th, td) {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  vertical-align: middle;
+  border: 1px solid #d9d9d9; /* Add this line with your desired border color */
+}
+
+.table.ordersTable :where(th) {
+  font-weight: 600;
+  color: #454859; /* Add this line with your desired border color */
+}
+
+.table.AllItemsTable :where(th) {
+  font-weight: 600;
+  color: #ffffff; 
+  background: #454859;/* Add this line with your desired border color */
+}
+
+.table.AllItemsTable :where(th, td) {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  vertical-align: middle;
+  border: 1px solid #d9d9d9; /* Add this line with your desired border color */
+}
+
