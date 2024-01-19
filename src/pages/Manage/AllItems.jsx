@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import ActionIcon from "../../components/Common/ActionIcon";
+import { useNavigate } from "react-router-dom";
 function AllItems() {
+  const navigate = useNavigate()
+
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const showCount = 5;
 
   const TableList = [];
 
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 20; i++) {
     const dataItem = {
       id: i + 1,
       image:
@@ -33,7 +38,7 @@ function AllItems() {
       <div className="w-[90%]">
         <div className="flex justify-between items-center mx-auto flex-wrap">
           <h4 className="text-Primary text-xl capitalize font-bold w-[50%]">
-           Food Items list
+            Food Items list
           </h4>
           <div className="w-[50%] flex justify-between items-center">
             <div className="relative h-auto w-[50%] border border-1 border-Secondary">
@@ -48,13 +53,16 @@ function AllItems() {
             </div>
             <button
               className="btn bg-blue-500 border-0 rounded text-Light hover:bg-blue-500 w-44 uppercase"
-              onClick={() => {}}
+              onClick={() => {navigate('/manage/food/add-new-item')}}
             >
               add new
             </button>
+           
+
+ 
           </div>
         </div>
-        <div className="overflow-x-auto overflow-y-hidden bg-Light  my-3 h-[630px] rounded">
+        <div className="overflow-x-auto  bg-Light  my-3 h-[630px] rounded">
           <table className="table AllItemsTable table-xs table-pin-rows">
             <thead className="z-10 bg-Primary">
               <tr>
@@ -71,7 +79,7 @@ function AllItems() {
                 <tr key={e?.id}>
                   <td>{e?.id}</td>
                   <td>
-                    <img src={e?.image} alt="" />
+                    <img width={"20%"} src={e?.image} alt="" />
                   </td>
                   <td>{e?.name}</td>
                   <td>{e?.group}</td>
@@ -79,7 +87,7 @@ function AllItems() {
                   <td>{e?.price}</td>
 
                   <td className="text-center">
-                    <MoreHorizIcon className="cursor-pointer" />
+                   <ActionIcon/>
                   </td>
                 </tr>
               ))}

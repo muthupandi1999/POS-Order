@@ -216,7 +216,6 @@ input[type="radio"]:checked::after {
   background-repeat: no-repeat;
 }
 
-
 .table.ordersTable :where(th, td) {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -232,17 +231,35 @@ input[type="radio"]:checked::after {
 }
 
 .table.AllItemsTable :where(th) {
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
   font-weight: 600;
-  color: #ffffff; 
-  background: #454859;/* Add this line with your desired border color */
+  color: #ffffff;
+  background: #454859; /* Add this line with your desired border color */
 }
 
 .table.AllItemsTable :where(th, td) {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  vertical-align: middle;
+  /* padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+  vertical-align: middle; */
   border: 1px solid #d9d9d9; /* Add this line with your desired border color */
 }
+.table.AllFoodGroupTable :where(th) {
+  font-weight: 600;
+  color: #ffffff;
+  background: #454859; 
+}
+.table.AllFoodGroupTable :where(th, td) {
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+  border: 1px solid #d9d9d9;
+}
+
+
+
+
 

@@ -3,12 +3,19 @@ import SearchIcon from "@mui/icons-material/Search";
 
 import CustomModal from "../components/Common/QuantityModal";
 import { Route, Routes } from "react-router-dom";
-import toast from "react-hot-toast";
+
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ItemList from "./POS/ItemList";
 import useLongPress from "../components/events/LongPressEvent";
 import { Categories } from "../utills/data";
-import TagModal from "../components/modals/TagModal";
+import TagModal from "../components/modals/DynamicModal";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import toast, { Toaster } from "react-hot-toast";
+import AddIcon from "@mui/icons-material/Add";
+import Dropdown from "../components/Common/Dropdown";
+import TagModal2 from "../components/modals/modalComponents/TagModal2";
+// import Dropdown from "../Common/Dropdown";
 
 function Pos() {
   const [activeItem, setActiveItem] = useState("Parcel");
@@ -18,6 +25,29 @@ function Pos() {
   const [open, setOpen] = useState(false);
   const [tagOpen, setTagOpen] = useState(false);
   const [waiterDropdown, setWaiterDropdown] = useState(false);
+
+
+  // const [tagOpen, setTagOpen] = useState(false);
+  // const [addNote, setAddNote] = useState(false);
+
+  // const handleInputClose = () => {
+  //   setTagOpen(false);
+  //   setAddNote(false);
+  // };
+
+  // const [selectedNotes, setSelectedNotes] = useState([]);
+
+  // const toggleNote = (note) => {
+  //   if (selectedNotes.includes(note)) {
+  //     // Note is already selected, so remove it
+  //     setSelectedNotes(
+  //       selectedNotes.filter((selectedNote) => selectedNote !== note)
+  //     );
+  //   } else {
+  //     // Note is not selected, so add it
+  //     setSelectedNotes([...selectedNotes, note]);
+  //   }
+  // };
 
   const itemSelectedList = new Array(15).fill(null);
 
@@ -319,102 +349,101 @@ function Pos() {
                   </tr>
                 ))}
 
-                {/* <tr>
-                  <td className="text-center">Alfreds Futterkiste</td>
-                  <td className="text-center">2</td>
-                  <td className="text-end">190.00</td>
-                  <td className="text-end">380.00</td>
-                </tr>
-
-                <tr>
-                  <td className="text-center">Alfreds Futterkiste</td>
-                  <td className="text-center">2</td>
-                  <td className="text-end">190.00</td>
-                  <td className="text-end">380.00</td>
-                </tr>
-                <tr>
-                  <td className="text-center">Alfreds Futterkiste</td>
-                  <td className="text-center">2</td>
-                  <td className="text-end">190.00</td>
-                  <td className="text-end">380.00</td>
-                </tr>
-                <tr>
-                  <td className="text-center">Alfreds Futterkiste</td>
-                  <td className="text-center">3</td>
-                  <td className="text-end">190.00</td>
-                  <td className="text-end">570.00</td>
-                </tr>
-                <tr>
-                  <td className="text-center">Alfreds Futterkiste</td>
-                  <td className="text-center">3</td>
-                  <td className="text-end">190.00</td>
-                  <td className="text-end">570.00</td>
-                </tr>
-                <tr>
-                  <td className="text-center">Alfreds Futterkiste</td>
-                  <td className="text-center">2</td>
-                  <td className="text-end">190.00</td>
-                  <td className="text-end">380.00</td>
-                </tr>
-
-                <tr>
-                  <td className="text-center">Alfreds Futterkiste</td>
-                  <td className="text-center">2</td>
-                  <td className="text-end">190.00</td>
-                  <td className="text-end">380.00</td>
-                </tr>
-                <tr>
-                  <td className="text-center">Alfreds Futterkiste</td>
-                  <td className="text-center">2</td>
-                  <td className="text-end">190.00</td>
-                  <td className="text-end">380.00</td>
-                </tr>
-                <tr>
-                  <td className="text-center">Alfreds Futterkiste</td>
-                  <td className="text-center">3</td>
-                  <td className="text-end">190.00</td>
-                  <td className="text-end">570.00</td>
-                </tr>
-                <tr>
-                  <td className="text-center">Alfreds Futterkiste</td>
-                  <td className="text-center">3</td>
-                  <td className="text-end">190.00</td>
-                  <td className="text-end">570.00</td>
-                </tr>
-                <tr>
-                  <td className="text-center">Alfreds Futterkiste</td>
-                  <td className="text-center">2</td>
-                  <td className="text-end">190.00</td>
-                  <td className="text-end">380.00</td>
-                </tr>
-
-                <tr>
-                  <td className="text-center">Alfreds Futterkiste</td>
-                  <td className="text-center">2</td>
-                  <td className="text-end">190.00</td>
-                  <td className="text-end">380.00</td>
-                </tr>
-                <tr>
-                  <td className="text-center">Alfreds Futterkiste</td>
-                  <td className="text-center">2</td>
-                  <td className="text-end">190.00</td>
-                  <td className="text-end">380.00</td>
-                </tr>
-                <tr>
-                  <td className="text-center">Alfreds Futterkiste</td>
-                  <td className="text-center">3</td>
-                  <td className="text-end">190.00</td>
-                  <td className="text-end">570.00</td>
-                </tr>
-                <tr>
-                  <td className="text-center">Alfreds Futterkiste</td>
-                  <td className="text-center">3</td>
-                  <td className="text-end">190.00</td>
-                  <td className="text-end">570.00</td>
-                </tr> */}
               </tbody>
             </table>
-            <TagModal open={tagOpen} onClose={() => setTagOpen(false)} />
+            <TagModal2 tagOpen={tagOpen} setTagOpen={setTagOpen} />
+            {/* <TagModal open={tagOpen} onClose={handleInputClose}>
+              <div className="flex justify-between  items-center w-full">
+                <p className="w-[40%] text-md">Chicken Mansooriyan</p>
+        
+                <button
+                  className="btn min-h-max h-8 w-[85px] bg-Primary text-Light  transition ease-in-out delay-300 font-medium  text-xs hover:bg-Primary flex"
+                  onClick={() => setAddNote(!addNote)}
+                >
+                  Add
+                  <AddIcon className="" sx={{ fontSize: "18px" }} />
+                </button>
+              </div>
+              {addNote && (
+                <input
+                  type="text"
+                  className="bg-Secondary px-2 py-2 text-sm w-full my-4 rounded  transition ease-in-out duration-700  border-0 focus:outline-none"
+                  placeholder="Add notes here..."
+                />
+              )}
+
+              <div className="flex items-center flex-wrap gap-2 mt-2">
+                <p
+                  className={`text-[12px] border border-1 border-Secondary py-1 px-2 rounded-xl cursor-pointer select-none ${
+                    selectedNotes.includes("Less spicy")
+                      ? "bg-Secondary text-Primary"
+                      : ""
+                  }`}
+                  onClick={() => toggleNote("Less spicy")}
+                >
+                  Less spicy
+                </p>
+                <p
+                  className={`text-[12px] border border-1 border-Secondary py-1 px-2 rounded-xl cursor-pointer select-none ${
+                    selectedNotes.includes("Spicy")
+                      ? "bg-Secondary text-Primary"
+                      : ""
+                  }`}
+                  onClick={() => toggleNote("Spicy")}
+                >
+                  Spicy
+                </p>
+                <p
+                  className={`text-[12px] border border-1 border-Secondary py-1 px-2 rounded-xl cursor-pointer select-none ${
+                    selectedNotes.includes("No salt")
+                      ? "bg-Secondary text-Primary"
+                      : ""
+                  }`}
+                  onClick={() => toggleNote("No salt")}
+                >
+                  No salt
+                </p>
+                <p
+                  className={`text-[12px] border border-1 border-Secondary py-1 px-2 rounded-xl cursor-pointer select-none ${
+                    selectedNotes.includes("Extra sweet")
+                      ? "bg-Secondary text-Primary"
+                      : ""
+                  }`}
+                  onClick={() => toggleNote("Extra sweet")}
+                >
+                  Extra sweet
+                </p>
+                <p
+                  className={`text-[12px] border border-1 border-Secondary py-1 px-2 rounded-xl cursor-pointer select-none ${
+                    selectedNotes.includes("Oilless")
+                      ? "bg-Secondary text-Primary"
+                      : ""
+                  }`}
+                  onClick={() => toggleNote("Oilless")}
+                >
+                  Oilless
+                </p>
+              </div>
+
+              <div className="pt-6 flex justify-end gap-2">
+                <button
+                  onClick={() => {
+                    toast.success("Updated Successfully");
+                    handleInputClose();
+                  }}
+                  className="btn min-h-max h-[30px]  bg-Primary text-Light font-medium w-[90px] text-xs hover:bg-Primary"
+                >
+                  Save
+                </button>
+
+                <button
+                  className="btn  min-h-max h-[30px]  text-xs"
+                  onClick={handleInputClose}
+                >
+                  Cancel
+                </button>
+              </div>
+            </TagModal> */}
           </div>
 
           <div className="bg-Secondary mt-3  rounded-lg">

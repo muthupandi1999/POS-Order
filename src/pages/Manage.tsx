@@ -8,14 +8,14 @@ import Properties from "./Manage/Properties";
 import Variations from "./Manage/Variations";
 import ReceipeBuilder from "./Manage/ReceipeBuilder";
 import AllReceipes from "./Manage/AllReceipes";
-
+import SingleReceipe from "./Manage/SingleReceipe/singleReceipe";
 
 function Manage() {
   const [activeCategory, setActiveCategory] = useState("foods");
 
   const location = useLocation();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   console.log("location", location);
 
@@ -52,7 +52,8 @@ function Manage() {
                     {e?.items!.map((e, index) => (
                       <li
                         className={`bg-Light py-2 pl-7 px-2 cursor-pointer text-sm ${
-                          location.pathname.includes(e?.route) && "font-bold bg-Primary text-Light"
+                          location.pathname.includes(e?.route) &&
+                          "font-bold bg-Primary text-Light"
                         }`}
                         key={index}
                         onClick={() => navigate(e?.route)}
@@ -68,17 +69,20 @@ function Manage() {
           </ul>
         </div>
         <div className="w-[87%]">
-            <Routes>
-                <Route path="/food/add-new-item" element={<AddNewItem/>}/>
-                <Route path="/food/all-items" element={<AllItems/>}/>
-                <Route path="/food/groups" element={<Groups/>}/>
-                <Route path="/food/properties" element={<Properties/>}/>
-                <Route path="/food/variations" element={<Variations/>}/>
-                <Route path="/food/receipe-builder" element={<ReceipeBuilder/>}/>
-                <Route path="/food/all-receipes" element={<AllReceipes/>}/>
-            </Routes>
+          <Routes>
+            <Route path="/food/add-new-item" element={<AddNewItem />} />
+            <Route path="/food/all-items" element={<AllItems />} />
+            <Route path="/food/groups" element={<Groups />} />
+            <Route path="/food/properties" element={<Properties />} />
+            <Route path="/food/variations" element={<Variations />} />
+            <Route path="/food/receipe-builder" element={<ReceipeBuilder />} />
+            <Route path="/food/all-receipes" element={<AllReceipes />} />
+            <Route
+              path="/food/all-receipes/single-receipe/*"
+              element={<SingleReceipe />}
+            />
+          </Routes>
         </div>
-      
       </div>
     </div>
   );

@@ -170,7 +170,7 @@ function AddNewItem() {
           <label htmlFor="Properties" className="select-none">
             <div className="flex items-center gap-2">
               <input
-                className="accent-Primary relative top-[-1px] left-[2px]"
+                className="checkbox checkbox-sm accent-Primary relative top-[-1px] left-[2px]"
                 id="Properties"
                 type="checkbox"
               />
@@ -184,7 +184,7 @@ function AddNewItem() {
           <label htmlFor="Variations" className="select-none">
             <div className="flex items-center gap-2">
               <input
-                className="accent-Primary relative top-[-1px] left-[2px]"
+                className="checkbox checkbox-sm accent-Primary relative top-[-1px] left-[2px]"
                 id="Variations"
                 type="checkbox"
               />
@@ -209,7 +209,7 @@ function AddNewItem() {
         <div className="pb-2">
           <label htmlFor="Special" className="select-none">
             <div className="flex items-center gap-2">
-              <input className="accent-Primary relative top-[-1px] left-[2px]" id="Special" type="checkbox" />
+              <input className="checkbox checkbox-sm accent-Primary relative top-[-1px] left-[2px]" id="Special" type="checkbox" />
               Is Special?
             </div>
           </label>
