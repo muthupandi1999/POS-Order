@@ -9,6 +9,17 @@ import Variations from "./Manage/Variations";
 import ReceipeBuilder from "./Manage/ReceipeBuilder";
 import AllReceipes from "./Manage/AllReceipes";
 import SingleReceipe from "./Manage/SingleReceipe/singleReceipe";
+import IngredientItem from "./Manage/Stocks/IngredientItem";
+import IngredientPurchase from "./Manage/Stocks/IngredientPurchase";
+import PurchaseHistory from "./Manage/Stocks/PurchaseHistory";
+import ManageSupplier from "./Manage/Stocks/ManageSupplier";
+import SupplierHistory from "./Manage/Stocks/SupplierHistory";
+import AdminStaff from "./Manage/Management/AdminStaff";
+import Customers from "./Manage/Management/Customers";
+import Waiters from "./Manage/Management/Waiters";
+import DeliveryUser from "./Manage/Management/DeliveryUser";
+import NewDeliveryUser from "./Manage/Management/NewDeliveryUser";
+import RoleGroup from "./Manage/Management/RoleGroup";
 
 function Manage() {
   const [activeCategory, setActiveCategory] = useState("foods");
@@ -81,6 +92,40 @@ function Manage() {
               path="/food/all-receipes/single-receipe/*"
               element={<SingleReceipe />}
             />
+
+            {/* manage */}
+
+            <Route path="/stock/ingredient-item" element={<IngredientItem />} />
+            <Route
+              path="/stock/ingredient-purchase"
+              element={<IngredientPurchase />}
+            />
+            <Route
+              path="/stock/purchase-history-ingredient"
+              element={<PurchaseHistory />}
+            />
+            <Route path="/stock/manage-supplier" element={<ManageSupplier />} />
+            <Route
+              path="/stock/supplier-history"
+              element={<SupplierHistory />}
+            />
+
+            {/* user management */}
+
+            <Route path="/user/admin-staff" element={<AdminStaff />} />
+
+            <Route path="/user/customers" element={<Customers />} />
+
+            <Route path="/user/waiters" element={<Waiters />} />
+
+            <Route path="/user/roles-and-permissions" element={<RoleGroup />} />
+
+            <Route path="/user/delivery-men" element={<DeliveryUser />} />
+
+            <Route
+              path="/user/delivery-request"
+              element={<NewDeliveryUser />}
+            />
           </Routes>
         </div>
       </div>
@@ -89,3 +134,4 @@ function Manage() {
 }
 
 export default Manage;
+

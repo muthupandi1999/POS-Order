@@ -104,31 +104,31 @@ export const Manages = [
     items: [
       {
         name: "Add new item",
-        route:"/manage/food/add-new-item"
+        route: "/manage/food/add-new-item",
       },
       {
         name: "All items",
-        route:"/manage/food/all-items"
+        route: "/manage/food/all-items",
       },
       {
         name: "Groups",
-        route:"/manage/food/groups"
+        route: "/manage/food/groups",
       },
       {
         name: "Properties",
-        route:"/manage/food/properties"
+        route: "/manage/food/properties",
       },
       {
         name: "Variations",
-        route:"/manage/food/variations"
+        route: "/manage/food/variations",
       },
       {
         name: "Receipe Builder",
-        route:"/manage/food/receipe-builder"
+        route: "/manage/food/receipe-builder",
       },
       {
         name: "All Receipes",
-        route:"/manage/food/all-receipes"
+        route: "/manage/food/all-receipes",
       },
     ],
   },
@@ -139,18 +139,23 @@ export const Manages = [
     items: [
       {
         name: "Incredient Item",
+        route: "/manage/stock/ingredient-item",
       },
       {
         name: "Incredient Purchase",
+        route: "/manage/stock/ingredient-purchase",
       },
       {
         name: "Purchase History",
+        route: "/manage/stock/purchase-history-ingredient",
       },
       {
         name: "Manage Supplier",
+        route: "/manage/stock/manage-supplier",
       },
       {
         name: "Supplier History",
+        route: "/manage/stock/supplier-history",
       },
     ],
   },
@@ -160,23 +165,28 @@ export const Manages = [
     items: [
       {
         name: "Admin/Staff",
+        route: "/manage/user/admin-staff",
       },
       {
         name: "Customers",
+        route: "/manage/user/customers",
       },
       {
         name: "Waiters",
+        route: "/manage/user/waiters",
       },
       {
         name: "Role Groups",
+        route: "/manage/user/roles-and-permissions",
       },
       {
         name: "Delivery User",
+        route: "/manage/user/delivery-men",
       },
       {
         name: "New Delivery User",
+        route: "/manage/user/delivery-request",
       },
-
     ],
   },
   {
@@ -198,7 +208,6 @@ export const Manages = [
       {
         name: "Payment Types",
       },
-     
     ],
   },
   {
@@ -238,7 +247,6 @@ export const Manages = [
       {
         name: "twillio",
       },
-      
     ],
   },
   {

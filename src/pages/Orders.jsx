@@ -28,7 +28,7 @@ function Orders() {
       location: "Madurai",
       status: "Processing",
     };
-
+    console.log("i", dataItem.id);
     TableList.push(dataItem);
   }
 
@@ -38,6 +38,7 @@ function Orders() {
   const startIndex = (currentPage - 1) * showCount;
   const endIndex = startIndex + showCount;
   const currentTableData = TableList.slice(startIndex, endIndex);
+  console.log(currentTableData);
 
   const handleFocus = () => {
     setDateInputType("date");
@@ -131,7 +132,7 @@ function Orders() {
           </thead>
           <tbody className="overflow-hidden z-0">
             {currentTableData.map((e, index) => (
-              <tr key={e?.orderNumber}>
+              <tr key={e?.id}>
                 <th>{e?.id}</th>
                 <td>{e?.orderNumber}</td>
                 <td>{e?.time}</td>

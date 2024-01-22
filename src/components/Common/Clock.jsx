@@ -18,7 +18,10 @@ const Clock = () => {
 
   return (
     <div className="flex items-center text-Light px-5">
-      <AccessTimeIcon className="bg-Light rounded text-Primary mr-3 p-1" style={{fontSize:"40px"}}  />
+      <AccessTimeIcon
+        className="bg-Light rounded text-Primary mr-3 p-1"
+        style={{ fontSize: "40px" }}
+      />
       <div>
         <p className="text-sm font-semibold">{formattedTime}</p>
 
