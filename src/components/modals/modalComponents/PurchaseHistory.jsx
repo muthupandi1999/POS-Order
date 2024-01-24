@@ -3,7 +3,7 @@ import DynamicModal from "../DynamicModal";
 import CloseIcon from "@mui/icons-material/Close";
 import Toast from "react-hot-toast";
 
-function PurchaseHistory({ groupOpen, setGroupOpen, heading }) {
+function PurchaseHistory({ openModal, setOpenModal, heading }) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const showCount = 5;
@@ -28,7 +28,7 @@ function PurchaseHistory({ groupOpen, setGroupOpen, heading }) {
   const endIndex = startIndex + showCount;
   const currentTableData = TableList.slice(startIndex, endIndex);
   const handleInputClose = () => {
-    setGroupOpen(false);
+    setOpenModal(false);
   };
 
   const handleSave = () => {
@@ -36,7 +36,7 @@ function PurchaseHistory({ groupOpen, setGroupOpen, heading }) {
     Toast.success("Added Successfully");
   };
   return (
-    <DynamicModal open={groupOpen} onClose={handleInputClose}>
+    <DynamicModal open={openModal} onClose={handleInputClose}>
       <div className="">
         <div className="p-3 flex justify-between items-center border-b border-1 border-Secondary">
           <h4 className="text-md capitalize font-semibold text-Primary">

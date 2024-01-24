@@ -330,7 +330,7 @@ function Kitchen() {
         </div>
       </div>
       <div className="kitchenTables mx-8 py-3 bg-Light my-2 p-2 rounded">
-        <div className="p-2 bg-CurrentOrder rounded-xl grid-cols-3 row-span-3 h-[84vh]">
+        <div className="p-2 bg-CurrentOrder rounded-xl grid-cols-3 row-span-3 h-[76vh]">
           <div className="flex justify-between  items-center">
             <p className="p-2 text-sm bg-Light rounded">012</p>
             <h4>10.45</h4>
@@ -338,7 +338,7 @@ function Kitchen() {
             <OpenInFullIcon className="cursor-pointer" />
             {/* <CloseIcon /> */}
           </div>
-          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[80%] overflow-y-auto">
+          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[78%] overflow-y-auto">
             {kitchenList.map((e) => (
               <div
                 key={e?.id}
@@ -351,39 +351,6 @@ function Kitchen() {
                 <p>x {e?.count}</p>
               </div>
             ))}
-
-            {/* <div className="flex justify-between select-none"  onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
-            <p>Crispy Fried chicken</p>
-            <p>x 6</p>
-          </div>
-          <div className="flex justify-between select-none">
-            <p>Idly</p>
-            <p>x 6</p>
-          </div>
-          <div className="flex justify-between select-none">
-            <p>Dosa</p>
-            <p>x 6</p>
-          </div>
-          <div className="flex justify-between select-none">
-            <p>Popcorn Chicken</p>
-            <p>x 6</p>
-          </div>
-          <div className="flex justify-between select-none">
-            <p>Chicken thanthoori</p>
-            <p>x 6</p>
-          </div>
-          <div className="flex justify-between select-none">
-            <p>Paneer</p>
-            <p>x 6</p>
-          </div>
-          <div className="flex justify-between select-none">
-            <p>Chilli chicken</p>
-            <p>x 6</p>
-          </div>
-          <div className="flex justify-between select-none">
-            <p>Egg Fried Rice</p>
-            <p>x 6</p>
-          </div> */}
           </div>
           <div className="mt-2">
             <button className="btn min-h-max h-[40px] my-3 rounded-xl w-full bg-Pink text-Light font-normal border-0 hover:bg-Pink">
@@ -402,7 +369,7 @@ function Kitchen() {
             <OpenInFullIcon className="cursor-pointer" />
             {/* <CloseIcon /> */}
           </div>
-          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[130px] overflow-y-auto">
+          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[120px] overflow-y-auto">
             <div className="flex justify-between">
               <p>Crispy Fried chicken</p>
               <p>
@@ -440,7 +407,7 @@ function Kitchen() {
             <OpenInFullIcon className="cursor-pointer" />
             {/* <CloseIcon /> */}
           </div>
-          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[130px] overflow-y-auto">
+          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[120px] overflow-y-auto">
             <div className="flex justify-between">
               <p>Crispy Fried chicken</p>
               <p>
@@ -478,7 +445,7 @@ function Kitchen() {
             <OpenInFullIcon className="cursor-pointer" />
             {/* <CloseIcon /> */}
           </div>
-          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[130px] overflow-y-auto">
+          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[120px] overflow-y-auto">
             <div className="flex justify-between">
               <p>Crispy Fried chicken</p>
               <p>
@@ -516,7 +483,7 @@ function Kitchen() {
             <OpenInFullIcon className="cursor-pointer" />
             {/* <CloseIcon /> */}
           </div>
-          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[130px] overflow-y-auto">
+          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[120px] overflow-y-auto">
             <div className="flex justify-between">
               <p>Crispy Fried chicken</p>
               <p>
@@ -554,7 +521,7 @@ function Kitchen() {
             <OpenInFullIcon className="cursor-pointer" />
             {/* <CloseIcon /> */}
           </div>
-          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[130px] overflow-y-auto">
+          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[120px] overflow-y-auto">
             <div className="flex justify-between">
               <p>Crispy Fried chicken</p>
               <p>
@@ -592,7 +559,7 @@ function Kitchen() {
             <OpenInFullIcon className="cursor-pointer" />
             {/* <CloseIcon /> */}
           </div>
-          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[130px] overflow-y-auto">
+          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[120px] overflow-y-auto">
             <div className="flex justify-between">
               <p>Crispy Fried chicken</p>
               <p>
@@ -630,7 +597,7 @@ function Kitchen() {
             <OpenInFullIcon className="cursor-pointer" />
             {/* <CloseIcon /> */}
           </div>
-          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[130px] overflow-y-auto">
+          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[120px] overflow-y-auto">
             <div className="flex justify-between">
               <p className="text-Pink my-anchor-element">
                 Crispy Fried chicken
@@ -673,7 +640,7 @@ function Kitchen() {
             <OpenInFullIcon className="cursor-pointer" />
             {/* <CloseIcon /> */}
           </div>
-          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[130px] overflow-y-auto">
+          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[120px] overflow-y-auto">
             <div className="flex justify-between">
               <p>Crispy Fried chicken</p>
               <p>
@@ -711,7 +678,7 @@ function Kitchen() {
             <OpenInFullIcon className="cursor-pointer" />
             {/* <CloseIcon /> */}
           </div>
-          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[130px] overflow-y-auto">
+          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[120px] overflow-y-auto">
             <div className="flex justify-between">
               <p>Crispy Fried chicken</p>
               <p>
@@ -749,7 +716,7 @@ function Kitchen() {
             <OpenInFullIcon className="cursor-pointer" />
             {/* <CloseIcon /> */}
           </div>
-          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[130px] overflow-y-auto">
+          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[120px] overflow-y-auto">
             <div className="flex justify-between">
               <p className="text-Pink">Crispy Fried chicken</p>
               <p>
@@ -787,7 +754,7 @@ function Kitchen() {
             <OpenInFullIcon className="cursor-pointer" />
             {/* <CloseIcon /> */}
           </div>
-          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[130px] overflow-y-auto">
+          <div className="p-2 bg-Light rounded-md mt-2 text-sm h-[120px] overflow-y-auto">
             <div className="flex justify-between">
               <p>Crispy Fried chicken</p>
               <p>

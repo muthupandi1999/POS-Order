@@ -1,3 +1,10 @@
+import FastfoodIcon from '@mui/icons-material/Fastfood';
+import InventoryIcon from '@mui/icons-material/Inventory';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import RestaurantIcon from '@mui/icons-material/Restaurant';
+import PaymentsIcon from '@mui/icons-material/Payments';
+import SmsIcon from '@mui/icons-material/Sms';
+import SettingsIcon from '@mui/icons-material/Settings';
 export const Categories = [
   {
     id: 1,
@@ -101,6 +108,7 @@ export const Manages = [
   {
     id: 1,
     name: "foods",
+    icon:<FastfoodIcon/>,
     items: [
       {
         name: "Add new item",
@@ -136,6 +144,7 @@ export const Manages = [
   {
     id: 2,
     name: "manage stock",
+    icon:<InventoryIcon/>,
     items: [
       {
         name: "Incredient Item",
@@ -162,6 +171,7 @@ export const Manages = [
   {
     id: 3,
     name: "user management",
+    icon:<ManageAccountsIcon/>,
     items: [
       {
         name: "Admin/Staff",
@@ -192,27 +202,34 @@ export const Manages = [
   {
     id: 4,
     name: "restaurant",
+    icon:<RestaurantIcon/>,
     items: [
       {
         name: "Branches",
+        route: "/manage/restaurant/branches",
       },
       {
         name: "Dept tags",
+        route: "/manage/restaurant/dept-tags",
       },
       {
         name: "Tables",
+        route: "/manage/restaurant/tables",
       },
       {
         name: "Tips",
+        route: "/manage/restaurant/tips",
       },
       {
         name: "Payment Types",
+        route: "/manage/restaurant/payment-type",
       },
     ],
   },
   {
     id: 5,
     name: "payment",
+    icon:<PaymentsIcon/>,
     items: [
       {
         name: "Stripe",
@@ -220,29 +237,12 @@ export const Manages = [
       {
         name: "Flutterwave",
       },
-      {
-        name: "Groups",
-      },
-      {
-        name: "Properties",
-      },
-      {
-        name: "Variations",
-      },
-      {
-        name: "Receipe Builder",
-      },
-      {
-        name: "Receipe Builder",
-      },
-      {
-        name: "All Receipes",
-      },
     ],
   },
   {
     id: 6,
     name: "sms settings",
+    icon:<SmsIcon/>,
     items: [
       {
         name: "twillio",
@@ -252,6 +252,7 @@ export const Manages = [
   {
     id: 7,
     name: "settings",
+    icon:<SettingsIcon/>,
     items: [
       {
         name: "Currencies",

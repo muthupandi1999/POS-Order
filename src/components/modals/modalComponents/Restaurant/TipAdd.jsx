@@ -1,10 +1,11 @@
 import React from "react";
-import DynamicModal from "../DynamicModal";
+import DynamicModal from "../../DynamicModal";
 import CloseIcon from "@mui/icons-material/Close";
 import Toast from "react-hot-toast";
 
-function FoodGroup({ openModal, setOpenModal, heading }) {
+function TipAdd({ openModal, setOpenModal, heading }) {
   const handleInputClose = () => {
+    console.log("cloase");
     setOpenModal(false);
   };
 
@@ -12,6 +13,7 @@ function FoodGroup({ openModal, setOpenModal, heading }) {
     handleInputClose();
     Toast.success("Added Successfully");
   };
+
   return (
     <DynamicModal open={openModal} onClose={handleInputClose}>
       <div className="">
@@ -22,17 +24,18 @@ function FoodGroup({ openModal, setOpenModal, heading }) {
           <CloseIcon onClick={handleInputClose} className="cursor-pointer" />
         </div>
 
-        <div className="p-3">
-          <label htmlFor="food group" className="">
-            Name
+        <div className="pb-2 px-3 pt-3 ">
+          <label htmlFor="name" className="">
+            Tip Percentage
           </label>
           <br />
           <input
-            type="text"
-            className="w-full py-1.5 text-sm  px-2 my-2 rounded border border-1 border-Secondary focus:outline-none placeholder:text-xs"
-            placeholder="e.g Spicy chicken burger"
+            type="number"
+            className="w-full py-1.5 text-sm  px-2 my-2 rounded border border-1 border-Secondary focus:outline-none placeholder:text-sm"
+            placeholder="e.g 0.5"
           />
         </div>
+
         <div className="p-3 flex justify-between">
           <button
             className="btn primary-button font-semibold border-0 rounded min-h-max h-10 w-[45%]"
@@ -52,4 +55,4 @@ function FoodGroup({ openModal, setOpenModal, heading }) {
   );
 }
 
-export default FoodGroup;
+export default TipAdd;

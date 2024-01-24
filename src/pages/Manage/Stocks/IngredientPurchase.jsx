@@ -18,12 +18,9 @@ function IngredientPurchase() {
     setSelectedIngredients(e);
   };
 
-
   const handleChangeSort = (e) => {
     setSelectedOptionSort(e);
   };
-
-
 
   // handle onChange event of the dropdown
 
@@ -144,11 +141,11 @@ function IngredientPurchase() {
     },
   ];
   return (
-    <div className="bg-Light py-3 px-5 my-2 ">
+    <div className=" py-3 px-5 my-2 h-auto overflow-y-scroll">
       <h4 className="text-Primary text-xl capitalize font-bold">
         Add New Purchase
       </h4>
-      <div className="mb-2 mt-4 bg-Light border border-1 border-Secondary h-[850px] overflow-y-scroll py-5 px-5 w-[60%]">
+      <div className="mb-2 mt-4 bg-Light border border-1 border-Secondary h-auto py-5 px-5 w-[60%]">
         <div className="pb-2">
           <label htmlFor="branch" className="">
             Branch
@@ -246,7 +243,7 @@ function IngredientPurchase() {
             name=""
             id=""
             cols="30"
-            rows="3"
+            rows="2"
             placeholder="Short Description"
           ></textarea>
         </div>
@@ -300,7 +297,7 @@ function IngredientPurchase() {
             <table className="table purchaseIngredientsTable table-xs table-pin-rows">
               <thead className="z-10 bg-Primary">
                 <tr>
-                  <th className="bg-Primar">Name</th>
+                  <th className="bg-Primary">Name</th>
                   <th>Stock</th>
                   <th>Qty</th>
                   <th>Rate</th>
@@ -353,7 +350,6 @@ function IngredientPurchase() {
                 </tr>
                 <tr>
                   <td></td>
-
                   <td></td>
                   <td></td>
                   <td className="font-semibold text-sm">Due</td>
@@ -363,7 +359,6 @@ function IngredientPurchase() {
             </table>
           </div>
         )}
-
         <button className="btn mt-3 bg-Primary text-Light w-40 hover:bg-Primary">
           Save
         </button>

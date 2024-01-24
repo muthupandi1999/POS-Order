@@ -15,7 +15,7 @@ function SingleReceipe() {
           </h4>
 
           <button
-            className="btn bg-blue-500 border-0 rounded text-Light hover:bg-blue-500 w-44 uppercase"
+            className="btn bg-Pink border-0 rounded text-Light hover:bg-Pink h-[40px] min-h-max w-44 uppercase"
             onClick={() => navigate("/manage/food/all-receipes")}
           >
             Back To Recipe List

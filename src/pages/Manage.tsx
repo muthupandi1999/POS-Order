@@ -1,5 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import FastfoodIcon from "@mui/icons-material/Fastfood";
+import InventoryIcon from "@mui/icons-material/Inventory";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
+import PaymentsIcon from "@mui/icons-material/Payments";
+import SmsIcon from "@mui/icons-material/Sms";
+import SettingsIcon from "@mui/icons-material/Settings";
 import { Manages } from "../utills/data";
 import AddNewItem from "./Manage/AddNewItem";
 import AllItems from "./Manage/AllItems";
@@ -20,9 +27,14 @@ import Waiters from "./Manage/Management/Waiters";
 import DeliveryUser from "./Manage/Management/DeliveryUser";
 import NewDeliveryUser from "./Manage/Management/NewDeliveryUser";
 import RoleGroup from "./Manage/Management/RoleGroup";
+import Branches from "./Manage/Restaurant/Branches";
+import DeptTags from "./Manage/Restaurant/DeptTags";
+import Tables from "./Manage/Restaurant/Tables";
+import Tips from "./Manage/Restaurant/Tips";
+import PaymentType from "./Manage/Restaurant/PaymentType";
 
 function Manage() {
-  const [activeCategory, setActiveCategory] = useState("foods");
+  const [activeCategory, setActiveCategory] = useState(null);
 
   const location = useLocation();
 
@@ -32,44 +44,65 @@ function Manage() {
 
   const handleList = (e) => {
     setActiveCategory(e?.name);
+    localStorage.setItem("activeCategory", e?.name);
   };
 
+  useEffect(() => {
+    if (!activeCategory) {
+      let getItem: string | null = localStorage.getItem("activeCategory");
+      setActiveCategory(getItem);
+    }
+  }, []);
   return (
-    <div className="mx-8">
+    <div className="mx-8 py-[20px]">
       <div className="flex justify-between">
-        <div className="w-[12%]">
-          <ul className="overflow-auto flex flex-col h-[100%] px-[10px] my-2">
+        <div className="w-[13%] h-[85vh] bg-Primary rounded px-1 py-1">
+          <ul className="overflow-auto flex flex-col h-[100%] px-[10px] py-2">
             {Manages.map((e, index) => (
               <div key={e?.id}>
                 <li
-                  className={` border border-1 border-Secondary text-Primary uppercase font-bold cursor-pointer text-xs  text-start shadow-md relative py-2 px-8  mb-2 rounded-md ${
+                  className={` flex items-center  gap-2  text-Light uppercase rounded-b-none font-bold cursor-pointer text-xs  text-start relative py-2 px-3  rounded ${
                     activeCategory === e?.name
-                      ? "border-Primary bg-Secondary  border-b-4 shadow-none"
-                      : "bg-Light"
+                      ? "border-Primary bg-Pink text-Light shadow-none"
+                      : ""
                   }`}
                   onClick={() => handleList(e)}
                 >
+                  {e?.icon}
                   <span className="relative">{e?.name}</span>
                 </li>
                 {/* {activeCategory === e?.name && ( */}
                 <div
                   className={`mb-2 transition-[height] duration-[10s] ease-linear ${
                     activeCategory === e?.name
-                      ? "h-auto opacity-100 visible"
-                      : "h-0 opacity-0 hidden"
+                      ? "opacity-100 h-auto transition-h duration-700  visible"
+                      : "h-0 opacity-0 hidden "
                   }`}
+                  style={{
+                    backgroundColor: "rgb(255 255 255 / 5%)",
+                    backdropFilter: "blur(10px)",
+                  }}
                 >
-                  <ul className="flex flex-col">
+                  <ul className="flex flex-col  rounded rounded-t-none">
                     {e?.items!.map((e, index) => (
                       <li
-                        className={`bg-Light py-2 pl-7 px-2 cursor-pointer text-sm ${
-                          location.pathname.includes(e?.route) &&
-                          "font-bold bg-Primary text-Light"
+                        className={` text-Light font-medium flex items-center gap-2 py-2 px-4 cursor-pointer text-sm ${
+                          location.pathname.includes(e?.route) && "text-Light"
                         }`}
                         key={index}
                         onClick={() => navigate(e?.route)}
                       >
-                        - {e?.name}
+                        {location.pathname.includes(e?.route) ? (
+                          <span className="w-3.5 h-3.5 bg-Pink border border-1 border-transparent rounded-full flex justify-center items-center">
+                            {" "}
+                            <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
+                          </span>
+                        ) : (
+                          <span className="w-3.5 h-3.5 border border-1 border-Pink rounded-full flex justify-center items-center">
+                            {" "}
+                          </span>
+                        )}
+                        {e?.name}
                       </li>
                     ))}
                   </ul>
@@ -79,7 +112,7 @@ function Manage() {
             ))}
           </ul>
         </div>
-        <div className="w-[87%]">
+        <div className="w-[86%] h-[85vh] bg-Light overflow-y-scroll">
           <Routes>
             <Route path="/food/add-new-item" element={<AddNewItem />} />
             <Route path="/food/all-items" element={<AllItems />} />
@@ -126,6 +159,13 @@ function Manage() {
               path="/user/delivery-request"
               element={<NewDeliveryUser />}
             />
+
+            {/* Restaurant */}
+            <Route path="/restaurant/branches" element={<Branches />} />
+            <Route path="/restaurant/dept-tags" element={<DeptTags />} />
+            <Route path="/restaurant/tables" element={<Tables />} />
+            <Route path="/restaurant/tips" element={<Tips />} />
+            <Route path="/restaurant/payment-type" element={<PaymentType />} />
           </Routes>
         </div>
       </div>
@@ -134,4 +174,3 @@ function Manage() {
 }
 
 export default Manage;
-

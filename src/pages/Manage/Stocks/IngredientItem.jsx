@@ -6,7 +6,7 @@ import IncredientAdd from "../../../components/modals/modalComponents/Ingredient
 function IngredientItem() {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [groupOpen, setGroupOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const showCount = 5;
 
@@ -46,15 +46,15 @@ function IngredientItem() {
               />
             </div>
             <button
-              className="btn bg-blue-500 border-0 rounded text-Light hover:bg-blue-500 w-44 uppercase"
-              onClick={() => setGroupOpen(true)}
+              className="btn bg-Pink border-0 rounded text-Light hover:bg-Pink h-[40px] min-h-max w-44 uppercase"
+              onClick={() => setOpenModal(true)}
             >
               add new
             </button>
             <IncredientAdd
               heading="add new Ingredient Item"
-              groupOpen={groupOpen}
-              setGroupOpen={setGroupOpen}
+              openModal={openModal}
+              setOpenModal={setOpenModal}
             />
           </div>
         </div>
@@ -113,7 +113,7 @@ function IngredientItem() {
               <a
                 key={index + 1}
                 className={`border border-1 border-Secondary px-3 py-1 ${
-                  currentPage === index + 1 ? "bg-DarkBlue text-Light" : ""
+                  currentPage === index + 1 ? "bg-Pink text-Light" : ""
                 }`}
                 onClick={() => setCurrentPage(index + 1)}
               >

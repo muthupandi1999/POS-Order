@@ -23,7 +23,7 @@ export default {
         bgSlade300:"rgba(203 213 225)",
         LightGrayShade:"#F5F5F5",
         DarkText:"#232221",
-        Pink:"#ff5774",
+        Pink:"#FF6969",
         SkyBlue:"#03A9F4",
         CurrentOrder:"#FFD5D5",
         ReadyOrder:"#d1f2d4",

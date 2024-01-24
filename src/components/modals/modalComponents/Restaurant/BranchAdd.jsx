@@ -1,34 +1,20 @@
-import React, { useState } from "react";
-import DynamicModal from "../DynamicModal";
+import React from "react";
+import DynamicModal from "../../DynamicModal";
 import CloseIcon from "@mui/icons-material/Close";
 import Toast from "react-hot-toast";
 
-function SupplierAdd({ openModal, setOpenModal, heading }) {
+function BranchAdd({openModal, setOpenModal, heading}) {
+
   const handleInputClose = () => {
+    console.log("cloase");
     setOpenModal(false);
   };
 
-  const [selectedUnit, setSelectedUnits] = useState(null);
 
   const handleSave = () => {
     handleInputClose();
     Toast.success("Added Successfully");
   };
-
-  const handleChange = (e) => {
-    setSelectedUnits(e);
-  };
-
-  const unitOptions = [
-    {
-      value: 1,
-      text: "Gram",
-    },
-    {
-      value: 2,
-      text: "Pieces",
-    },
-  ];
   return (
     <DynamicModal open={openModal} onClose={handleInputClose}>
       <div className="">
@@ -39,43 +25,31 @@ function SupplierAdd({ openModal, setOpenModal, heading }) {
           <CloseIcon onClick={handleInputClose} className="cursor-pointer" />
         </div>
 
-        <div className="p-3">
-          <label htmlFor="food group" className="">
+        <div className="pb-2 px-3 pt-3 ">
+          <label htmlFor="name" className="">
             Name
           </label>
           <br />
           <input
             type="text"
             className="w-full py-1.5 text-sm  px-2 my-2 rounded border border-1 border-Secondary focus:outline-none placeholder:text-sm"
-            placeholder="e.g Spicy chicken burger"
+            placeholder="e.g Uttara Branch"
           />
         </div>
 
-        <div className="p-3">
-          <label htmlFor="email" className="">
-            Email
-          </label>
-          <br />
-          <input
-            type="text"
-            className="w-full py-1.5 text-sm  px-2 my-2 rounded border border-1 border-Secondary focus:outline-none placeholder:text-sm"
-            placeholder="Enter the email id"
-          />
-        </div>
-
-        <div className="p-3">
-          <label htmlFor="phone No" className="">
+        <div className="pb-2 px-3">
+          <label htmlFor="food group" className="">
             Phone No
           </label>
           <br />
           <input
             type="text"
             className="w-full py-1.5 text-sm  px-2 my-2 rounded border border-1 border-Secondary focus:outline-none placeholder:text-sm"
-            placeholder="e.g 01xxxxxxxxx"
+            placeholder="e.g 01xxxxxxxxxx"
           />
         </div>
 
-        <div className="p-3">
+        <div className="pb-2 px-3">
           <label htmlFor="food group" className="">
             Address
           </label>
@@ -89,6 +63,34 @@ function SupplierAdd({ openModal, setOpenModal, heading }) {
             placeholder="e.g Enter address"
           ></textarea>
         </div>
+
+        <div className="pb-2 px-3">
+          <label htmlFor="deliveryfee" className="">
+            Delivery Fee
+          </label>
+          <br />
+          <input
+            type="text"
+            className="w-full py-1.5 text-sm  px-2 my-2 rounded border border-1 border-Secondary focus:outline-none placeholder:text-sm"
+            placeholder="e.g $1.12"
+          />
+        </div>
+
+        <div className="pb-2 px-3">
+          <label htmlFor="deliveryfee" className="select-none">
+            <div className="flex items-center gap-2">
+              <input
+                className="checkbox checkbox-sm accent-Primary relative top-[-1px] left-[2px]"
+                id="deliveryfee"
+                type="checkbox"
+              />
+              Show / Hide
+            </div>
+          </label>
+          {/* <input type="checkbox" className="accent-Primary mr-3" />
+            <label htmlFor="HasProperties">Has Variations?</label> */}
+        </div>
+
         <div className="p-3 flex justify-between">
           <button
             className="btn primary-button font-semibold border-0 rounded min-h-max h-10 w-[45%]"
@@ -108,4 +110,4 @@ function SupplierAdd({ openModal, setOpenModal, heading }) {
   );
 }
 
-export default SupplierAdd;
+export default BranchAdd;

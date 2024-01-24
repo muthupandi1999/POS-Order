@@ -16,8 +16,8 @@ function AddNewItem() {
   };
 
   const handleReceipe = (e) => {
-    setSelectedReceipe(e)
-  }
+    setSelectedReceipe(e);
+  };
 
   // handle custom filter
   const filterOptionGroup = (option, inputValue) => {
@@ -85,7 +85,6 @@ function AddNewItem() {
       value: 3,
       text: "Veg Pizza",
     },
-
   ];
   return (
     <div className="bg-Light py-3 px-5 my-2">
@@ -114,7 +113,7 @@ function AddNewItem() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  fontSize:"14px"
+                  fontSize: "14px",
                 }}
               >
                 {/* {e.icon} */}
@@ -145,7 +144,7 @@ function AddNewItem() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  fontSize:"14px"
+                  fontSize: "14px",
                 }}
               >
                 {/* {e.icon} */}
@@ -203,13 +202,17 @@ function AddNewItem() {
             type="number"
             step={"0.01"}
             className="w-full py-1.5 px-2 my-2 rounded border border-1 border-Secondary focus:outline-none"
-            placeholder="e.g Spicy chicken burger"
+            placeholder="e.g 10.0"
           />
         </div>
         <div className="pb-2">
           <label htmlFor="Special" className="select-none">
             <div className="flex items-center gap-2">
-              <input className="checkbox checkbox-sm accent-Primary relative top-[-1px] left-[2px]" id="Special" type="checkbox" />
+              <input
+                className="checkbox checkbox-sm accent-Primary relative top-[-1px] left-[2px]"
+                id="Special"
+                type="checkbox"
+              />
               Is Special?
             </div>
           </label>
@@ -235,7 +238,7 @@ function AddNewItem() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  fontSize:"14px"
+                  fontSize: "14px",
                 }}
               >
                 {/* {e.icon} */}
@@ -245,7 +248,9 @@ function AddNewItem() {
             filterOption={filterReceipe}
           />
         </div>
-        <button className="btn mt-3 bg-Primary text-Light w-40 hover:bg-Primary">Save</button>
+        <button className="btn mt-3 bg-Primary text-Light w-40 hover:bg-Primary">
+          Save
+        </button>
       </div>
     </div>
   );

@@ -38,7 +38,7 @@ function SupplierHistory() {
   const [dateInputTypeTo, setDateInputTypeTo] = useState("text");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [groupOpen, setGroupOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const showCount = 5;
 
   const TableList = [];
@@ -91,7 +91,7 @@ function SupplierHistory() {
   };
 
   return (
-    <div className="bg-Light py-3 px-5 my-2">
+    <div className="bg-Light py-3 px-5 my-2 h-[100%]">
       <h4 className="text-Primary text-xl capitalize font-bold">
         Supplier History
       </h4>
@@ -221,8 +221,8 @@ function SupplierHistory() {
 
             <PurchaseHistory
               heading="Purchase Details"
-              groupOpen={groupOpen}
-              setGroupOpen={setGroupOpen}
+              openModal={openModal}
+              setOpenModal={setOpenModal}
             />
             {/* <tr>
                   <th>2</th>
@@ -255,7 +255,7 @@ function SupplierHistory() {
             <a
               key={index + 1}
               className={`border border-1 border-Secondary px-3 py-1 ${
-                currentPage === index + 1 ? "bg-DarkBlue text-Light" : ""
+                currentPage === index + 1 ? "bg-Pink text-Light" : ""
               }`}
               onClick={() => setCurrentPage(index + 1)}
             >

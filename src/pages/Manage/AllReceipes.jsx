@@ -164,7 +164,7 @@ function AllReceipes() {
               <a
                 key={index + 1}
                 className={`border border-1 border-Secondary px-3 py-1 ${
-                  currentPage === index + 1 ? "bg-DarkBlue text-Light" : ""
+                  currentPage === index + 1 ? "bg-Pink text-Light" : ""
                 }`}
                 onClick={() => setCurrentPage(index + 1)}
               >

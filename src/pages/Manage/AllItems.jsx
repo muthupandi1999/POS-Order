@@ -4,8 +4,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ActionIcon from "../../components/Common/ActionIcon";
 import { useNavigate } from "react-router-dom";
 function AllItems() {
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -52,14 +51,13 @@ function AllItems() {
               />
             </div>
             <button
-              className="btn bg-blue-500 border-0 rounded text-Light hover:bg-blue-500 w-44 uppercase"
-              onClick={() => {navigate('/manage/food/add-new-item')}}
+              className="btn bg-Pink border-0 rounded text-Light hover:bg-Pink h-[40px] min-h-max w-44 uppercase"
+              onClick={() => {
+                navigate("/manage/food/add-new-item");
+              }}
             >
               add new
             </button>
-           
-
- 
           </div>
         </div>
         <div className="overflow-x-auto  bg-Light  my-3 h-[630px] rounded">
@@ -87,7 +85,7 @@ function AllItems() {
                   <td>{e?.price}</td>
 
                   <td className="text-center">
-                   <ActionIcon/>
+                    <ActionIcon />
                   </td>
                 </tr>
               ))}
@@ -123,7 +121,7 @@ function AllItems() {
               <a
                 key={index + 1}
                 className={`border border-1 border-Secondary px-3 py-1 ${
-                  currentPage === index + 1 ? "bg-DarkBlue text-Light" : ""
+                  currentPage === index + 1 ? "bg-Pink text-Light" : ""
                 }`}
                 onClick={() => setCurrentPage(index + 1)}
               >

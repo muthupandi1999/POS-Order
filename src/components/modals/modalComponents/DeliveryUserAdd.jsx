@@ -3,52 +3,33 @@ import DynamicModal from "../DynamicModal";
 import CloseIcon from "@mui/icons-material/Close";
 import Toast from "react-hot-toast";
 import Select from "react-select";
-function UserAdd({ openModal, setOpenModal, heading }) {
-  const [userType, setUserType] = useState(null);
-  const [selectPermissionGroup, setSelectPermissionGroup] = useState(null);
+function DeliveryUserAdd({ openModal, setOpenModal, heading }) {
+  const [selectedBranch, setSelectedBranch] = useState(null);
+
   const handleInputClose = () => {
     console.log("cloase");
     setOpenModal(false);
   };
 
-  const handleChangeUserType = (e) => {
-    setUserType(e);
+  const handleChangeBranch = (e) => {
+    setSelectedBranch(e);
   };
 
-  const handleChangePermissionGroup = (e) => {
-    setSelectPermissionGroup(e);
+  const filterOptionBranch = (option, inputValue) => {
+    return option.data.text.toLowerCase().includes(inputValue.toLowerCase());
   };
-  const userTypes = [
+  const branches = [
     {
       value: 1,
-      text: "ADMIN",
+      text: "Uttara",
     },
     {
       value: 2,
-      text: "STAFF",
-    },
-  ];
-
-  const PermissionGroups = [
-    {
-      value: 1,
-      text: "Admin",
-    },
-    {
-      value: 2,
-      text: "POS Manager",
+      text: "Dhaka",
     },
     {
       value: 3,
-      text: "Delivery Man",
-    },
-    {
-      value: 4,
-      text: "Kitchen",
-    },
-    {
-      value: 5,
-      text: "Camarero",
+      text: "Madurai",
     },
   ];
 
@@ -66,39 +47,7 @@ function UserAdd({ openModal, setOpenModal, heading }) {
           <CloseIcon onClick={handleInputClose} className="cursor-pointer" />
         </div>
 
-        <div className="pb-2 px-3 pt-3 ">
-          <label htmlFor="branch" className="">
-            User Type
-          </label>
-          <Select
-            className="w-[100%] my-2"
-            styles={{
-              "&.css-13cymwt-control": {
-                minHeight: "46px",
-              },
-            }}
-            placeholder="Select a unit"
-            isClearable={true}
-            value={userType}
-            options={userTypes}
-            onChange={handleChangeUserType}
-            getOptionLabel={(e) => (
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  fontSize: "12px",
-                }}
-              >
-                {/* {e.icon} */}
-                <span style={{ marginLeft: 5, fontSize: "13px" }}>
-                  {e.text}
-                </span>
-              </div>
-            )}
-            // filterOption={filterOptionIngredients}
-          />
-        </div>
+    
 
         <div className="pb-2 px-3">
           <label htmlFor="name" className="">
@@ -158,7 +107,7 @@ function UserAdd({ openModal, setOpenModal, heading }) {
 
         <div className="pb-2 px-3">
           <label htmlFor="branch" className="">
-            Select Permission Group
+            Select branch
           </label>
           <Select
             className="w-[100%] my-2"
@@ -169,9 +118,9 @@ function UserAdd({ openModal, setOpenModal, heading }) {
             }}
             placeholder="Select a unit"
             isClearable={true}
-            value={selectPermissionGroup}
-            options={PermissionGroups}
-            onChange={handleChangePermissionGroup}
+            value={selectedBranch}
+            options={branches}
+            onChange={handleChangeBranch}
             getOptionLabel={(e) => (
               <div
                 style={{
@@ -186,14 +135,14 @@ function UserAdd({ openModal, setOpenModal, heading }) {
                 </span>
               </div>
             )}
-            // filterOption={filterOptionIngredients}
+            filterOption={filterOptionBranch}
           />
         </div>
 
-
         <div className="pb-2 px-3">
           <label htmlFor="name" className="">
-            Image <span className="text-xs text-DarkBlue">(300*300 Preferrable)</span>
+            Image{" "}
+            <span className="text-xs text-DarkBlue">(300*300 Preferrable)</span>
           </label>
           <br />
           <input
@@ -222,4 +171,4 @@ function UserAdd({ openModal, setOpenModal, heading }) {
   );
 }
 
-export default UserAdd;
+export default DeliveryUserAdd;

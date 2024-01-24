@@ -4,9 +4,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import Toast from "react-hot-toast";
 import Select from "react-select";
 
-function IncredientAdd({ groupOpen, setGroupOpen, heading }) {
+function IncredientAdd({ openModal, setOpenModal, heading }) {
   const handleInputClose = () => {
-    setGroupOpen(false);
+    setOpenModal(false);
   };
 
   const [selectedUnit, setSelectedUnits] = useState(null);
@@ -31,7 +31,7 @@ function IncredientAdd({ groupOpen, setGroupOpen, heading }) {
     },
   ];
   return (
-    <DynamicModal open={groupOpen} onClose={handleInputClose}>
+    <DynamicModal open={openModal} onClose={handleInputClose}>
       <div className="">
         <div className="p-3 flex justify-between items-center border-b border-1 border-Secondary">
           <h4 className="text-md capitalize font-semibold text-Primary">

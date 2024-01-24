@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import ActionIcon from "../../../components/Common/ActionIcon";
-import CustomerAdd from "../../../components/modals/modalComponents/CustomerAdd";
-function Customers() {
+import BranchAdd from "../../../components/modals/modalComponents/Restaurant/BranchAdd";
+
+function Branches() {
   const [currentPage, setCurrentPage] = useState(1);
   const [openModal, setOpenModal] = useState(false);
 
@@ -13,11 +14,10 @@ function Customers() {
   for (let i = 0; i < 20; i++) {
     const dataItem = {
       id: i + 1,
-      name: "Jhon",
-      email: "jhon@gmail.com",
+      name: "Uttara",
+      deliveryCharge: 20,
+      address: "Dhaka, Uttara, Bangladesh",
       phoneNo: 8752365244,
-      address: "Dhaka, Uttara",
-      branch: "Uttara",
     };
 
     TableList.push(dataItem);
@@ -34,7 +34,7 @@ function Customers() {
       <div className="w-[90%]">
         <div className="flex justify-between items-center mx-auto flex-wrap">
           <h4 className="text-Primary text-xl capitalize font-bold w-[50%]">
-            Customer List
+            Branch list
           </h4>
           <div className="w-[50%] flex justify-between items-center">
             <div className="relative h-auto w-[50%] border border-1 border-Secondary">
@@ -49,12 +49,12 @@ function Customers() {
             </div>
             <button
               className="btn bg-Pink border-0 rounded text-Light hover:bg-Pink h-[40px] min-h-max w-44 uppercase"
-              onClick={() => setCustomerModal(true)}
+              onClick={() => setOpenModal(true)}
             >
               add new
             </button>
-            <CustomerAdd
-              heading="Add New Customer"
+            <BranchAdd
+              heading="Add New Branch"
               openModal={openModal}
               setOpenModal={setOpenModal}
             />
@@ -66,10 +66,10 @@ function Customers() {
               <tr>
                 <th className="">S.No</th>
                 <th className="">Name</th>
-                <th className="">Email</th>
-                <th className="">Phone No</th>
+                <th className="">Delivery Charge</th>
                 <th className="">Address</th>
-                <th className="">Branch</th>
+                <th className="">Phone No</th>
+
                 <th className="text-center">Action</th>
               </tr>
             </thead>
@@ -77,11 +77,11 @@ function Customers() {
               {currentTableData.map((e, index) => (
                 <tr key={e?.id}>
                   <td>{e?.id}</td>
+
                   <td>{e?.name}</td>
-                  <td>{e?.email}</td>
-                  <td>{e?.phoneNo}</td>
+                  <td>{e?.deliveryCharge}</td>
                   <td>{e?.address}</td>
-                  <td>{e?.branch}</td>
+                  <td>{e?.phoneNo}</td>
 
                   <td className="text-center">
                     <ActionIcon />
@@ -90,17 +90,17 @@ function Customers() {
               ))}
 
               {/* <tr>
-                  <th>2</th>
-                  <td>Hart Hagerty</td>
-                  <td>Desktop Support Technician</td>
-                  <td>Purple</td>
-                </tr>
-                <tr>
-                  <th>3</th>
-                  <td>Brice Swyre</td>
-                  <td>Tax Accountant</td>
-                  <td>Red</td>
-                </tr> */}
+                    <th>2</th>
+                    <td>Hart Hagerty</td>
+                    <td>Desktop Support Technician</td>
+                    <td>Purple</td>
+                  </tr>
+                  <tr>
+                    <th>3</th>
+                    <td>Brice Swyre</td>
+                    <td>Tax Accountant</td>
+                    <td>Red</td>
+                  </tr> */}
             </tbody>
           </table>
         </div>
@@ -150,4 +150,4 @@ function Customers() {
   );
 }
 
-export default Customers;
+export default Branches;

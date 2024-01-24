@@ -4,7 +4,7 @@ import ActionIcon from "../../../components/Common/ActionIcon";
 import UserAdd from "../../../components/modals/modalComponents/UserAdd";
 function AdminStaff() {
   const [currentPage, setCurrentPage] = useState(1);
-  const [userModal, setUserModal] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const showCount = 5;
 
@@ -48,15 +48,15 @@ function AdminStaff() {
               />
             </div>
             <button
-              className="btn bg-blue-500 border-0 rounded text-Light hover:bg-blue-500 w-44 uppercase"
+              className="btn bg-Pink border-0 rounded text-Light hover:bg-Pink h-[40px] min-h-max w-44 uppercase"
               onClick={() => setUserModal(true)}
             >
               add new
             </button>
             <UserAdd
-              heading="add new Ingredient Item"
-              userModal={userModal}
-              setUserModal={setUserModal}
+              heading="Add New Admin / Staff"
+              openModal={openModal}
+              setOpenModal={setOpenModal}
             />
           </div>
         </div>
@@ -120,7 +120,7 @@ function AdminStaff() {
               <a
                 key={index + 1}
                 className={`border border-1 border-Secondary px-3 py-1 ${
-                  currentPage === index + 1 ? "bg-DarkBlue text-Light" : ""
+                  currentPage === index + 1 ? "bg-Pink text-Light" : ""
                 }`}
                 onClick={() => setCurrentPage(index + 1)}
               >

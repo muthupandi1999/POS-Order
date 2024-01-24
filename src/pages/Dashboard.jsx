@@ -16,7 +16,7 @@ const dashboardArray = [
     icon: (
       <AccessTimeIcon className="text-[#606cc4] !w-4 mt-[-2px]" />
     ),
-    router:"/time"
+    router:"/dashboard/work-periods"
   },
   {
     title: "point of sale",
@@ -47,7 +47,7 @@ const dashboardArray = [
     icon: (
       <AccountCircleIcon className="text-[#de222a] !w-4 mt-[-2px]" />
     ),
-    router:"/customers"
+    router:"/dashboard/customers/pos"
   },
   {
     title: "kitchen",

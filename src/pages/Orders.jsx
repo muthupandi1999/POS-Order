@@ -3,11 +3,15 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router-dom";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import PrintIcon from "@mui/icons-material/Print";
+import ActionIcon from "../components/Common/ActionIcon";
 
 function Orders() {
   const [currentOrder, setCurrentOrder] = useState("Online");
 
-  const [dateInputType, setDateInputType] = useState("text");
+  const [dateInputTypeFrom, setDateInputTypeFrom] = useState("text");
+  const [dateInputTypeTo, setDateInputTypeTo] = useState("text");
+
+  const [search, setSearch] = React.useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -28,7 +32,6 @@ function Orders() {
       location: "Madurai",
       status: "Processing",
     };
-    console.log("i", dataItem.id);
     TableList.push(dataItem);
   }
 
@@ -37,18 +40,40 @@ function Orders() {
   // Get the current page items based on the showCount
   const startIndex = (currentPage - 1) * showCount;
   const endIndex = startIndex + showCount;
-  const currentTableData = TableList.slice(startIndex, endIndex);
-  console.log(currentTableData);
 
-  const handleFocus = () => {
-    setDateInputType("date");
+  // Filter the table data based on the search text
+  const filteredTableData = TableList.filter((item) =>
+    Object.values(item).some(
+      (value) =>
+        typeof value === "string" &&
+        value.toLowerCase().includes(search.toLowerCase())
+    )
+  );
+
+  const currentTableData = filteredTableData.slice(startIndex, endIndex);
+
+  const handleFocusFrom = () => {
+    setDateInputTypeFrom("date");
   };
 
-  const handleBlur = () => {
-    setDateInputType("text");
+  const handleBlurFrom = () => {
+    setDateInputTypeFrom("text");
+  };
+
+  const handleFocusTo = () => {
+    setDateInputTypeTo("date");
+  };
+
+  const handleBlurTo = () => {
+    setDateInputTypeTo("text");
   };
 
   const navigate = useNavigate();
+
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+    setCurrentPage(1);
+  };
 
   return (
     <div className="mx-8 my-3">
@@ -62,6 +87,7 @@ function Orders() {
               <input
                 type="text"
                 className="h-full w-[100%] focus:outline-none pr-3 pl-12 py-2"
+                onChange={handleSearch}
               />
               <SearchIcon
                 className="absolute left-[1px] top-[1px] bg-Pink text-Light p-2 cursor-pointer"
@@ -72,7 +98,7 @@ function Orders() {
 
           <div className="w-[50%] flex justify-between flex-wrap">
             <button
-              className="btn bg-blue-500 border-0 rounded text-Light hover:bg-blue-500 w-44 uppercase"
+              className="btn bg-Pink border-0 rounded text-Light hover:bg-Pink h-[40px] min-h-max w-44 uppercase"
               onClick={() => {
                 if (currentOrder === "Online") {
                   setCurrentOrder("POS");
@@ -90,24 +116,24 @@ function Orders() {
             <div className="w-[20%]">
               <input
                 placeholder="Start Date"
-                className="textbox- w-[100%] border border-1 border-Secondary h-[100%] px-2 focus:outline-none"
-                type={dateInputType}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
+                className="textbox- w-[100%] border border-1 border-Secondary h-[90%] px-2 focus:outline-none"
+                type={dateInputTypeFrom}
+                onFocus={handleFocusFrom}
+                onBlur={handleBlurFrom}
                 id="date1"
               />
             </div>
             <div className="w-[20%]">
               <input
                 placeholder="End Date"
-                className="textbox-n w-[100%] border border-1 border-Secondary h-[100%] px-2 focus:outline-none"
-                type={dateInputType}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
+                className="textbox-n w-[100%] border border-1 border-Secondary h-[90%] px-2 focus:outline-none"
+                type={dateInputTypeTo}
+                onFocus={handleFocusTo}
+                onBlur={handleBlurTo}
                 id="date2"
               />
             </div>
-            <button className="btn bg-Primary border-0 rounded text-Light hover:bg-blue-500 w-44 uppercase">
+            <button className="btn bg-Primary border-0 rounded text-Light min-h-max h-[40px] w-44 uppercase hover:bg-Primary">
               Filter
             </button>
           </div>
@@ -131,9 +157,9 @@ function Orders() {
             </tr>
           </thead>
           <tbody className="overflow-hidden z-0">
-            {currentTableData.map((e, index) => (
+            {currentTableData?.map((e, index) => (
               <tr key={e?.id}>
-                <th>{e?.id}</th>
+                <td>{e?.id}</td>
                 <td>{e?.orderNumber}</td>
                 <td>{e?.time}</td>
                 <td>{e?.date}</td>
@@ -153,7 +179,7 @@ function Orders() {
                   />
                 </td>
                 <td className="text-center">
-                  <MoreHorizIcon className="cursor-pointer" />
+                  <ActionIcon />
                 </td>
               </tr>
             ))}
@@ -189,7 +215,7 @@ function Orders() {
             <a
               key={index + 1}
               className={`border border-1 border-Secondary px-3 py-1 ${
-                currentPage === index + 1 ? "bg-DarkBlue text-Light" : ""
+                currentPage === index + 1 ? "bg-Pink text-Light" : ""
               }`}
               onClick={() => setCurrentPage(index + 1)}
             >

@@ -6,7 +6,7 @@ import FoodGroup from "../../components/modals/modalComponents/FoodGroup";
 
 function Groups() {
   const [currentPage, setCurrentPage] = useState(1);
-  const [groupOpen, setGroupOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const showCount = 5;
 
   const TableList = [];
@@ -45,12 +45,12 @@ function Groups() {
               />
             </div>
             <button
-              className="btn bg-blue-500 border-0 rounded text-Light hover:bg-blue-500 w-44 uppercase"
-              onClick={() => setGroupOpen(true)}
+              className="btn bg-Pink border-0 rounded text-Light hover:bg-Pink h-[40px] min-h-max w-44 uppercase"
+              onClick={() => setOpenModal(true)}
             >
               add new
             </button>
-            <FoodGroup heading="add new food group" groupOpen={groupOpen} setGroupOpen={setGroupOpen}/>
+            <FoodGroup heading="add new food group" openModal={openModal} setOpenModal={setOpenModal}/>
           </div>
         </div>
         <div className="overflow-x-auto  bg-Light  my-3 h-[630px] rounded">
@@ -72,7 +72,7 @@ function Groups() {
                   <td>{e?.name}</td>
 
                   <td className="text-center">
-                  <ActionIcon/>
+                  <ActionIcon />
                   </td>
                 </tr>
               ))}
@@ -108,7 +108,7 @@ function Groups() {
               <a
                 key={index + 1}
                 className={`border border-1 border-Secondary px-3 py-1 ${
-                  currentPage === index + 1 ? "bg-DarkBlue text-Light" : ""
+                  currentPage === index + 1 ? "bg-Pink text-Light" : ""
                 }`}
                 onClick={() => setCurrentPage(index + 1)}
               >

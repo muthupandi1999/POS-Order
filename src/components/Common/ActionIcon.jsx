@@ -2,11 +2,12 @@ import React, { useRef, useState, useEffect } from "react";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import DeleteModal from "../modals/modalComponents/DeleteModal";
 
 function ActionIcon({ rowId }) {
   const dropdownRef = useRef(null);
   const [action, setAction] = useState(false);
-
+  const [openModal, setOpenModal] = useState(false);
   useEffect(() => {
     const handleClickOutside = (e) => {
       // const currentRef = dropdownRef.current;
@@ -41,16 +42,20 @@ function ActionIcon({ rowId }) {
         }`}
       />
       {action && (
-        <div className="border border-1 border-Secondary bg-Light p-1 w-20 absolute right-[50%] bottom-[50%] z-10">
+        <div className="border border-1 border-Secondary bg-Light p-1 w-20 absolute top-[72%] right-[25%] z-10">
           <ul>
             <li className="hover:bg-Secondary py-1 px-1 flex justify-start gap-1 items-center">
               <EditIcon className="w-8" sx={{ fontSize: "16px" }} />
               Edit
             </li>
-            <li className="hover:bg-Secondary py-1 px-1 flex justify-start gap-1 items-center">
+            <li
+              className="hover:bg-Secondary py-1 px-1 flex justify-start gap-1 items-center"
+              onClick={() => setOpenModal(true)}
+            >
               <DeleteIcon className="w-8" sx={{ fontSize: "16px" }} />
               Delete
             </li>
+            <DeleteModal openModal={openModal} setOpenModal={setOpenModal} />
           </ul>
         </div>
       )}
