@@ -32,6 +32,7 @@ import DeptTags from "./Manage/Restaurant/DeptTags";
 import Tables from "./Manage/Restaurant/Tables";
 import Tips from "./Manage/Restaurant/Tips";
 import PaymentType from "./Manage/Restaurant/PaymentType";
+import { Link } from "react-router-dom";
 
 function Manage() {
   const [activeCategory, setActiveCategory] = useState(null);
@@ -40,7 +41,7 @@ function Manage() {
 
   const navigate = useNavigate();
 
-  console.log("location", location);
+  // console.log("location", location);
 
   const handleList = (e) => {
     setActiveCategory(e?.name);
@@ -49,19 +50,19 @@ function Manage() {
 
   useEffect(() => {
     if (!activeCategory) {
-      let getItem: string | null = localStorage.getItem("activeCategory");
+      let getItem = localStorage.getItem("activeCategory");
       setActiveCategory(getItem);
     }
   }, []);
   return (
     <div className="mx-8 py-[20px]">
       <div className="flex justify-between">
-        <div className="w-[13%] h-[85vh] bg-Primary rounded px-1 py-1">
-          <ul className="overflow-auto flex flex-col h-[100%] px-[10px] py-2">
+        <div className="w-[12%] h-[84vh] bg-Primary rounded px-1 py-1 overflow-hidden">
+          <ul className=" flex flex-col h-[100%] px-[10px] py-2">
             {Manages.map((e, index) => (
               <div key={e?.id}>
                 <li
-                  className={` flex items-center  gap-2  text-Light uppercase rounded-b-none font-bold cursor-pointer text-xs  text-start relative py-2 px-3  rounded ${
+                  className={`flex items-center gap-2 text-Light uppercase rounded-b-none font-bold cursor-pointer text-xs text-start relative py-2 px-3 rounded ${
                     activeCategory === e?.name
                       ? "border-Primary bg-Pink text-Light shadow-none"
                       : ""
@@ -71,28 +72,27 @@ function Manage() {
                   {e?.icon}
                   <span className="relative">{e?.name}</span>
                 </li>
-                {/* {activeCategory === e?.name && ( */}
                 <div
-                  className={`mb-2 transition-[height] duration-[10s] ease-linear ${
+                  className={`transition-all duration-700 ease-in-out ${
                     activeCategory === e?.name
-                      ? "opacity-100 h-auto transition-h duration-700  visible"
-                      : "h-0 opacity-0 hidden "
+                      ? "max-h-[1000px] opacity-100 visible"
+                      : "max-h-0 opacity-0 invisible"
                   }`}
                   style={{
                     backgroundColor: "rgb(255 255 255 / 5%)",
                     backdropFilter: "blur(10px)",
                   }}
                 >
-                  <ul className="flex flex-col  rounded rounded-t-none">
-                    {e?.items!.map((e, index) => (
+                  <ul className="flex flex-col rounded rounded-t-none">
+                    {e?.items.map((item, index) => (
                       <li
-                        className={` text-Light font-medium flex items-center gap-2 py-2 px-4 cursor-pointer text-sm ${
-                          location.pathname.includes(e?.route) && "text-Light"
+                        className={`text-Light font-medium flex items-center gap-2 py-2 px-4 cursor-pointer text-sm ${
+                          location.pathname.includes(item?.route) &&
+                          "text-Light"
                         }`}
                         key={index}
-                        onClick={() => navigate(e?.route)}
                       >
-                        {location.pathname.includes(e?.route) ? (
+                        {location.pathname.includes(item?.route) ? (
                           <span className="w-3.5 h-3.5 bg-Pink border border-1 border-transparent rounded-full flex justify-center items-center">
                             {" "}
                             <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
@@ -102,22 +102,21 @@ function Manage() {
                             {" "}
                           </span>
                         )}
-                        {e?.name}
+                        <Link to={item?.route}>{item?.name}</Link>
                       </li>
                     ))}
                   </ul>
                 </div>
-                {/* )} */}
               </div>
             ))}
           </ul>
         </div>
-        <div className="w-[86%] h-[85vh] bg-Light overflow-y-scroll">
+        <div className="w-[86%] h-[85vh] bg-Light overflow-hidden">
           <Routes>
             <Route path="/food/add-new-item" element={<AddNewItem />} />
             <Route path="/food/all-items" element={<AllItems />} />
             <Route path="/food/groups" element={<Groups />} />
-            <Route path="/food/properties" element={<Properties />} />
+            <Route path="/food/properties/*" element={<Properties />} />
             <Route path="/food/variations" element={<Variations />} />
             <Route path="/food/receipe-builder" element={<ReceipeBuilder />} />
             <Route path="/food/all-receipes" element={<AllReceipes />} />

@@ -80,7 +80,7 @@ function DeptTags() {
                     <td>{e?.commission}</td>
  
                     <td className="text-center">
-                      <ActionIcon />
+                      <ActionIcon openModal={openModal} setOpenModal={setOpenModal} />
                     </td>
                   </tr>
                 ))}

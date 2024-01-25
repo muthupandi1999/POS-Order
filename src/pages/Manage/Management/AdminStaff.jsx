@@ -49,7 +49,7 @@ function AdminStaff() {
             </div>
             <button
               className="btn bg-Pink border-0 rounded text-Light hover:bg-Pink h-[40px] min-h-max w-44 uppercase"
-              onClick={() => setUserModal(true)}
+              onClick={() => setOpenModal(true)}
             >
               add new
             </button>
@@ -84,7 +84,7 @@ function AdminStaff() {
                   <td>{e?.userType}</td>
 
                   <td className="text-center">
-                    <ActionIcon />
+                    <ActionIcon openModal={openModal} setOpenModal={setOpenModal} />
                   </td>
                 </tr>
               ))}

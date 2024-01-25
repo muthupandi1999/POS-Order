@@ -3,10 +3,10 @@ import DynamicModal from "../DynamicModal";
 import CloseIcon from "@mui/icons-material/Close";
 import Toast from "react-hot-toast";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-function DeleteModal({ openModal, setOpenModal }) {
+function DeleteModal({ openDeleteModal, setOpenDeleteModal }) {
   const handleInputClose = () => {
     console.log("cloase");
-    setOpenModal(false);
+    setOpenDeleteModal(false);
   };
 
   const handleSave = () => {
@@ -14,7 +14,7 @@ function DeleteModal({ openModal, setOpenModal }) {
     Toast.success("Deleted Successfully");
   };
   return (
-    <DynamicModal open={openModal} onClose={handleInputClose}>
+    <DynamicModal open={openDeleteModal} onClose={handleInputClose}>
       <div className="">
         <div className="p-3 flex justify-between items-center">
           <p></p>

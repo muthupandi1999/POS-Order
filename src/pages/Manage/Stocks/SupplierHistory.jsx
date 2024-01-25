@@ -208,11 +208,11 @@ function SupplierHistory() {
                       <button
                         className="primary-button text-xs px-2 py-1"
                         onClick={() => {
-                          setGroupOpen(true);
+                          setOpenModal(true);
                         }}
                       >
                         View
-                      </button>
+                      </button> 
                     </td>
                   </tr>
                 )

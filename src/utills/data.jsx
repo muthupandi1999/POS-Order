@@ -281,3 +281,262 @@ export const Manages = [
     ],
   },
 ];
+
+
+export const FoodItemList = [
+  {
+      "id": 1,
+      "image": "https://khadyo.softtechdemo.com/api/public//images/food_item/1705318098-piz6png.png",
+      "name": "Food Item 1",
+      "group": "Pizza",
+      "price": "88.81",
+      "location": "Madurai",
+      "variations": null
+  },
+  {
+      "id": 2,
+      "image": "https://khadyo.softtechdemo.com/api/public//images/food_item/1705318098-piz6png.png",
+      "name": "Food Item 2",
+      "group": "Pizza",
+      "price": "2.45",
+      "location": "Madurai",
+      "variations": null
+  },
+  {
+      "id": 3,
+      "image": "https://khadyo.softtechdemo.com/api/public//images/food_item/1705318098-piz6png.png",
+      "name": "Food Item 3",
+      "group": "Pizza",
+      "price": "56.40",
+      "location": "Madurai",
+      "variations": null
+  },
+  {
+      "id": 4,
+      "image": "https://khadyo.softtechdemo.com/api/public//images/food_item/1705318098-piz6png.png",
+      "name": "Food Item 4",
+      "group": "Pizza",
+      "price": "36.90",
+      "location": "Madurai",
+      "variations": [
+          {
+              "id": 1,
+              "name": "Variation 1",
+              "price": "2.64"
+          },
+          {
+              "id": 2,
+              "name": "Variation 2",
+              "price": "9.23"
+          },
+          {
+              "id": 3,
+              "name": "Variation 3",
+              "price": "6.37"
+          },
+          {
+              "id": 4,
+              "name": "Variation 4",
+              "price": "4.50"
+          },
+          {
+              "id": 5,
+              "name": "Variation 5",
+              "price": "7.13"
+          }
+      ]
+  },
+  {
+      "id": 5,
+      "image": "https://khadyo.softtechdemo.com/api/public//images/food_item/1705318098-piz6png.png",
+      "name": "Food Item 5",
+      "group": "Pizza",
+      "price": "72.99",
+      "location": "Madurai",
+      "variations": [
+          {
+              "id": 1,
+              "name": "Variation 1",
+              "price": "8.42"
+          },
+          {
+              "id": 2,
+              "name": "Variation 2",
+              "price": "0.58"
+          },
+          {
+              "id": 3,
+              "name": "Variation 3",
+              "price": "6.40"
+          },
+          {
+              "id": 4,
+              "name": "Variation 4",
+              "price": "5.17"
+          },
+          {
+              "id": 5,
+              "name": "Variation 5",
+              "price": "3.27"
+          }
+      ]
+  },
+  {
+      "id": 6,
+      "image": "https://khadyo.softtechdemo.com/api/public//images/food_item/1705318098-piz6png.png",
+      "name": "Food Item 6",
+      "group": "Pizza",
+      "price": "95.40",
+      "location": "Madurai",
+      "variations": null
+  },
+  {
+      "id": 7,
+      "image": "https://khadyo.softtechdemo.com/api/public//images/food_item/1705318098-piz6png.png",
+      "name": "Food Item 7",
+      "group": "Pizza",
+      "price": "18.68",
+      "location": "Madurai",
+      "variations": [
+          {
+              "id": 1,
+              "name": "Variation 1",
+              "price": "2.01"
+          }
+      ]
+  },
+  {
+      "id": 8,
+      "image": "https://khadyo.softtechdemo.com/api/public//images/food_item/1705318098-piz6png.png",
+      "name": "Food Item 8",
+      "group": "Pizza",
+      "price": "10.75",
+      "location": "Madurai",
+      "variations": null
+  },
+  {
+      "id": 9,
+      "image": "https://khadyo.softtechdemo.com/api/public//images/food_item/1705318098-piz6png.png",
+      "name": "Food Item 9",
+      "group": "Pizza",
+      "price": "42.13",
+      "location": "Madurai",
+      "variations": null
+  },
+  {
+      "id": 10,
+      "image": "https://khadyo.softtechdemo.com/api/public//images/food_item/1705318098-piz6png.png",
+      "name": "Food Item 10",
+      "group": "Pizza",
+      "price": "17.65",
+      "location": "Madurai",
+      "variations": [
+          {
+              "id": 1,
+              "name": "Variation 1",
+              "price": "2.15"
+          },
+          {
+              "id": 2,
+              "name": "Variation 2",
+              "price": "3.29"
+          },
+          {
+              "id": 3,
+              "name": "Variation 3",
+              "price": "7.41"
+          }
+      ]
+  }
+]
+
+
+export const FoodGroups = [
+  {
+      "id": 3,
+      "name": "Pizza",
+      "slug": "OMb-1701361190-pizza",
+      "created_at": "2023-12-01T04:19:50.000000Z",
+      "updated_at": "2023-12-01T04:19:50.000000Z"
+  },
+  {
+      "id": 4,
+      "name": "Burgers",
+      "slug": "WFn-1705316211-burgers",
+      "created_at": "2023-12-01T04:19:59.000000Z",
+      "updated_at": "2024-01-15T10:56:51.000000Z"
+  },
+  {
+      "id": 8,
+      "name": "Sandwich",
+      "slug": "6wT-1705380593-sandwich",
+      "created_at": "2023-12-13T02:07:46.000000Z",
+      "updated_at": "2024-01-16T04:49:53.000000Z"
+  },
+  {
+      "id": 9,
+      "name": "Fried Chicken",
+      "slug": "dPE-1705316322-fried-chicken",
+      "created_at": "2024-01-15T10:41:27.000000Z",
+      "updated_at": "2024-01-15T10:58:42.000000Z"
+  },
+  {
+      "id": 10,
+      "name": "Soups",
+      "slug": "srx-1705316280-soups",
+      "created_at": "2024-01-15T10:58:00.000000Z",
+      "updated_at": "2024-01-15T10:58:00.000000Z"
+  },
+  {
+      "id": 11,
+      "name": "Shawarma",
+      "slug": "t5M-1705316289-shawarma",
+      "created_at": "2024-01-15T10:58:09.000000Z",
+      "updated_at": "2024-01-15T10:58:09.000000Z"
+  },
+  {
+      "id": 12,
+      "name": "Bangladeshi",
+      "slug": "FII-1705316300-bangladeshi",
+      "created_at": "2024-01-15T10:58:20.000000Z",
+      "updated_at": "2024-01-15T10:58:20.000000Z"
+  },
+  {
+      "id": 14,
+      "name": "Biryani",
+      "slug": "F8I-1705316463-biryani",
+      "created_at": "2024-01-15T11:01:03.000000Z",
+      "updated_at": "2024-01-15T11:01:03.000000Z"
+  }
+]
+
+export const PropertiesGroups =  [
+  {
+      "id": 1,
+      "name": "Spice Level",
+      "slug": "jLm-1698839724-spice-level",
+      "created_at": "2023-11-01T23:55:24.000000Z",
+      "updated_at": "2023-11-01T23:55:24.000000Z"
+  },
+  {
+      "id": 2,
+      "name": "Salads",
+      "slug": "hke-1698839997-salads",
+      "created_at": "2023-11-01T23:59:57.000000Z",
+      "updated_at": "2023-11-01T23:59:57.000000Z"
+  },
+  {
+      "id": 3,
+      "name": "Extras",
+      "slug": "vN4-1698840089-extras",
+      "created_at": "2023-11-02T00:01:29.000000Z",
+      "updated_at": "2023-11-02T00:01:29.000000Z"
+  },
+  {
+      "id": 6,
+      "name": "Add Ons",
+      "slug": "VJu-1705380733-add-ons",
+      "created_at": "2024-01-16T04:52:13.000000Z",
+      "updated_at": "2024-01-16T04:52:13.000000Z"
+  }
+]

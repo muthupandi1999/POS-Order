@@ -47,7 +47,7 @@ function RoleGroup() {
             </div>
             <button
               className="btn bg-Pink border-0 rounded text-Light hover:bg-Pink h-[40px] min-h-max w-44 uppercase"
-              onClick={() => setRolePermissionModal(true)}
+              onClick={() => setOpenModal(true)}
             >
               add new
             </button>
@@ -83,7 +83,7 @@ function RoleGroup() {
                   </td>
 
                   <td className="text-center">
-                    <ActionIcon />
+                    <ActionIcon openModal={openModal} setOpenModal={setOpenModal} />
                   </td>
                 </tr>
               ))}

@@ -78,7 +78,7 @@ function PaymentType() {
                   <td>{e?.uniqueKey}</td>
 
                   <td className="text-center">
-                    <ActionIcon />
+                    <ActionIcon openModal={openModal} setOpenModal={setOpenModal} />
                   </td>
                 </tr>
               ))}

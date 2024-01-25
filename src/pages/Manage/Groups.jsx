@@ -3,29 +3,30 @@ import SearchIcon from "@mui/icons-material/Search";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ActionIcon from "../../components/Common/ActionIcon";
 import FoodGroup from "../../components/modals/modalComponents/FoodGroup";
+import { FoodGroups } from "../../utills/data";
 
 function Groups() {
   const [currentPage, setCurrentPage] = useState(1);
   const [openModal, setOpenModal] = useState(false);
   const showCount = 5;
 
-  const TableList = [];
+  // const FoodGroups = [];
 
-  for (let i = 0; i < 30; i++) {
-    const dataItem = {
-      id: i + 1,
-      name: "Classic Chicken Pizza",
-    };
+  // for (let i = 0; i < 30; i++) {
+  //   const dataItem = {
+  //     id: i + 1,
+  //     name: "Classic Chicken Pizza",
+  //   };
 
-    TableList.push(dataItem);
-  }
+  //   FoodGroups.push(dataItem);
+  // }
 
-  const totalPages = Math.ceil(TableList.length / showCount);
+  const totalPages = Math.ceil(FoodGroups.length / showCount);
 
   // Get the current page items based on the showCount
   const startIndex = (currentPage - 1) * showCount;
   const endIndex = startIndex + showCount;
-  const currentTableData = TableList.slice(startIndex, endIndex);
+  const currentTableData = FoodGroups.slice(startIndex, endIndex);
   return (
     <div className="bg-Light py-3 px-5 my-2 w-full">
       <div className="w-[90%]">
@@ -50,7 +51,11 @@ function Groups() {
             >
               add new
             </button>
-            <FoodGroup heading="add new food group" openModal={openModal} setOpenModal={setOpenModal}/>
+            <FoodGroup
+              heading="add new food group"
+              openModal={openModal}
+              setOpenModal={setOpenModal}
+            />
           </div>
         </div>
         <div className="overflow-x-auto  bg-Light  my-3 h-[630px] rounded">
@@ -72,7 +77,10 @@ function Groups() {
                   <td>{e?.name}</td>
 
                   <td className="text-center">
-                  <ActionIcon />
+                    <ActionIcon
+                      openModal={openModal}
+                      setOpenModal={setOpenModal}
+                    />
                   </td>
                 </tr>
               ))}
@@ -130,8 +138,8 @@ function Groups() {
           </div>
           <h4>{`Showing ${startIndex + 1} - ${Math.min(
             endIndex,
-            TableList.length
-          )} of ${TableList.length}`}</h4>
+            FoodGroups.length
+          )} of ${FoodGroups.length}`}</h4>
         </div>
       </div>
     </div>

@@ -48,7 +48,7 @@ function DeliveryUser() {
             </div>
             <button
               className="btn bg-Pink border-0 rounded text-Light hover:bg-Pink h-[40px] min-h-max w-44 uppercase"
-              onClick={() => setDeliveryUserModal(true)}
+              onClick={() => setOpenModal(true)}
             >
               add new
             </button>
@@ -82,7 +82,7 @@ function DeliveryUser() {
                   <td>{e?.branch}</td>
 
                   <td className="text-center">
-                    <ActionIcon />
+                    <ActionIcon openModal={openModal} setOpenModal={setOpenModal} />
                   </td>
                 </tr>
               ))}

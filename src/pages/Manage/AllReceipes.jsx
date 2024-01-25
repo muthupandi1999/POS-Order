@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
+import DeleteModal from "../../components/modals/modalComponents/DeleteModal";
 
 function AllReceipes() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
+
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
   const showCount = 5;
 
@@ -125,10 +128,16 @@ function AllReceipes() {
                   <td>{e?.instruction}</td>
 
                   <td className="text-center">
-                    <VisibilityIcon onClick={() => navigate(`single-receipe/${e?.id}`)} className="cursor-pointer" />
+                    <VisibilityIcon
+                      onClick={() => navigate(`single-receipe/${e?.id}`)}
+                      className="cursor-pointer"
+                    />
                   </td>
                   <td className="text-center">
-                    <DeleteIcon className="cursor-pointer" />
+                    <DeleteIcon
+                      className="cursor-pointer"
+                      onClick={() => setOpenDeleteModal(true)}
+                    />
                   </td>
                 </tr>
               ))}
@@ -148,6 +157,10 @@ function AllReceipes() {
             </tbody>
           </table>
         </div>
+        <DeleteModal
+          openDeleteModal={openDeleteModal}
+          setOpenDeleteModal={setOpenDeleteModal}
+        />
         <div className="flex items-center justify-between bg-Light p-3 rounded">
           <div className="pagination flex gap-0.5">
             <a

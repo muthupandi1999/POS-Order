@@ -7,7 +7,7 @@ import FoodGroup from "../../components/modals/modalComponents/FoodGroup";
 function Variations() {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [groupOpen, setGroupOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const showCount = 5;
 
@@ -48,12 +48,16 @@ function Variations() {
             </div>
             <button
               className="btn bg-Pink border-0 rounded text-Light hover:bg-Pink h-[40px] min-h-max w-44 uppercase"
-              onClick={() => setGroupOpen(true)}
+              onClick={() => setOpenModal(true)}
             >
               add new
             </button>
 
-            <FoodGroup heading="add new variation" groupOpen={groupOpen} setGroupOpen={setGroupOpen}/>
+            <FoodGroup
+              heading="add new variation"
+              openModal={openModal}
+              setOpenModal={setOpenModal}
+            />
           </div>
         </div>
         <div className="overflow-x-auto  bg-Light  my-3 h-[630px] rounded">
@@ -75,7 +79,12 @@ function Variations() {
                   <td>{e?.name}</td>
 
                   <td className="text-center">
-                  <ActionIcon rowId={e?.id} key={e?.id}/>
+                    <ActionIcon
+                      openModal={openModal}
+                      setOpenModal={setOpenModal}
+                      rowId={e?.id}
+                      key={e?.id}
+                    />
                   </td>
                 </tr>
               ))}
@@ -141,4 +150,4 @@ function Variations() {
   );
 }
 
-export default Variations
+export default Variations;

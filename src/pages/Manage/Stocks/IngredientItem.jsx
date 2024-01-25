@@ -77,7 +77,7 @@ function IngredientItem() {
                   <td>{e?.name}</td>
 
                   <td className="text-center">
-                    <ActionIcon />
+                    <ActionIcon openModal={openModal} setOpenModal={setOpenModal} />
                   </td>
                 </tr>
               ))}

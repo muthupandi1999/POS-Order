@@ -72,6 +72,7 @@ function AddNewItem() {
       text: "Trichy",
     },
   ];
+
   const Receipes = [
     {
       value: 1,
@@ -86,6 +87,7 @@ function AddNewItem() {
       text: "Veg Pizza",
     },
   ];
+
   return (
     <div className="bg-Light py-3 px-5 my-2">
       <h4 className="text-Primary text-xl capitalize font-bold">
