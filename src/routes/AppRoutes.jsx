@@ -64,6 +64,7 @@ import Manage from "../pages/Manage";
 import Customer from "../pages/Customers";
 
 import WorkPeriod from "../pages/WorkPeriod";
+import Reports from "../pages/Reports";
 
 export default function AppRoutes() {
   const isAuthenticated = true; // bool, based on token availabilty
@@ -181,6 +182,7 @@ export default function AppRoutes() {
           <Route path="/manage/*" element={<Manage />} />
           <Route path="/dashboard/customers/*" element={<Customer />} />
           <Route path="/dashboard/work-periods" element={<WorkPeriod />} />
+          <Route path="/reports/*" element={<Reports />} />
         </Routes>
       </div>
 

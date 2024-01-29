@@ -26,19 +26,23 @@ function WorkPeriod() {
   const branches = [
     {
       value: 1,
-      text: "Madurai",
+      text: "Uttara",
     },
     {
       value: 2,
-      text: "Chennai",
+      text: "Dhanmondi",
     },
     {
       value: 3,
-      text: "Coimbatore",
+      text: "Gulshan",
     },
     {
       value: 4,
-      text: "Trichy",
+      text: "Banani",
+    },
+    {
+      value: 5,
+      text: "Mirpur",
     },
   ];
 
@@ -118,20 +122,33 @@ function WorkPeriod() {
 
     return `${hours} hr - ${minutes} min - ${seconds} sec`;
   }
-  const totalPages = Math.ceil(TableList.length / showCount);
 
   // Get the current page items based on the showCount
   const startIndex = (currentPage - 1) * showCount;
   const endIndex = startIndex + showCount;
 
-  const filteredTableData = TableList.filter((item) =>
-    Object.values(item).some(
+  // const filteredTableData = TableList.filter((item) =>
+  //   Object.values(item).some(
+  //     (value) =>
+  //       typeof value === "string" &&
+  //       value.toLowerCase().includes(search.toLowerCase())
+  //   )
+  // );
+
+  const filteredTableData = TableList.filter((item) => {
+    const isBranchSelected =
+      selectedBranch &&
+      item.branch.toLowerCase().includes(selectedBranch.text.toLowerCase());
+
+    const isSearchMatch = Object.values(item).some(
       (value) =>
         typeof value === "string" &&
         value.toLowerCase().includes(search.toLowerCase())
-    )
-  );
+    );
 
+    return !selectedBranch || (isBranchSelected && isSearchMatch);
+  });
+  const totalPages = Math.ceil(filteredTableData.length / showCount);
   const currentTableData = filteredTableData.slice(startIndex, endIndex);
 
   const handleSearch = (event) => {
@@ -141,7 +158,7 @@ function WorkPeriod() {
 
   return (
     <div className="bg-Light py-3 px-5 my-2 w-full m-auto">
-      <div className="w-[90%]">
+      <div className="mx-8">
         <h4 className="text-Primary text-xl capitalize font-bold py-3">
           Work Periods
         </h4>
@@ -294,8 +311,8 @@ function WorkPeriod() {
           </div>
           <h4>{`Showing ${startIndex + 1} - ${Math.min(
             endIndex,
-            TableList.length
-          )} of ${TableList.length}`}</h4>
+            filteredTableData.length
+          )} of ${filteredTableData.length}`}</h4>
         </div>
       </div>
     </div>

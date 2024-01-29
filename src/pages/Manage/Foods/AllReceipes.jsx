@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
-import DeleteModal from "../../components/modals/modalComponents/DeleteModal";
+import DeleteModal from "../../../components/modals/modalComponents/DeleteModal";
 
 function AllReceipes() {
   const navigate = useNavigate();

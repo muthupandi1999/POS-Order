@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import ActionIcon from "../../components/Common/ActionIcon";
 import CustomerAddPOS from "../../components/modals/modalComponents/CustomerAddPOS";
+import { CustomerList } from "../../utills/data";
 
 function Customer() {
   const [currentOrder, setCurrentOrder] = useState("Online");
@@ -15,33 +16,46 @@ function Customer() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const showCount = 10;
+  const [search, setSearch] = React.useState("");
 
   const TableList = [];
 
-  for (let i = 0; i < 100; i++) {
-    const dataItem = {
-      id: i + 1,
-      name: "test",
-      email: "test@gmail.com",
-      type: "-",
-      phoneNo: 857458858,
-      address: "Dhaka, Uttara",
-      branch: "Uttara",
-    };
-    console.log("i", dataItem.id);
-    TableList.push(dataItem);
-  }
+  // for (let i = 0; i < 100; i++) {
+  //   const dataItem = {
+  //     id: i + 1,
+  //     name: "test",
+  //     email: "test@gmail.com",
+  //     type: "-",
+  //     phoneNo: 857458858,
+  //     address: "Dhaka, Uttara",
+  //     branch: "Uttara",
+  //   };
+  //   console.log("i", dataItem.id);
+  //   TableList.push(dataItem);
+  // }
 
-  const totalPages = Math.ceil(TableList.length / showCount);
+  const totalPages = Math.ceil(CustomerList.length / showCount);
 
   // Get the current page items based on the showCount
   const startIndex = (currentPage - 1) * showCount;
   const endIndex = startIndex + showCount;
-  const currentTableData = TableList.slice(startIndex, endIndex);
+
+  const filteredTableData = CustomerList.filter((item) =>
+  Object.values(item).some(
+    (value) =>
+      typeof value === "string" &&
+      value.toLowerCase().includes(search.toLowerCase())
+  )
+);
+  const currentTableData = filteredTableData.slice(startIndex, endIndex);
   console.log(currentTableData);
 
   const navigate = useNavigate();
 
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+    setCurrentPage(1);
+  };
   return (
     <div className="mx-8 my-3">
       <div className="py-2 bg-Light px-3">
@@ -54,6 +68,7 @@ function Customer() {
               <input
                 type="text"
                 className="h-full w-[100%] focus:outline-none pr-3 pl-12 py-2"
+                onChange={handleSearch}
               />
               <SearchIcon
                 className="absolute left-[1px] top-[1px] bg-Pink text-Light p-2 cursor-pointer"
@@ -104,11 +119,11 @@ function Customer() {
               <tr>
                 <th>S.No</th>
                 <th>Name</th>
-                <th>Email</th>
-                <th>Type</th>
+                <th className="text-center">Email</th>
+                <th className="text-center">Type</th>
                 <th>Phone No</th>
-                <th>Address</th>
-                <th>Branch</th>
+                <th className="text-center">Address</th>
+                <th className="text-center">Branch</th>
               </tr>
             )}
 
@@ -116,10 +131,10 @@ function Customer() {
               <tr>
                 <th>S.No</th>
                 <th>Name</th>
-                <th>Email</th>
+                <th className="text-center">Email</th>
 
                 <th>Phone No</th>
-                <th>Address</th>
+                <th className="text-center">Address</th>
               </tr>
             )}
           </thead>
@@ -129,11 +144,11 @@ function Customer() {
                 <tr key={e?.id}>
                   <td>{e?.id}</td>
                   <td>{e?.name}</td>
-                  <td>{e?.email}</td>
-                  <td>{e?.type}</td>
-                  <td>{e?.phoneNo}</td>
-                  <td>{e?.address}</td>
-                  <td>{e?.branch}</td>
+                  <td className="text-center">{e?.email ? e?.email : "-"} </td>
+                  <td className="text-center">{e?.type || "-"} </td>
+                  <td>{e?.phn_no || null}</td>
+                  <td className="text-center">{e?.address || "-"}</td>
+                  <td className="text-center">{e?.branch_name || "-"}</td>
                 </tr>
               ))}
 
@@ -142,10 +157,10 @@ function Customer() {
                 <tr key={e?.id}>
                   <td>{e?.id}</td>
                   <td>{e?.name}</td>
-                  <td>{e?.email}</td>
+                  <td className="text-center">{e?.email ? e?.email : "-"} </td>
 
-                  <td>{e?.phoneNo}</td>
-                  <td>{e?.address}</td>
+                  <td>{e?.phn_no}</td>
+                  <td className="text-center">{e?.address || "-"}</td>
                 </tr>
               ))}
           </tbody>
@@ -189,8 +204,8 @@ function Customer() {
         </div>
         <h4>{`Showing ${startIndex + 1} - ${Math.min(
           endIndex,
-          TableList.length
-        )} of ${TableList.length}`}</h4>
+          filteredTableData.length
+        )} of ${filteredTableData.length}`}</h4>
       </div>
     </div>
   );

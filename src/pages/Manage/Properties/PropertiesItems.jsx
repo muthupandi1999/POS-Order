@@ -14,6 +14,8 @@ function PropertiesItems() {
 
   const [openModal, setOpenModal] = useState(false);
 
+  const [search, setSearch] = useState("");
+
   const showCount = 5;
 
   let { id } = useParams();
@@ -205,13 +207,26 @@ function PropertiesItems() {
 
   console.log("foundData", foundData);
 
-  const totalPages = Math.ceil(foundData?.data?.length / showCount);
+  const filteredTableData = foundData?.data?.filter((item) =>
+    Object.values(item).some(
+      (value) =>
+        typeof value === "string" &&
+        value.toLowerCase().includes(search.toLowerCase())
+    )
+  );
+
+  const totalPages = Math.ceil(filteredTableData?.length / showCount);
 
   // Get the current page items based on the showCount
   const startIndex = (currentPage - 1) * showCount;
   const endIndex = startIndex + showCount;
-  const currentTableData = foundData?.data?.slice(startIndex, endIndex);
+  const currentTableData = filteredTableData?.slice(startIndex, endIndex);
   console.log("currentTableData", currentTableData);
+
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+    setCurrentPage(1);
+  };
   return (
     <>
       <div className="flex justify-between items-center mx-auto flex-wrap">
@@ -223,6 +238,7 @@ function PropertiesItems() {
             <input
               type="text"
               className="h-full w-[100%] focus:outline-none pr-3 pl-12 py-2"
+              onChange={handleSearch}
             />
             <SearchIcon
               className="absolute left-[1px] top-[1px] bg-Pink text-Light p-2 cursor-pointer"
@@ -262,7 +278,10 @@ function PropertiesItems() {
 
                 <td className="text-center">
                   {/* <ActionIconWithItems /> */}
-                  <ActionIcon openModal={openModal} setOpenModal={setOpenModal} />
+                  <ActionIcon
+                    openModal={openModal}
+                    setOpenModal={setOpenModal}
+                  />
                 </td>
               </tr>
             ))}
@@ -320,8 +339,8 @@ function PropertiesItems() {
         </div>
         <h4>{`Showing ${startIndex + 1} - ${Math.min(
           endIndex,
-          foundData?.data?.length
-        )} of ${foundData?.data?.length}`}</h4>
+          currentTableData?.length
+        )} of ${currentTableData?.length}`}</h4>
       </div>
     </>
   );

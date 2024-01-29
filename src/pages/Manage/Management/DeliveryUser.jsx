@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import DeliveryUserAdd from "../../../components/modals/modalComponents/DeliveryUserAdd";
 import SearchIcon from "@mui/icons-material/Search";
 import ActionIcon from "../../../components/Common/ActionIcon";
+import { DeliveryUserList } from "../../../utills/data";
 function DeliveryUser() {
   const [currentPage, setCurrentPage] = useState(1);
   const [openModal, setOpenModal] = useState(false);
+  const [search, setSearch] = useState("");
 
   const showCount = 5;
 
@@ -21,13 +23,25 @@ function DeliveryUser() {
 
     TableList.push(dataItem);
   }
-
-  const totalPages = Math.ceil(TableList.length / showCount);
+  
 
   // Get the current page items based on the showCount
   const startIndex = (currentPage - 1) * showCount;
   const endIndex = startIndex + showCount;
-  const currentTableData = TableList.slice(startIndex, endIndex);
+  const filteredTableData = DeliveryUserList?.filter((item) =>
+    Object.values(item).some(
+      (value) =>
+        typeof value === "string" &&
+        value.toLowerCase().includes(search.toLowerCase())
+    )
+  );
+  const totalPages = Math.ceil(filteredTableData.length / showCount);
+
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+    setCurrentPage(1);
+  };
+  const currentTableData = filteredTableData.slice(startIndex, endIndex);
   return (
     <div className="bg-Light py-3 px-5 my-2 w-full">
       <div className="w-[90%]">
@@ -40,6 +54,7 @@ function DeliveryUser() {
               <input
                 type="text"
                 className="h-full w-[100%] focus:outline-none pr-3 pl-12 py-2"
+                onChange={handleSearch}
               />
               <SearchIcon
                 className="absolute left-[1px] top-[1px] bg-Pink text-Light p-2 cursor-pointer"
@@ -76,10 +91,10 @@ function DeliveryUser() {
               {currentTableData.map((e, index) => (
                 <tr key={e?.id}>
                   <td>{e?.id}</td>
-                  <td>{e?.image}</td>
+                  <td><img className="m-auto" src={e?.image} width={30} height={30} alt="" /></td>
                   <td>{e?.name}</td>
-                  <td>{e?.phoneNo}</td>
-                  <td>{e?.branch}</td>
+                  <td>{e?.phn_no}</td>
+                  <td>{e?.branch_name}</td>
 
                   <td className="text-center">
                     <ActionIcon openModal={openModal} setOpenModal={setOpenModal} />
@@ -140,8 +155,8 @@ function DeliveryUser() {
           </div>
           <h4>{`Showing ${startIndex + 1} - ${Math.min(
             endIndex,
-            TableList.length
-          )} of ${TableList.length}`}</h4>
+            filteredTableData.length
+          )} of ${filteredTableData.length}`}</h4>
         </div>
       </div>
     </div>

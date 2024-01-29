@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import ActionIcon from "../../components/Common/ActionIcon";
-import FoodGroup from "../../components/modals/modalComponents/FoodGroup";
-import { FoodGroups } from "../../utills/data";
+import ActionIcon from "../../../components/Common/ActionIcon";
+import FoodGroup from "../../../components/modals/modalComponents/FoodGroup";
+import { FoodGroups } from "../../../utills/data";
 
 function Groups() {
   const [currentPage, setCurrentPage] = useState(1);
   const [openModal, setOpenModal] = useState(false);
   const showCount = 5;
+  const [search, setSearch] = useState("")
 
   // const FoodGroups = [];
 
@@ -21,12 +22,28 @@ function Groups() {
   //   FoodGroups.push(dataItem);
   // }
 
-  const totalPages = Math.ceil(FoodGroups.length / showCount);
+
 
   // Get the current page items based on the showCount
   const startIndex = (currentPage - 1) * showCount;
   const endIndex = startIndex + showCount;
-  const currentTableData = FoodGroups.slice(startIndex, endIndex);
+
+  const filteredTableData = FoodGroups.filter((item) =>
+  Object.values(item).some(
+    (value) =>
+      typeof value === "string" &&
+      value.toLowerCase().includes(search.toLowerCase())
+  )
+);
+  const currentTableData = filteredTableData.slice(startIndex, endIndex);
+
+  const totalPages = Math.ceil(currentTableData.length / showCount);
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+    setCurrentPage(1);
+  };
+
+
   return (
     <div className="bg-Light py-3 px-5 my-2 w-full">
       <div className="w-[90%]">
@@ -39,6 +56,7 @@ function Groups() {
               <input
                 type="text"
                 className="h-full w-[100%] focus:outline-none pr-3 pl-12 py-2"
+                onChange={handleSearch}
               />
               <SearchIcon
                 className="absolute left-[1px] top-[1px] bg-Pink text-Light p-2 cursor-pointer"
@@ -138,8 +156,8 @@ function Groups() {
           </div>
           <h4>{`Showing ${startIndex + 1} - ${Math.min(
             endIndex,
-            FoodGroups.length
-          )} of ${FoodGroups.length}`}</h4>
+            currentTableData.length
+          )} of ${currentTableData.length}`}</h4>
         </div>
       </div>
     </div>

@@ -66,7 +66,7 @@ function Pos() {
             <h3 className="uppercase text-center font-semibold pb-4 text-2xl tracking-widest">
               dine in
             </h3>
-            <ul className="overflow-auto flex flex-col h-[92%] px-[10px] ">
+            <ul className="overflow-auto flex flex-col h-[92%] px-[10px] footItemsList">
               {Categories.map((e, index) => (
                 <li
                   className={`bg-Secondary text-Primary uppercase font-bold cursor-pointer text-sm  text-center shadow-md relative py-4 px-8  mb-2 rounded-md ${
@@ -83,15 +83,25 @@ function Pos() {
             </ul>
           </div>
           <div className="rounded-md  p-3 mt-4 w-full bg-Light max-h-[695px] ">
-            <div className="relative w-1/2 float-right mb-3">
+          <div className="relative h-[36px] w-[44%] mb-4 border border-1 border-Secondary float-right">
+              <input
+                type="text"
+                className="h-full w-[100%] focus:outline-none pr-3 pl-12 py-2"
+              />
+              <SearchIcon
+                className="absolute left-[1px] top-[1px] bg-Primary text-Light p-2 cursor-pointer"
+                sx={{ fontSize: "32px" }}
+              />
+            </div>
+            {/* <div className="relative w-1/2 float-right mb-3">
               <input
                 type="text"
                 placeholder="Search Item"
                 className="text-Primary w-[93%] bg-Snow rounded float-right  text-sm px-3 py-2  focus: outline-none"
               />
               <SearchIcon className="absolute right-[3%] top-[20%] cursor-pointer" />
-            </div>
-            <div className="w-full productList pt-3 gap-8 content-start overflow-auto h-[91%]">
+            </div> */}
+            <div className="w-full productList  gap-8 content-start overflow-auto h-[91%] footItemsList">
               <Routes>
                 <Route path="/:id" element={<ItemList setOpen={setOpen} />} />
               </Routes>
@@ -258,7 +268,7 @@ function Pos() {
                   />
                 </span>
               </h4>
-              <div className="dropdown dropdown-end">
+              <div className="dropdown dropdown-end ">
                 <div
                   tabIndex={0}
                   role="button"
@@ -271,7 +281,7 @@ function Pos() {
                 {waiterDropdown && (
                   <ul
                     tabIndex={0}
-                    className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4"
+                    className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4 "
                   >
                     <li onClick={() => handleItemClick("Item 1")}>
                       <a>Item 1</a>
@@ -323,7 +333,7 @@ function Pos() {
               </option>
             </select>
           </div> */}
-          <div className="h-[280px] overflow-auto  mt-3 bg-Light rounded-lg">
+          <div className="h-[280px] overflow-auto  mt-3 bg-Light rounded-lg footItemsList">
             <table className="billingTable bg-Secondary">
               <thead className="sticky top-0">
                 <tr className="text-sm text-Primary bg-Secondary">

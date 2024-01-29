@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import ActionIcon from "../../../components/Common/ActionIcon";
 import CustomerAdd from "../../../components/modals/modalComponents/CustomerAdd";
+import { CustomerManageList } from "../../../utills/data";
 function Customers() {
   const [currentPage, setCurrentPage] = useState(1);
   const [openModal, setOpenModal] = useState(false);
-
+  const [search, setSearch] = useState("");
   const showCount = 5;
 
   const TableList = [];
@@ -23,12 +24,23 @@ function Customers() {
     TableList.push(dataItem);
   }
 
-  const totalPages = Math.ceil(TableList.length / showCount);
-
   // Get the current page items based on the showCount
   const startIndex = (currentPage - 1) * showCount;
   const endIndex = startIndex + showCount;
-  const currentTableData = TableList.slice(startIndex, endIndex);
+  const filteredTableData = CustomerManageList?.filter((item) =>
+    Object.values(item).some(
+      (value) =>
+        typeof value === "string" &&
+        value.toLowerCase().includes(search.toLowerCase())
+    )
+  );
+  const totalPages = Math.ceil(filteredTableData.length / showCount);
+
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+    setCurrentPage(1);
+  };
+  const currentTableData = filteredTableData.slice(startIndex, endIndex);
   return (
     <div className="bg-Light py-3 px-5 my-2 w-full">
       <div className="w-[90%]">
@@ -41,6 +53,7 @@ function Customers() {
               <input
                 type="text"
                 className="h-full w-[100%] focus:outline-none pr-3 pl-12 py-2"
+                onChange={handleSearch}
               />
               <SearchIcon
                 className="absolute left-[1px] top-[1px] bg-Pink text-Light p-2 cursor-pointer"
@@ -64,27 +77,30 @@ function Customers() {
           <table className="table AllItemsTable table-xs table-pin-rows">
             <thead className="z-10 bg-Primary">
               <tr>
-                <th className="">S.No</th>
-                <th className="">Name</th>
-                <th className="">Email</th>
-                <th className="">Phone No</th>
-                <th className="">Address</th>
-                <th className="">Branch</th>
+                <th className="text-center">S.No</th>
+                <th className="text-center">Name</th>
+                <th className="text-center">Email</th>
+                <th className="text-center">Phone No</th>
+                <th className="text-center">Address</th>
+                <th className="text-center">Branch</th>
                 <th className="text-center">Action</th>
               </tr>
             </thead>
             <tbody className="overflow-hidden z-0">
               {currentTableData.map((e, index) => (
                 <tr key={e?.id}>
-                  <td>{e?.id}</td>
-                  <td>{e?.name}</td>
-                  <td>{e?.email}</td>
-                  <td>{e?.phoneNo}</td>
-                  <td>{e?.address}</td>
-                  <td>{e?.branch}</td>
+                  <td className="text-center">{e?.id}</td>
+                  <td className="text-center">{e?.name}</td>
+                  <td className="text-center">{e?.email || "-"}</td>
+                  <td className="text-center">{e?.phn_no || "-"}</td>
+                  <td className="text-center">{e?.address || "-"}</td>
+                  <td className="text-center">{e?.branch_name || "-"}</td>
 
                   <td className="text-center">
-                    <ActionIcon openModal={openModal} setOpenModal={setOpenModal}/>
+                    <ActionIcon
+                      openModal={openModal}
+                      setOpenModal={setOpenModal}
+                    />
                   </td>
                 </tr>
               ))}
@@ -142,8 +158,8 @@ function Customers() {
           </div>
           <h4>{`Showing ${startIndex + 1} - ${Math.min(
             endIndex,
-            TableList.length
-          )} of ${TableList.length}`}</h4>
+            filteredTableData.length
+          )} of ${filteredTableData.length}`}</h4>
         </div>
       </div>
     </div>

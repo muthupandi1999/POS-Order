@@ -18,8 +18,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             toastOptions={{
               className: "",
               style: {
-                fontSize:"14px",
-                fontWeight:"600"
+                fontSize: "14px",
+                fontWeight: "600",
               },
             }}
             position="bottom-center"

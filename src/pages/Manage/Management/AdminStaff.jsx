@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import ActionIcon from "../../../components/Common/ActionIcon";
 import UserAdd from "../../../components/modals/modalComponents/UserAdd";
+import { AdminStaffList } from "../../../utills/data";
 function AdminStaff() {
   const [currentPage, setCurrentPage] = useState(1);
   const [openModal, setOpenModal] = useState(false);
+
+  const [search, setSearch] = useState("");
 
   const showCount = 5;
 
@@ -23,12 +26,23 @@ function AdminStaff() {
     TableList.push(dataItem);
   }
 
-  const totalPages = Math.ceil(TableList.length / showCount);
-
   // Get the current page items based on the showCount
   const startIndex = (currentPage - 1) * showCount;
   const endIndex = startIndex + showCount;
-  const currentTableData = TableList.slice(startIndex, endIndex);
+  const filteredTableData = AdminStaffList?.filter((item) =>
+    Object.values(item).some(
+      (value) =>
+        typeof value === "string" &&
+        value.toLowerCase().includes(search.toLowerCase())
+    )
+  );
+  const totalPages = Math.ceil(filteredTableData.length / showCount);
+
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+    setCurrentPage(1);
+  };
+  const currentTableData = filteredTableData.slice(startIndex, endIndex);
   return (
     <div className="bg-Light py-3 px-5 my-2 w-full">
       <div className="w-[90%]">
@@ -41,6 +55,7 @@ function AdminStaff() {
               <input
                 type="text"
                 className="h-full w-[100%] focus:outline-none pr-3 pl-12 py-2"
+                onChange={handleSearch}
               />
               <SearchIcon
                 className="absolute left-[1px] top-[1px] bg-Pink text-Light p-2 cursor-pointer"
@@ -64,27 +79,30 @@ function AdminStaff() {
           <table className="table AllItemsTable table-xs table-pin-rows">
             <thead className="z-10 bg-Primary">
               <tr>
-                <th className="">S.No</th>
-                <th className="">Image</th>
-                <th className="">Name</th>
-                <th className="">Phone No</th>
-                <th className="">Branch</th>
-                <th className="">UserType</th>
+                <th className="text-center">S.No</th>
+                <th className="text-center">Image</th>
+                <th className="text-center">Name</th>
+                <th className="text-center">Phone No</th>
+                <th className="text-center">Branch</th>
+                <th className="text-center">UserType</th>
                 <th className="text-center">Action</th>
               </tr>
             </thead>
             <tbody className="overflow-hidden z-0">
               {currentTableData.map((e, index) => (
                 <tr key={e?.id}>
-                  <td>{e?.id}</td>
-                  <td>{e?.image}</td>
-                  <td>{e?.name}</td>
-                  <td>{e?.phoneNo}</td>
-                  <td>{e?.branch}</td>
-                  <td>{e?.userType}</td>
+                  <td className="text-center">{e?.id}</td>
+                  <td className="text-center">{e?.image || "-"}</td>
+                  <td className="text-center">{e?.name}</td>
+                  <td className="text-center">{e?.phn_no || "-"}</td>
+                  <td className="text-center">{e?.branch_name || "-"}</td>
+                  <td className="text-center">{e?.user_type || "-"}</td>
 
                   <td className="text-center">
-                    <ActionIcon openModal={openModal} setOpenModal={setOpenModal} />
+                    <ActionIcon
+                      openModal={openModal}
+                      setOpenModal={setOpenModal}
+                    />
                   </td>
                 </tr>
               ))}

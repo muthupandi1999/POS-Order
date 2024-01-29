@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import ActionIcon from "../../../components/Common/ActionIcon";
 import BranchAdd from "../../../components/modals/modalComponents/Restaurant/BranchAdd";
+import { BranchList } from "../../../utills/data";
 
 function Branches() {
   const [currentPage, setCurrentPage] = useState(1);
   const [openModal, setOpenModal] = useState(false);
+  const [search, setSearch] = useState("");
 
   const showCount = 5;
 
@@ -23,12 +25,23 @@ function Branches() {
     TableList.push(dataItem);
   }
 
-  const totalPages = Math.ceil(TableList.length / showCount);
-
   // Get the current page items based on the showCount
   const startIndex = (currentPage - 1) * showCount;
   const endIndex = startIndex + showCount;
-  const currentTableData = TableList.slice(startIndex, endIndex);
+  const filteredTableData = BranchList?.filter((item) =>
+    Object.values(item).some(
+      (value) =>
+        typeof value === "string" &&
+        value.toLowerCase().includes(search.toLowerCase())
+    )
+  );
+  const totalPages = Math.ceil(filteredTableData.length / showCount);
+
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+    setCurrentPage(1);
+  };
+  const currentTableData = filteredTableData.slice(startIndex, endIndex);
   return (
     <div className="bg-Light py-3 px-5 my-2 w-full">
       <div className="w-[90%]">
@@ -41,6 +54,7 @@ function Branches() {
               <input
                 type="text"
                 className="h-full w-[100%] focus:outline-none pr-3 pl-12 py-2"
+                onChange={handleSearch}
               />
               <SearchIcon
                 className="absolute left-[1px] top-[1px] bg-Pink text-Light p-2 cursor-pointer"
@@ -79,12 +93,15 @@ function Branches() {
                   <td>{e?.id}</td>
 
                   <td>{e?.name}</td>
-                  <td>{e?.deliveryCharge}</td>
+                  <td>{e?.delivery_fee}</td>
                   <td>{e?.address}</td>
-                  <td>{e?.phoneNo}</td>
+                  <td>{e?.phn_no}</td>
 
                   <td className="text-center">
-                    <ActionIcon openModal={openModal} setOpenModal={setOpenModal}/>
+                    <ActionIcon
+                      openModal={openModal}
+                      setOpenModal={setOpenModal}
+                    />
                   </td>
                 </tr>
               ))}

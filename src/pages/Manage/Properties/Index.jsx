@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Routes, Route} from 'react-router-dom'
+import { Routes, Route } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ActionIcon from "../../../components/Common/ActionIcon";
@@ -11,6 +11,8 @@ function Index() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const [openModal, setOpenModal] = useState(false);
+
+  const [search, setSearch] = useState("");
 
   const showCount = 5;
 
@@ -25,12 +27,26 @@ function Index() {
   //   PropertiesGroups.push(dataItem);
   // }
 
-  const totalPages = Math.ceil(PropertiesGroups.length / showCount);
+  const filteredTableData = PropertiesGroups.filter((item) =>
+    Object.values(item).some(
+      (value) =>
+        typeof value === "string" &&
+        value.toLowerCase().includes(search.toLowerCase())
+    )
+  );
 
   // Get the current page items based on the showCount
   const startIndex = (currentPage - 1) * showCount;
   const endIndex = startIndex + showCount;
-  const currentTableData = PropertiesGroups.slice(startIndex, endIndex);
+  const currentTableData = filteredTableData.slice(startIndex, endIndex);
+
+  const totalPages = Math.ceil(currentTableData.length / showCount);
+
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+    setCurrentPage(1);
+  };
+
   return (
     <>
       <div className="flex justify-between items-center mx-auto flex-wrap">
@@ -42,6 +58,7 @@ function Index() {
             <input
               type="text"
               className="h-full w-[100%] focus:outline-none pr-3 pl-12 py-2"
+              onChange={handleSearch}
             />
             <SearchIcon
               className="absolute left-[1px] top-[1px] bg-Pink text-Light p-2 cursor-pointer"
