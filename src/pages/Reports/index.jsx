@@ -18,7 +18,7 @@ import Monthly from "./Sale/Monthly";
 import ItemWise from "./Sale/ItemWise";
 import GroupWise from "./Sale/GroupWise";
 import BranchWise from "./Sale/BranchWise";
-import POSUserWise from "./Sale/POSUserWise";
+import POSUserWise from "./Sale/POSUserWise"
 import DepartmentWise from "./Sale/DepartmentWise";
 import SerChargeWise from "./Sale/SerChargeWise";
 import DiscountWise from "./Sale/DiscountWise";
@@ -44,9 +44,9 @@ function index() {
     }
   }, []);
   return (
-    <div className="mx-8 py-[20px]">
-      <div className="flex justify-between">
-        <div className="w-[12%] h-[84vh] bg-Primary rounded px-1 py-1 overflow-hidden">
+    <div className="mx-8 pt-[25px]">
+      <div className="flex justify-start gap-7">
+        <div className="w-[14%] h-[84vh] bg-Primary rounded px-1 py-1 overflow-hidden">
           <ul className=" flex flex-col h-[100%] px-[10px] py-2">
             {Reports.map((e, index) => (
               <div key={e?.id}>
@@ -100,17 +100,17 @@ function index() {
             ))}
           </ul>
         </div>
-        <div className="w-[86%] h-[84vh] bg-Light overflow-y-scroll overflow-x-hidden">
+        <div className="w-[100%] h-[84vh] bg-Light overflow-y-scroll overflow-x-hidden">
           <Routes>
             {/* Sale */}
             <Route path="/sale-reports/dashboard" element={<Dashboard />} />
-            <Route path="/sale-reports/daily" element={<Daily />} />
-            <Route path="/sale-reports/monthly" element={<Monthly />} />
-            <Route path="/sale-reports/item-wise" element={<ItemWise />} />
-            <Route path="/sale-reports/group-wise" element={<GroupWise />} />
-            <Route path="/sale-reports/branch-wise" element={<BranchWise />} />
+            <Route path="/sale-reports/daily/*" element={<Daily />} />
+            <Route path="/sale-reports/monthly/*" element={<Monthly />} />
+            <Route path="/sale-reports/item-wise/*" element={<ItemWise />} />
+            <Route path="/sale-reports/group-wise/*" element={<GroupWise />} />
+            <Route path="/sale-reports/branch-wise/*" element={<BranchWise />} />
             <Route
-              path="/sale-reports/pos-user-wise"
+              path="/sale-reports/pos-user-wise/*"
               element={<POSUserWise />}
             />
             <Route

@@ -170,7 +170,7 @@ export default function AppRoutes() {
         </div>
       )}
 
-      <div className="py-[50px]">
+      <div className="pt-[50px]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/auth/login" element={<Login />} />

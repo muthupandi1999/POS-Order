@@ -58,6 +58,13 @@ h6 {
   color: #374a5e;
 }
 
+ul.orderDetils li:nth-child(even) {
+  background-color: #f2f2f2; /* Set your desired background color for even rows */
+}
+
+ul.orderDetils li:nth-child(odd) {
+  background-color: #ffffff; /* Set your desired background color for odd rows */
+}
 div.dashboardCardList {
   grid-template-columns: repeat(
     auto-fill,
@@ -178,15 +185,16 @@ table.billingTable3 tbody td {
   width: 0px;
 }
 
-table td, th {
+table td,
+th {
   text-align: center;
 }
 
-table th:nth-child(1){
+table th:nth-child(1) {
   text-align: start;
 }
 
-table tr td:nth-child(1){
+table tr td:nth-child(1) {
   text-align: start;
 }
 
@@ -359,5 +367,34 @@ input[type="radio"]:checked::after {
   padding-bottom: 0.7rem !important;
   color: #454859;
   background: #fff;
+  font-size: 12px;
+}
+
+.table.OrderDetailsTable :where(th) {
+  font-weight: 600;
+  color: #ffffff;
+  background: #f2f2f2;
+  font-size: 14px;
+}
+
+.table.OrderDetailsTable :where(th, td) {
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+  padding-top: 0.3rem !important;
+  padding-bottom: 0.3rem !important;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  font-size: 14px;
+}
+
+.table.OrderDetailsTable {
+  border-collapse: collapse;
+}
+.table.OrderDetailsTable :where(th) {
+  font-weight: 700;
+  padding-top: 0.7rem !important;
+  padding-bottom: 0.7rem !important;
+  color: #454859;
+  background: #f2f2f2;
   font-size: 12px;
 }

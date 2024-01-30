@@ -10,7 +10,7 @@ import {
   LinearScale,
   registerables,
 } from "chart.js";
-
+import MoreIcon from "../../../components/Common/MoreIcon";
 ChartJS.register(
   ArcElement,
   Tooltip,
@@ -26,6 +26,9 @@ const chartOptions = {
   maintainAspectRatio: false,
 
   plugins: {
+    datalabels: {
+      display: false,
+    },
     legend: {
       display: true,
       position: "right",
@@ -43,7 +46,6 @@ const chartOptions = {
     },
   },
 };
-
 export const AllBranchesData = {
   labels: ["Uttara", "Dhaka"],
   datasets: [
@@ -63,7 +65,6 @@ export const AllBranchesData = {
     },
   ],
 };
-
 export const FoodGroupRevenueData = {
   labels: [
     "Pizza",
@@ -95,37 +96,40 @@ export const FoodGroupRevenueData = {
   ],
 };
 const columnChartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    indexAxis: 'y',
-    scales: {
-      x: {
-        grid: {
-          display: true,
-        },
-      },
-      y: {
-        beginAtZero: true,
-        grid: {
-          drawBorder: false,
-        },
-      },
-    },
-    plugins: {
-      legend: {
+  responsive: true,
+  maintainAspectRatio: false,
+  indexAxis: "y",
+  scales: {
+    x: {
+      grid: {
         display: true,
-        position: "top",
       },
     },
-    title: {
+    y: {
+      beginAtZero: true,
+      grid: {
+        drawBorder: false,
+      },
+    },
+  },
+  plugins: {
+    datalabels: {
+      display: false,
+    },
+    legend: {
       display: true,
-      text: "Bar Chart Example",
-      font: {
-        size: 18,
-        weight: "bold",
-      },
+      position: "top",
     },
-  };
+  },
+  title: {
+    display: true,
+    text: "Bar Chart Example",
+    font: {
+      size: 18,
+      weight: "bold",
+    },
+  },
+};
 const barChartOptions = {
   responsive: true,
   maintainAspectRatio: false,
@@ -143,6 +147,9 @@ const barChartOptions = {
     },
   },
   plugins: {
+    datalabels: {
+      display: false,
+    },
     legend: {
       display: true,
       position: "top",
@@ -157,7 +164,6 @@ const barChartOptions = {
     },
   },
 };
-
 const BarChartData = {
   labels: ["Uttara", "Dhaka"],
   datasets: [
@@ -170,7 +176,6 @@ const BarChartData = {
     },
   ],
 };
-
 const BarChartDataItems = {
   labels: [
     "BBQ Meat Machine Pizza",
@@ -197,55 +202,73 @@ const BarChartDataItems = {
 };
 
 function Dashboard() {
+
   return (
     <div className="p-4">
       <h4 className="font-bold text-xl pb-3">Reports</h4>
       <div className="flex justify-evenly items-center border-b border-Secondary">
         <div>
-          <h4 className="text-start font-semibold">
-            Today's Revenue of All Branches
-          </h4>
+          <div className="flex justify-between items-center">
+            <h4 className="text-start font-semibold">
+              Today's Revenue of All Branches
+            </h4>
+            <MoreIcon chartId={"stack1"} />
+          </div>
+
           <div className="w-[400px] h-[400px] flex items-center justify-center">
             <Pie
+              id="stack1"
               width={400}
               height={400}
               options={chartOptions}
               data={AllBranchesData}
             />
-            {/* {...props} */}
           </div>
         </div>
         <div>
-          <h4 className="text-start font-semibold">Today's sales by Groups</h4>
+          <div className="flex justify-between items-center">
+            <h4 className="text-start font-semibold">
+              Today's sales by Groups
+            </h4>
+            <MoreIcon chartId={"stack2"} />
+          </div>
           <div className="w-[400px] h-[400px] flex items-center justify-center">
             <Pie
+              id="stack2"
               width={400}
               height={400}
               options={chartOptions}
               data={FoodGroupRevenueData}
             />
-            {/* {...props} */}
           </div>
         </div>
       </div>
 
       <div className="py-3 border-b border-Secondary">
-        <h4 className="font-bold  pb-3">
-          Last month's revenue of each branch
-        </h4>
+        <div className="flex justify-between items-center">
+          <h4 className="font-bold  pb-3">
+            Last month's revenue of each branch
+          </h4>
+          <MoreIcon chartId={"stack3"} />
+        </div>
+
         <div className="w-[100%] h-[400px] flex items-center justify-center">
-          <Bar options={barChartOptions} data={BarChartData} />
-          {/* {...props} */}
+          <Bar id="stack3" options={barChartOptions} data={BarChartData} />
         </div>
       </div>
 
       <div className="py-3">
-        <h4 className="font-bold  pb-3">
-          Last month's item wise revenue
-        </h4>
+        <div className="flex justify-between items-center">
+          <h4 className="font-bold  pb-3">Last month's item wise revenue</h4>
+          <MoreIcon chartId={"stack4"} />
+        </div>
+
         <div className="w-[100%] h-[400px] flex items-center justify-center">
-          <Bar options={columnChartOptions} data={BarChartDataItems} />
-          {/* {...props} */}
+          <Bar
+            id="stack4"
+            options={columnChartOptions}
+            data={BarChartDataItems}
+          />
         </div>
       </div>
     </div>

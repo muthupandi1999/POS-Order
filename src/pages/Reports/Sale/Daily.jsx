@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Pie, Bar } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
+import { useNavigate } from "react-router-dom";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -10,6 +11,9 @@ import {
   LinearScale,
   registerables,
 } from "chart.js";
+import { MonthlyWiseTableData } from "../../../utills/data";
+import OrderDetails from "../../../components/modals/modalComponents/OrderDetails";
+import MoreIcon from "../../../components/Common/MoreIcon";
 
 ChartJS.register(
   ArcElement,
@@ -26,6 +30,9 @@ const chartOptions = {
   maintainAspectRatio: false,
 
   plugins: {
+    datalabels: {
+      display: false,
+    },
     legend: {
       display: true,
       position: "right",
@@ -112,6 +119,9 @@ const barChartOptions = {
     },
   },
   plugins: {
+    datalabels: {
+      display: false,
+    },
     legend: {
       display: true,
       position: "top",
@@ -143,6 +153,15 @@ const BarChartData = {
 function Daily() {
   const [currentOrder, setCurrentOrder] = useState("Online");
 
+  const [openModal, setOpenModal] = useState(false);
+  const [orderData, setOrderData] = useState(null);
+
+  const handleOpen = (e) => {
+    setOrderData(e);
+    setOpenModal(true);
+  };
+
+  const navigate = useNavigate();
   const currentTableData = [
     {
       id: 1,
@@ -189,14 +208,14 @@ function Daily() {
           amount/branch
         </button>
         <button
-          className="btn bg-DarkGreen border-0 rounded text-Light hover:bg-DarkGreen h-[40px] min-h-max w-44 uppercase"
+          className="btn bg-[#43766C] border-0 rounded text-Light hover:bg-[#43766C] h-[40px] min-h-max w-44 uppercase"
           onClick={() => {
             if (currentOrder === "Online") {
               setCurrentOrder("Offline");
-              //   navigate("/orders/online");
+              navigate("/reports/sale-reports/daily/online");
             } else {
               setCurrentOrder("Online");
-              //   navigate("/orders/pos");
+              navigate("/reports/sale-reports/daily/offline");
             }
           }}
         >
@@ -207,9 +226,15 @@ function Daily() {
       </div>
 
       <div className="py-3 border-b border-Secondary">
-        <h4 className="font-bold  pb-3">Last month's revenue of each branch</h4>
+        <div className="flex items-center justify-between">
+          <h4 className="font-bold  pb-3">
+            Last month's revenue of each branch
+          </h4>
+          <MoreIcon chartId={"stack5"} />
+        </div>
+
         <div className="w-[100%] h-[400px] flex items-center justify-center">
-          <Bar options={barChartOptions} data={BarChartData} />
+          <Bar id="stack5" options={barChartOptions} data={BarChartData} />
           {/* {...props} */}
         </div>
       </div>
@@ -228,17 +253,24 @@ function Daily() {
             </tr>
           </thead>
           <tbody className="overflow-hidden z-0">
-            {currentTableData.map((e, index) => (
+            {MonthlyWiseTableData.map((e, index) => (
               <tr key={e?.id}>
                 <td>{e?.id}</td>
-                <td>{e?.token}</td>
-                <td>{e?.time}</td>
-                <td>{e?.customer}</td>
-                <td>{e?.bill}</td>
-                <td>{e?.branch}</td>
+                <td>{e?.token?.id}</td>
                 <td>
-                  <button className="bg-Green text-center px-4 py-2 text-Light rounded capitalize w-[120px]">
-                    {e?.status}
+                  {new Date(
+                    e?.orderedItems?.[0]?.created_at
+                  ).toLocaleTimeString()}
+                </td>
+                <td>{e?.customer_name}</td>
+                <td>{e?.order_bill}</td>
+                <td>{e?.branch_name}</td>
+                <td>
+                  <button
+                    className="bg-[#43766C] text-center px-4 py-2 text-Light rounded capitalize w-[120px]"
+                    onClick={() => handleOpen(e)}
+                  >
+                    {e?.is_ready == "1" ? "Ready" : "Processing"}
                   </button>
                 </td>
               </tr>
@@ -259,6 +291,12 @@ function Daily() {
           </tbody>
         </table>
       </div>
+
+      <OrderDetails
+        data={orderData}
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+      />
     </div>
   );
 }
