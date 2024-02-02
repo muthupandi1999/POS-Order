@@ -116,7 +116,7 @@ function DepartmentWise() {
 
   // handle onChange event of the dropdown
   const handleChangeDepartment = (e) => {
-    setSelectedUser(e);
+    setSelectedDepartment(e);
   };
 
   // handle custom filter
@@ -140,7 +140,7 @@ function DepartmentWise() {
   ];
 
   return (
-    <div className="p-4">
+    <div className="p-4 my-element">
       <h4 className="font-bold text-xl pb-3">
         POS user Wise report for {currentOrder}
       </h4>

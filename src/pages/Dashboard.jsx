@@ -7,6 +7,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CoffeeIcon from "@mui/icons-material/Coffee";
 import FlagIcon from "@mui/icons-material/Flag";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+
 const dashboardArray = [
   {
     title: "work periods",
@@ -22,7 +23,7 @@ const dashboardArray = [
     image: "https://khadyo.softtechdemo.com/assets/img/product-img-2.jpg",
     color: "#544fff",
     icon: <AddShoppingCartIcon className="text-[#544fff] !w-4 mt-[-2px]" />,
-    router: "/pos",
+    router: "/pos/orders",
   },
   {
     title: "order histories",
@@ -76,7 +77,8 @@ const dashboardArray = [
 
 function Dashboard() {
   return (
-    <div className="max-w-[1320px] m-auto">
+    <div className="max-w-[1320px] m-auto my-element">
+   
       <div className="dashboardCardList py-8">
         {dashboardArray.map((e, index) => (
           <DashboardCard key={index} e={e} />

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LoginSlider from "../components/sliders/LoginSlider";
+import LoginSlider from "../../components/sliders/LoginSlider";
 
 function Signup() {
   return (

@@ -16,7 +16,7 @@ const Dropdown = (data, placeHolder) => {
     setIsOpen(false);
   };
 
-  console.log("place", placeHolder);
+  // console.log("place", placeHolder);
 
   return (
     <div className="relative">

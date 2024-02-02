@@ -31,6 +31,14 @@
     @apply bg-[#101010] border-[#101010] text-[#FFFFFF] text-[14px] font-semibold rounded-[2px] hover:bg-[#000000] border-[#000000] shadow-none;
   }
 
+  .transparent-pink-btn {
+    @apply bg-[#fde0e3] text-Pink font-medium rounded hover:bg-Pink hover:text-Light;
+  }
+
+  .transparent-primary-btn {
+    @apply bg-[#4548594d] text-Primary font-semibold rounded hover:bg-Primary hover:text-Light;
+  }
+
   /* .btn {
     @apply rounded-full font-semibold shadow-none;
   } */
@@ -397,4 +405,80 @@ input[type="radio"]:checked::after {
   color: #454859;
   background: #f2f2f2;
   font-size: 12px;
+}
+
+/* Route Animation */
+
+@keyframes mymove {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.my-element {
+  animation: mymove 0.5s ease-out; /* Adjust duration and timing function as needed */
+}
+
+@keyframes homepageImage {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.headerRightSection img {
+  animation: homepageImage 50s linear infinite;
+}
+/* Date picker z-index */
+
+.react-datepicker-popper {
+  z-index: 10;
+}
+
+/* Navbar smooth flow */
+
+.navbarContainer {
+  overflow: hidden;
+  max-height: 0px;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.navbarContainer.flow {
+  height: fit-content;
+  max-height: 460px;
+}
+
+.navbarContainer1 {
+  overflow: hidden;
+  max-height: 0px;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.navbarContainer1.flow1 {
+  height: fit-content;
+  max-height: 460px;
+}
+
+div.testList {
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--auto-grid-min-size), 1fr)
+  );
+  --auto-grid-min-size: 12rem;
+  grid-gap: 1rem;
+  display: grid;
+}
+
+div.orderList {
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--auto-grid-min-size), 1fr)
+  );
+  --auto-grid-min-size: 22rem;
+  grid-gap: 4rem;
+  display: grid;
 }

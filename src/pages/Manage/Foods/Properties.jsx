@@ -11,7 +11,7 @@ import PropertiesItems from "../Properties/PropertiesItems";
 
 function Properties() {
   return (
-    <div className="bg-Light py-3 px-5 my-2 w-full">
+    <div className="bg-Light py-3 px-5 my-2 w-full my-element">
       <div className="w-[90%]">
         {/* Hellooooo */}
         <Routes>

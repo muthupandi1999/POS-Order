@@ -6,10 +6,10 @@ import Modal from "@mui/material/Modal";
 import { Box } from "@mui/material";
 function VariationModal({ openModal, setOpenModal, data }) {
   const [updateOption, setUpdateOption] = useState(false);
-  console.log("data", data?.variations);
-  console.log("data", data);
+  // console.log("data", data?.variations);
+  // console.log("data", data);
   const handleInputClose = () => {
-    console.log("cloase");
+    // console.log("cloase");
     setOpenModal(false);
     setUpdateOption(false)
   };

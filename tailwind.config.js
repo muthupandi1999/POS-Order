@@ -28,7 +28,12 @@ export default {
         CurrentOrder:"#FFD5D5",
         ReadyOrder:"#d1f2d4",
         StartOrder:"#b4deff",
-        DarkBlue:"#2196F3"
+        DarkBlue:"#2196F3",
+        LightShadow:"#f0f0ec",
+        LightBlue:"#f8f8f8",
+        ReadyStatus:"#c7fee3",
+        InProgressStatus:"#ffeebd",
+        Completed:"#e0ebfd"
       },
       transitionProperty: {
         'height': 'height',

@@ -21,10 +21,10 @@ const SwipeableItem = () => {
 
     if (distance > minSwipeDistance) {
       console.log("Swiped left");
-      console.log("distance", distance);
+      // console.log("distance", distance);
       // Add your left swipe logic here
     } else if (distance < -minSwipeDistance) {
-      console.log("distance", distance);
+      // console.log("distance", distance);
       console.log("Swiped right");
 
       // Add your right swipe logic here

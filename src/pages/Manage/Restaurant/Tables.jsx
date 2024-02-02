@@ -44,7 +44,7 @@ function Tables() {
   };
   const currentTableData = filteredTableData.slice(startIndex, endIndex);
   return (
-    <div className="bg-Light py-3 px-5 my-2 w-full">
+    <div className="bg-Light py-3 px-5 my-2 w-full my-element">
       <div className="w-[90%]">
         <div className="flex justify-between items-center mx-auto flex-wrap">
           <h4 className="text-Primary text-xl capitalize font-bold w-[50%]">

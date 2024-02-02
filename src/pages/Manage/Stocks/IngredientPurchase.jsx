@@ -141,7 +141,7 @@ function IngredientPurchase() {
     },
   ];
   return (
-    <div className=" py-3 px-5 my-2 h-auto overflow-y-scroll">
+    <div className=" py-3 px-5 my-2 h-auto overflow-y-scroll my-element">
       <h4 className="text-Primary text-xl capitalize font-bold">
         Add New Purchase
       </h4>

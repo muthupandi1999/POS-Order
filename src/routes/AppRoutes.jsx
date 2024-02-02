@@ -1,111 +1,52 @@
-// import React, { Suspense } from 'react'
-// import Layout from '@layouts/Layout'
-// import Login from '@pages/Login'
-// import { routes_here } from './routes'
-// import { Route, Routes } from 'react-router-dom'
-// import ScrollTop from '@components/ScrollTop'
-
-// export default function AppRoutes() {
-
-//     const isAuthenticated = true; // bool, based on token availabilty
-
-//     const renderRoute = (route, isAuthenticated) => {
-//         if (route.isPrivate || isAuthenticated) {
-//             return route.element;
-//         }
-//     };
-
-//     return (
-//         <Suspense fallback={<h1>Loading....</h1>}>
-//             <React.Fragment>
-
-//                 <ScrollTop />
-//                 <Routes>
-//                     {/* ================= All Routes ================ */}
-//                     {routes_here.map((route, key) => (
-//                         !isAuthenticated ?
-//                             <Route key={key} path="/login" element={<Login />} />
-//                             :
-//                             <Route
-//                                 // index
-//                                 key={key}
-//                                 path={route.path}
-//                                 element={
-//                                     <Layout>
-//                                         <Suspense fallback={<h1>Loading....</h1>}>
-//                                             {renderRoute(route, isAuthenticated)}
-//                                         </Suspense>
-//                                     </Layout>
-//                                 }
-//                             />
-//                     ))}
-//                 </Routes>
-
-//             </React.Fragment>
-//         </Suspense>
-//     )
-// }
-
 import React, { useRef, useState, useEffect } from "react";
-import Login from "@pages/Login";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import Login from "../pages/Authentication/Login";
+import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import HomeIcon from "@mui/icons-material/Home";
 import Home from "../pages/Home";
 import Dashboard from "../pages/Dashboard";
-import Signup from "../pages/Signup";
-import Pos from "../pages/POS";
-import { useLocation } from "react-router-dom";
+import Signup from "../pages/Authentication/Signup";
+import Pos from "../pages/POS/index"
 import Clock from "../components/Common/Clock";
 import Kitchen from "../pages/Kitchen";
 import Orders from "../pages/Orders";
 import Manage from "../pages/Manage";
 import Customer from "../pages/Customers";
-
 import WorkPeriod from "../pages/WorkPeriod";
 import Reports from "../pages/Reports";
+import Test from "../pages/Test";
 
 export default function AppRoutes() {
-  const isAuthenticated = true; // bool, based on token availabilty
   const navigate = useNavigate();
   const location = useLocation();
-  // console.log("location", location);
-
   const dropdownRef = useRef(null);
   const [action, setAction] = useState(false);
 
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      // e.preventDefault();
-      // const currentRef = dropdownRef.current;
+    console.log("text123");
+    let scrollDiv = document.getElementById("reportPage");
+    scrollDiv?.scrollTo({
+      top: 0,
+    });
+  }, [location]);
 
-      // console.log("currentRef", currentRef);
-      console.log("currentRef", e?.target);
-      console.log(
-        "currentRef.contains(e.target)",
-        dropdownRef.current.contains(e.target)
-      );
+  useEffect(() => {
+    const handleClickOutside = (e) => {
       if (!dropdownRef.current.contains(e.target)) {
-        console.log("text");
         setAction(false);
       }
     };
+
     document.addEventListener("click", handleClickOutside);
+
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
   const handleClickAction = (e) => {
-    // e.preventDefault();
     setAction(!action);
-  };
-
-  const renderRoute = (route, isAuthenticated) => {
-    if (route.isPrivate || isAuthenticated) {
-      return route.element;
-    }
   };
 
   return (
@@ -159,7 +100,10 @@ export default function AppRoutes() {
                     <li className="hover:bg-Secondary text-sm py-1 px-1 flex justify-start gap-1 items-center">
                       Change Password
                     </li>
-                    <li className="hover:bg-Secondary text-sm py-1 px-1 flex justify-start gap-1 items-center">
+                    <li
+                      className="hover:bg-Secondary text-sm py-1 px-1 flex justify-start gap-1 items-center"
+                      onClick={() => navigate("/auth/login")}
+                    >
                       Logout
                     </li>
                   </ul>
@@ -170,7 +114,7 @@ export default function AppRoutes() {
         </div>
       )}
 
-      <div className="pt-[50px]">
+      <div className="py-[50px]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/auth/login" element={<Login />} />
@@ -183,14 +127,12 @@ export default function AppRoutes() {
           <Route path="/dashboard/customers/*" element={<Customer />} />
           <Route path="/dashboard/work-periods" element={<WorkPeriod />} />
           <Route path="/reports/*" element={<Reports />} />
+          <Route path="/test" element={<Test />} />
         </Routes>
       </div>
 
       {!location?.pathname.includes("/auth") && (
-        <div className="bg-Primary  mt-2  flex justify-between items-center px-3 py-1 fixed bottom-0 w-[100%]">
-          {/* <div className="w-[200px] h-[60px]">
-            <img className="w-full h-full" src="https://res.cloudinary.com/dmmsjhioj/image/upload/v1705031540/Grocery/Quick__3_-removebg-preview_dda2oe.png" alt="" />
-          </div> */}
+        <div className="bg-Primary flex justify-between items-center h-[50px] px-3 mt-4 fixed bottom-0 w-[100%]">
           <div className="w-[200px]"></div>
           <p className="text-Light text-xs">
             © © 2021 - 2024 Khadyo. All rights reserved.

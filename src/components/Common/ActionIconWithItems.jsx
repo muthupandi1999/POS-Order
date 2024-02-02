@@ -12,19 +12,19 @@ function ActionIconWithItems({ openModal, setOpenModal, data }) {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const navigate = useNavigate();
 
-  console.log("data1", data)
+  // console.log("data1", data)
   useEffect(() => {
     const handleClickOutside = (e) => {
       // const currentRef = dropdownRef.current;
 
       // console.log("currentRef", currentRef);
-      console.log("currentRef", e?.target);
-      console.log(
-        "currentRef.contains(e.target)",
-        dropdownRef.current.contains(e.target)
-      );
+      // console.log("currentRef", e?.target);
+      // console.log(
+      //   "currentRef.contains(e.target)",
+      //   dropdownRef.current.contains(e.target)
+      // );
       if (!dropdownRef.current.contains(e.target)) {
-        console.log("text");
+        // console.log("text");
         setAction(false);
       }
     };
@@ -53,7 +53,7 @@ function ActionIconWithItems({ openModal, setOpenModal, data }) {
               className="hover:bg-Secondary py-1 px-1 flex justify-start gap-1 items-center"
               onClick={() =>{
                 // alert(data?.slug)
-                console.log("data34234", data)
+                // console.log("data34234", data)
                 // alert(data)
                 navigate(`/manage/food/properties/${data?.id}`);
               }}

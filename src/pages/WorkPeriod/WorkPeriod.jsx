@@ -157,14 +157,14 @@ function WorkPeriod() {
   };
 
   return (
-    <div className="bg-Light py-3 px-5 my-2 w-full m-auto">
+    <div className="bg-Light py-3 px-5 my-2 w-full m-auto my-element">
       <div className="mx-8">
         <h4 className="text-Primary text-xl capitalize font-bold py-3">
           Work Periods
         </h4>
         <div className=" mx-auto flex-wrap">
-          <div className="w-[100%] flex justify-between items-center">
-            <div className="relative h-[100%] w-[35%] border border-1 border-Secondary">
+          <div className="w-[100%] flex justify-start items-center gap-8">
+            <div className="relative h-[100%] w-[15%] border border-1 border-Secondary">
               <input
                 type="text"
                 className="h-[40px] w-[100%] focus:outline-none pr-3 pl-12 py-2"
@@ -175,7 +175,7 @@ function WorkPeriod() {
                 sx={{ fontSize: "38px" }}
               />
             </div>
-            <div className="w-[30%] h-[40px]">
+            <div className="w-[15%] h-[40px]">
               <Select
                 className="w-[100%]  customZIndex"
                 styles={{
@@ -217,7 +217,7 @@ function WorkPeriod() {
               />
             </div>
             <button
-              className="btn bg-Pink border-0 rounded text-Light hover:bg-Pink h-[40px] min-h-max w-[30%] uppercase"
+              className="btn bg-Pink border-0 rounded text-Light hover:bg-Pink h-[40px] min-h-max w-[10%] uppercase"
               onClick={() => setUserModal(true)}
             >
               start work period

@@ -62,7 +62,7 @@ function ItemWise() {
   const navigate = useNavigate();
 
   return (
-    <div className="p-4">
+    <div className="p-4 my-element">
       <h4 className="font-bold text-xl pb-3">
         Food Items report for {currentOrder} orders
       </h4>

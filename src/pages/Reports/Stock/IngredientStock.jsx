@@ -46,7 +46,7 @@ function IngredientStock() {
   ];
 
   return (
-    <div className="p-4">
+    <div className="p-4 my-element">
       <h4 className="font-bold text-xl pb-3">Food Stock report</h4>
 
       <div className="py-4 flex items-center justify-between flex-wrap gap-8">

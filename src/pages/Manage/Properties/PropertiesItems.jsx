@@ -228,7 +228,7 @@ function PropertiesItems() {
     setCurrentPage(1);
   };
   return (
-    <>
+    <div className="my-element">
       <div className="flex justify-between items-center mx-auto flex-wrap">
         <h4 className="text-Primary text-xl capitalize font-bold w-[50%]">
           {foundData?.info?.name} List
@@ -342,7 +342,7 @@ function PropertiesItems() {
           currentTableData?.length
         )} of ${currentTableData?.length}`}</h4>
       </div>
-    </>
+    </div>
   );
 }
 

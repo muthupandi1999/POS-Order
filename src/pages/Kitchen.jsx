@@ -241,7 +241,7 @@ function Kitchen() {
   const navigate = useNavigate();
 
   return (
-    <>
+    <div className="my-element">
       <div className="flex mx-8 items-center  py-3 bg-Light mt-2 rounded p-3 gap-8 justify-between flex-wrap">
         <div className="flex gap-4">
           <button
@@ -785,7 +785,7 @@ function Kitchen() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

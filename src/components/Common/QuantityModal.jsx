@@ -33,7 +33,7 @@ function CustomModal({ open, onClose }) {
   };
 
   useEffect(() => {
-    console.log(quantity);
+    // console.log(quantity);
     if (quantity > 1) {
       setIsDelete(false);
     } else {

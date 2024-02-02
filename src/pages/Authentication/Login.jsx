@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LoginSlider from "../components/sliders/LoginSlider";
+import LoginSlider from "../../components/sliders/LoginSlider";
 
 export default function Login() {
   return (
     <div
-      className="phone:flex-col container m-auto flex  items-center my-20 h-[80vh]"
+      className="phone:flex-col container m-auto flex  items-center h-[80vh]"
       style={{ background: "linear-gradient(90deg, #fff 50%, #454859 50%)" }}
     >
       <div className="w-2/4 flex justify-center items-center minTablet: bg-fff">

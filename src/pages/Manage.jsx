@@ -43,6 +43,16 @@ function Manage() {
 
   // console.log("location", location);
 
+  useEffect(() => {
+    // Scroll to the top when the route changes
+    window.scrollTo(0, 0);
+
+    // if (!activeCategory) {
+    //   let getItem = localStorage.getItem("activeCategory");
+    //   setActiveCategory(getItem);
+    // }
+  }, [location.pathname]);
+
   const handleList = (e) => {
     setActiveCategory(e?.name);
     localStorage.setItem("activeCategory", e?.name);
@@ -52,12 +62,14 @@ function Manage() {
     if (!activeCategory) {
       let getItem = localStorage.getItem("activeCategory");
       setActiveCategory(getItem);
+    }else{
+      setActiveCategory("foods")
     }
   }, []);
   return (
     <div className="mx-8 py-[20px]">
       <div className="flex justify-between">
-        <div className="w-[12%] h-[84vh] bg-Primary rounded px-1 py-1 overflow-hidden">
+        <div className="w-[14%] h-[84vh] bg-Primary rounded px-1 py-1 overflow-hidden">
           <ul className=" flex flex-col h-[100%] px-[10px] py-2">
             {Manages.map((e, index) => (
               <div key={e?.id}>
@@ -73,10 +85,8 @@ function Manage() {
                   <span className="relative">{e?.name}</span>
                 </li>
                 <div
-                  className={`transition-all duration-700 ease-in-out ${
-                    activeCategory === e?.name
-                      ? "max-h-[1000px] opacity-100 visible"
-                      : "max-h-0 opacity-0 invisible"
+                   className={`navbarContainer ${
+                    activeCategory === e?.name ? "flow" : "navbarContainer"
                   }`}
                   style={{
                     backgroundColor: "rgb(255 255 255 / 5%)",
@@ -111,7 +121,7 @@ function Manage() {
             ))}
           </ul>
         </div>
-        <div className="w-[86%] h-[85vh] bg-Light overflow-hidden">
+        <div className="w-[85%] h-[85vh] bg-Light overflow-hidden">
           <Routes>
             <Route path="/food/add-new-item" element={<AddNewItem />} />
             <Route path="/food/all-items" element={<AllItems />} />

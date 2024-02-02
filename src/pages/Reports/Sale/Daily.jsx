@@ -201,7 +201,7 @@ function Daily() {
     },
   ];
   return (
-    <div className="p-4">
+    <div className="p-4 my-element">
       <h4 className="font-bold text-xl pb-3">Daily Report For Offline Order</h4>
       <div className="py-2 flex items-center justify-between">
         <button className="bg-Pink px-4 py-2 text-Light capitalize font-regular rounded text-sm">

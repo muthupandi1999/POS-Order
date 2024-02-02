@@ -15,6 +15,7 @@ import toast, { Toaster } from "react-hot-toast";
 import AddIcon from "@mui/icons-material/Add";
 import Dropdown from "../components/Common/Dropdown";
 import TagModal2 from "../components/modals/modalComponents/TagModal2";
+import { useNavigate } from "react-router-dom";
 // import Dropdown from "../Common/Dropdown";
 
 function Pos() {
@@ -25,6 +26,8 @@ function Pos() {
   const [open, setOpen] = useState(false);
   const [tagOpen, setTagOpen] = useState(false);
   const [waiterDropdown, setWaiterDropdown] = useState(false);
+
+  const navigate = useNavigate()
 
 
   // const [tagOpen, setTagOpen] = useState(false);
@@ -59,7 +62,7 @@ function Pos() {
   const onLongPress = useLongPress();
 
   return (
-    <div className="flex w-full pt-1 gap-2 px-8">
+    <div className="flex w-full pt-1 gap-2 px-8 my-element">
       <div className="w-[74.2%] mx-auto">
         <div className="flex justify-between gap-5">
           <div className="rounded-md  p-3 mt-4 w-[20%] max-h-[695px]  bg-Light">
@@ -101,7 +104,7 @@ function Pos() {
               />
               <SearchIcon className="absolute right-[3%] top-[20%] cursor-pointer" />
             </div> */}
-            <div className="w-full productList  gap-8 content-start overflow-auto h-[91%] footItemsList">
+            <div className="w-full productList  gap-8 content-start overflow-auto h-[91%] footItemsList my-element">
               <Routes>
                 <Route path="/:id" element={<ItemList setOpen={setOpen} />} />
               </Routes>
@@ -131,25 +134,25 @@ function Pos() {
           </div>
         </div>
         <div className="bg-Light mt-4  rounded-lg flex items-center justify-center gap-14 h-[97px] text-DarkText">
-          <h4 className="uppercase text-sm font-bold cursor-pointer tracking-wide">
+          <h4 className="uppercase text-sm font-bold cursor-pointer tracking-wide" onClick={() => navigate("/reports/sale-reports/dashboard")}>
             reports
           </h4>
-          <h4 className="uppercase text-sm font-bold cursor-pointer tracking-wide">
+          <h4 className="uppercase text-sm font-bold cursor-pointer tracking-wide" onClick={() => navigate("/reports/sale-reports/branch-wise/offline")} >
             sales summary
           </h4>
-          <h4 className="uppercase text-sm font-bold cursor-pointer tracking-wide">
+          <h4 className="uppercase text-sm font-bold cursor-pointer tracking-wide" onClick={() => navigate("/reports/stock-reports/food-stock")}>
             stock details
           </h4>
-          <h4 className="uppercase text-sm font-bold cursor-pointer tracking-wide">
+          <h4 className="uppercase text-sm font-bold cursor-pointer tracking-wide" onClick={() => navigate("/manage/food/add-new-item")}>
             add items
           </h4>
-          <h4 className="uppercase text-sm font-bold cursor-pointer tracking-wide">
+          <h4 className="uppercase text-sm font-bold cursor-pointer tracking-wide" onClick={() => navigate("/manage/restaurant/tables")}>
             table management
           </h4>
-          <h4 className="uppercase text-sm font-bold cursor-pointer tracking-wide">
+          <h4 className="uppercase text-sm font-bold cursor-pointer tracking-wide" onClick={() => navigate("/reports/sale-reports/daily/offline")}>
             analytics
           </h4>
-          <h4 className="uppercase text-sm font-bold cursor-pointer tracking-wide">
+          <h4 className="uppercase text-sm font-bold cursor-pointer tracking-wide" onClick={() => navigate("/kitchen/pos")}>
             kitchen display
           </h4>
           {/* <ul className="menu menu-vertical w-full justify-between lg:menu-horizontal bg-SemiLight rounded-lg ">

@@ -8,23 +8,27 @@ import toast, { Toaster } from "react-hot-toast";
 import AddIcon from "@mui/icons-material/Add";
 import Dropdown from "../Common/Dropdown";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 600,
-  
-  bgcolor: "white",
-  borderRadius: "4px",
-  boxShadow: 24,
-  p: 2,
-  outline: "none",
-};
-
-function DynamicModal({ open, onClose, children }) {
+function DynamicModal({ open, onClose, children, width }) {
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: width || 600,
+    bgcolor: "white",
+    borderRadius: "4px",
+    boxShadow: 24,
+    p: 2,
+    outline: "none",
+  };
   return (
     <Modal
+
+      // BackdropProps={{
+      //   style:{
+      //     backgroundColor:"rgba(51, 170, 51, .1"
+      //   }
+      // }}
       open={open}
       onClose={onClose}
       aria-labelledby="modal-modal-title"

@@ -91,7 +91,7 @@ function SupplierHistory() {
   };
 
   return (
-    <div className="bg-Light py-3 px-5 my-2 h-[100%]">
+    <div className="bg-Light py-3 px-5 my-2 h-[100%] my-element">
       <h4 className="text-Primary text-xl capitalize font-bold">
         Supplier History
       </h4>

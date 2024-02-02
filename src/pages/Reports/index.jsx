@@ -18,7 +18,7 @@ import Monthly from "./Sale/Monthly";
 import ItemWise from "./Sale/ItemWise";
 import GroupWise from "./Sale/GroupWise";
 import BranchWise from "./Sale/BranchWise";
-import POSUserWise from "./Sale/POSUserWise"
+import POSUserWise from "./Sale/POSUserWise";
 import DepartmentWise from "./Sale/DepartmentWise";
 import SerChargeWise from "./Sale/SerChargeWise";
 import DiscountWise from "./Sale/DiscountWise";
@@ -44,7 +44,7 @@ function index() {
     }
   }, []);
   return (
-    <div className="mx-8 pt-[25px]">
+    <div className="mx-8 pt-[25px] my-element">
       <div className="flex justify-start gap-7">
         <div className="w-[14%] h-[84vh] bg-Primary rounded px-1 py-1 overflow-hidden">
           <ul className=" flex flex-col h-[100%] px-[10px] py-2">
@@ -62,10 +62,8 @@ function index() {
                   <span className="relative">{e?.name}</span>
                 </li>
                 <div
-                  className={`transition-all duration-700 ease-in-out ${
-                    activeReports === e?.name
-                      ? "max-h-[1000px] opacity-100 visible"
-                      : "max-h-0 opacity-0 invisible"
+                  className={`navbarContainer1 ${
+                    activeReports === e?.name ? "flow1" : "navbarContainer1"
                   }`}
                   style={{
                     backgroundColor: "rgb(255 255 255 / 5%)",
@@ -76,12 +74,12 @@ function index() {
                     {e?.items.map((item, index) => (
                       <li
                         className={`text-Light font-medium flex items-center gap-2 py-2 px-4 cursor-pointer text-sm ${
-                          location.pathname.includes(item?.route) &&
+                          location?.pathname.includes(item?.route) &&
                           "text-Light"
                         }`}
                         key={index}
                       >
-                        {location.pathname.includes(item?.route) ? (
+                        {location.pathname.includes(item?.route) || item?.childRoutes?.includes(location?.pathname) ? (
                           <span className="w-3.5 h-3.5 bg-Pink border border-1 border-transparent rounded-full flex justify-center items-center">
                             {" "}
                             <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
@@ -100,7 +98,10 @@ function index() {
             ))}
           </ul>
         </div>
-        <div className="w-[100%] h-[84vh] bg-Light overflow-y-scroll overflow-x-hidden">
+        <div
+          id="reportPage"
+          className="w-[100%] h-[84vh] bg-Light overflow-y-scroll overflow-x-hidden"
+        >
           <Routes>
             {/* Sale */}
             <Route path="/sale-reports/dashboard" element={<Dashboard />} />
@@ -108,7 +109,10 @@ function index() {
             <Route path="/sale-reports/monthly/*" element={<Monthly />} />
             <Route path="/sale-reports/item-wise/*" element={<ItemWise />} />
             <Route path="/sale-reports/group-wise/*" element={<GroupWise />} />
-            <Route path="/sale-reports/branch-wise/*" element={<BranchWise />} />
+            <Route
+              path="/sale-reports/branch-wise/*"
+              element={<BranchWise />}
+            />
             <Route
               path="/sale-reports/pos-user-wise/*"
               element={<POSUserWise />}

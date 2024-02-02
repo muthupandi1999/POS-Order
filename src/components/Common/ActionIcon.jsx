@@ -4,7 +4,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteModal from "../modals/modalComponents/DeleteModal";
 
-function ActionIcon({ openModal, setOpenModal, }) {
+function ActionIcon({ openModal, setOpenModal }) {
   const dropdownRef = useRef(null);
   const [action, setAction] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -13,13 +13,13 @@ function ActionIcon({ openModal, setOpenModal, }) {
       // const currentRef = dropdownRef.current;
 
       // console.log("currentRef", currentRef);
-      console.log("currentRef", e?.target);
-      console.log(
-        "currentRef.contains(e.target)",
-        dropdownRef.current.contains(e.target)
-      );
+      // console.log("currentRef", e?.target);
+      // console.log(
+      //   "currentRef.contains(e.target)",
+      //   dropdownRef.current.contains(e.target)
+      // );
       if (!dropdownRef.current.contains(e.target)) {
-        console.log("text");
+        // console.log("text");
         setAction(false);
       }
     };

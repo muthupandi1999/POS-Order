@@ -204,7 +204,7 @@ const BarChartDataItems = {
 function Dashboard() {
 
   return (
-    <div className="p-4">
+    <div className="p-4 my-element">
       <h4 className="font-bold text-xl pb-3">Reports</h4>
       <div className="flex justify-evenly items-center border-b border-Secondary">
         <div>

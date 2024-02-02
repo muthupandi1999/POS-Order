@@ -48,8 +48,8 @@ function Index() {
   };
 
   return (
-    <>
-      <div className="flex justify-between items-center mx-auto flex-wrap">
+    <div className="my-element">
+      <div className="flex justify-between items-center mx-auto flex-wrap ">
         <h4 className="text-Primary text-xl capitalize font-bold w-[50%]">
           Property Group list
         </h4>
@@ -157,7 +157,7 @@ function Index() {
           PropertiesGroups.length
         )} of ${PropertiesGroups.length}`}</h4>
       </div>
-    </>
+    </div>
   );
 }
 

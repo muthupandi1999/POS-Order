@@ -19,9 +19,7 @@ import {
   plugins,
 } from "chart.js";
 
-import {
-  POSWiseTableData,
-} from "../../../utills/data";
+import { POSWiseTableData } from "../../../utills/data";
 import OrderDetails from "../../../components/modals/modalComponents/OrderDetails";
 import MoreIcon from "../../../components/Common/MoreIcon";
 
@@ -93,7 +91,7 @@ const BarChartData = {
 function POSUserWise() {
   const [currentOrder, setCurrentOrder] = useState("Online");
   const [openModal, setOpenModal] = useState(false);
-  const [orderData, setOrderData] = useState(null)
+  const [orderData, setOrderData] = useState(null);
 
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
@@ -102,9 +100,8 @@ function POSUserWise() {
 
   const handleOpen = (e) => {
     setOrderData(e);
-    setOpenModal(true)
-  }
-
+    setOpenModal(true);
+  };
 
   const [selectedUser, setSelectedUser] = useState(null);
 
@@ -142,7 +139,7 @@ function POSUserWise() {
   ];
 
   return (
-    <div className="p-4">
+    <div className="p-4 my-element">
       <div className="flex items-center justify-between pb-4">
         <h4 className="font-bold text-xl pb-3">
           POS user Wise report for {currentOrder}
@@ -152,10 +149,10 @@ function POSUserWise() {
           onClick={() => {
             if (currentOrder === "Online") {
               setCurrentOrder("Offline");
-              navigate("/reports/sale-reports/branch-wise/online");
+              navigate("/reports/sale-reports/pos-user-wise/online");
             } else {
               setCurrentOrder("Online");
-              navigate("/reports/sale-reports/branch-wise/offline");
+              navigate("/reports/sale-reports/pos-user-wise/offline");
             }
           }}
         >
@@ -166,7 +163,7 @@ function POSUserWise() {
       </div>
 
       <div className="py-4 flex items-center justify-between flex-wrap gap-8">
-      <div className="w-[20%]">
+        <div className="w-[20%]">
           <DatePicker
             // showIcon
             selected={fromDate}
@@ -238,8 +235,7 @@ function POSUserWise() {
       </div>
 
       <div className="py-3 border-b border-Secondary">
-      <div className="flex items-center justify-end">
-          
+        <div className="flex items-center justify-end">
           <MoreIcon chartId={"stack10"} />
         </div>
         {/* <h4 className="font-bold  pb-3">Last month's revenue of each branch</h4> */}
@@ -273,8 +269,11 @@ function POSUserWise() {
                 <td>{e?.order_bill}</td>
                 <td>{e?.branch_name}</td>
                 <td>
-                  <button className="bg-[#43766C] text-center px-4 py-2 text-Light rounded capitalize w-[120px]" onClick={() => handleOpen(e)}>
-                  {e?.is_ready == "1" ? "Ready" : "Processing"}
+                  <button
+                    className="bg-[#43766C] text-center px-4 py-2 text-Light rounded capitalize w-[120px]"
+                    onClick={() => handleOpen(e)}
+                  >
+                    {e?.is_ready == "1" ? "Ready" : "Processing"}
                   </button>
                 </td>
                 <td>{new Date(e?.created_at).toUTCString()}</td>

@@ -38,7 +38,7 @@ function ReceipeBuilder() {
   ];
 
   return (
-    <div className="bg-Light py-3 px-5 my-2">
+    <div className="bg-Light py-3 px-5 my-2 my-element">
       <h4 className="text-Primary text-xl capitalize font-bold">
         Add new Receipe
       </h4>
