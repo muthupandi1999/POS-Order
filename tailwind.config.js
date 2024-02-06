@@ -41,6 +41,9 @@ export default {
       fontFamily: {
         cairoRegular: ["cairo-regular", "sans-serif"],
       },
+      animation: {
+        slideInLeft: 'slideInLeft 1s',
+      },
       screens: {
         phone: { max: "425px" },
         minTablet: { max: "720px" },

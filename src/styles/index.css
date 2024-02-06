@@ -433,10 +433,207 @@ input[type="radio"]:checked::after {
 .headerRightSection img {
   animation: homepageImage 50s linear infinite;
 }
+
+/* homepage */
+/* Zoom In animation */
+
+@keyframes slideInLeft {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    transform: translateZ(0);
+  }
+}
+.slideInLeft {
+  animation-name: slideInLeft;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+    visibility: hidden;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+img.aboutImg {
+  animation: zoomIn 1s ease 0.1s;
+  visibility: visible;
+}
+
+.home-page-video {
+  position: relative;
+  height: 100%;
+  min-height: 500px;
+  background: linear-gradient(rgba(15, 23, 43, 0.1), rgba(15, 23, 43, 0.1)),
+    url("https://themewagon.github.io/restoran/img/video.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.btn-play-home {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  box-sizing: content-box;
+  display: block;
+  width: 32px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  padding: 18px 20px 18px 28px;
+}
+.home-page-video .btn-play-home::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  display: block;
+  width: 100px;
+  height: 100px;
+  background: #ff6969;
+  border-radius: 50%;
+  animation: pulseBorder 1500ms ease-out infinite;
+}
+.home-page-video .btn-play-home::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  display: block;
+  width: 100px;
+  height: 100px;
+  background: #ff6969;
+  border-radius: 50%;
+  transition: all 200ms;
+}
+
+.home-page-video span {
+  display: block;
+  position: relative;
+  z-index: 3;
+  width: 0;
+  height: 0;
+  border-left: 32px solid #454859;
+  border-top: 22px solid transparent;
+  border-bottom: 22px solid transparent;
+}
+
+@keyframes pulseBorder {
+  0% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.slider-container .slick-slide.slick-active.slick-center.slick-current div div {
+  border: none;
+  background: #ff6969;
+}
+
+.slider-container .slick-dots {
+  bottom: -40px;
+}
+/* .slider-container div .slick-list {
+  margin: 0 50px;
+  
+} */
+
+.slider-container .slick-dots li button::before {
+  width: 40px;
+  height: 40px;
+  font-size: 15px;
+}
+
+.slider-container .slick-dots li button:hover ::before {
+  color: #ff6969 !important;
+}
+
+.slider-container .slick-dots .slick-active button::before {
+  /* background-color:#FF6969 ;
+  border-color: #ff6969; */
+  color: #ff6969;
+}
+.slider-container
+  .slick-slide.slick-active.slick-center.slick-current
+  div
+  div
+  .quoteIcon {
+  color: white;
+}
+
+.slider-container
+  .slick-slide.slick-active.slick-center.slick-current
+  div
+  div
+  p {
+  color: white;
+}
+.slider-container
+  .slick-slide.slick-active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.slider-container
+  .slick-slide.slick-active.slick-center.slick-current
+  div
+  div
+  div
+  h5
+ {
+  color: white;
+}
+
+.slider-container
+  .slick-slide.slick-active.slick-center.slick-current
+  div
+  div
+  div
+  small
+ {
+  color: white;
+}
+
+
 /* Date picker z-index */
 
 .react-datepicker-popper {
   z-index: 10;
+}
+
+.form-floating .react-datepicker-wrapper {
+  width: 100%;
 }
 
 /* Navbar smooth flow */
