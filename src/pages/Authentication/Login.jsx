@@ -4,13 +4,10 @@ import LoginSlider from "../../components/sliders/LoginSlider";
 
 export default function Login() {
   return (
-    <div
-      className="phone:flex-col container m-auto flex  items-center h-[80vh]"
-      style={{ background: "linear-gradient(90deg, #fff 50%, #454859 50%)" }}
-    >
-      <div className="w-2/4 flex justify-center items-center minTablet: bg-fff">
-        <div className="w-1/2">
-          <div className="flex items-center justify-center pb-10">
+    <div className="flex-col container m-auto flex items-center  bg-whiteWithPrimaryBgGradientHr md:bg-whiteWithPrimaryBgGradient md:flex-row md:h-[80vh]">
+      <div className="w-[100%] flex justify-center items-center pb-4 md:w-[50%] ">
+        <div className="px-4  mb-4 md:w-3/4 lg:2/4 ">
+          <div className="flex items-center justify-center pb-5 md:pb-10">
             {/* <div className="w-11">
               <img
                 src="https://cdn-icons-png.flaticon.com/128/4964/4964370.png"
@@ -18,7 +15,7 @@ export default function Login() {
                 className="w-full h-full"
               />
             </div> */}
-            <h4 className="pl-1 text-3xl text-center font-extrabold text-black">
+            <h4 className="pl-1 text-xl text-center font-extrabold text-black md:text-3xl">
               •⊹٭𝚀𝚞𝚒𝚌𝚔𝚍𝚒𝚗𝚎٭⊹•
             </h4>
           </div>
@@ -78,7 +75,7 @@ export default function Login() {
           {/* <button className="black-button font-medium transition duration-700 ease-in-out uppercase w-20 h-9 mr-3">
             sign up
           </button> */}
-          <p className="text-center pt-6 text-sm text-Primary">
+          <p className="text-center pt-2  text-sm text-Primary md:pt-6">
             Not a member?{" "}
             <Link
               to={"/auth/signup"}
@@ -89,16 +86,11 @@ export default function Login() {
           </p>
         </div>
       </div>
-      <div className="w-2/4 flex justify-center items-center minTablet: bg-#3F72AF">
-        {/* <div className="w-2/4">
-          <img
-            className="w-full h-full"
-            src="https://khadyo.softtechdemo.com/assets/img/sign-in.png"
-            alt="signIn"
-          />
-        </div> */}
+      <div className="w-[100%] pt-5 flex justify-center items-center md:w-[50%] md:pt-0">
         <LoginSlider />
       </div>
     </div>
   );
 }
+
+// style={{ background: "linear-gradient(90deg, #fff 50%, #454859 50%)" }}

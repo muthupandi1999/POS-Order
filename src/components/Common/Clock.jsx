@@ -17,7 +17,7 @@ const Clock = () => {
   const formattedDay = currentTime.toDateString();
 
   return (
-    <div className="flex items-center text-Light px-5">
+    <div className=" items-center text-Light px-5 hidden md:flex">
       <AccessTimeIcon
         className="bg-Light rounded text-Primary mr-3 p-1"
         style={{ fontSize: "40px" }}

@@ -40,6 +40,7 @@ export default {
       },
       fontFamily: {
         cairoRegular: ["cairo-regular", "sans-serif"],
+        satisfy:["Satisfy", "cursive" ]
       },
       animation: {
         slideInLeft: 'slideInLeft 1s',
@@ -56,6 +57,12 @@ export default {
         // => @media (min-width: 1280px) { ... }
 
         desktop: "1281px",
+      },
+      backgroundImage:{
+        whiteWithPrimaryBgGradient:"linear-gradient(90deg, #fff 50%, #454859 50%)",
+        whiteWithPrimaryBgGradientHr:"linear-gradient(180deg, #fff 50%, #454859 50%)",
+        
+
       },
       borderWidth: {
         DEFAULT: "1px",

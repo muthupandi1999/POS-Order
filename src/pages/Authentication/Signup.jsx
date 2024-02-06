@@ -5,11 +5,11 @@ import LoginSlider from "../../components/sliders/LoginSlider";
 function Signup() {
   return (
     <div
-      className="container m-auto flex  items-center my-20 h-[80vh]"
-      style={{ background: "linear-gradient(90deg, #fff 50%, #454859 50%)" }}
+      className="container m-auto flex flex-col items-center bg-whiteWithPrimaryBgGradientHr md:bg-whiteWithPrimaryBgGradient md:flex-row md:h-[80vh]"
+      
     >
-      <div className="w-2/4 flex justify-center items-center">
-        <div className="w-1/2">
+      <div className="w-[100%] flex justify-center items-center pb-4 md:w-[50%] ">
+        <div className="px-4  mb-4 md:w-3/4 lg:2/4 ">
           <div className="flex items-center justify-center pb-10">
             {/* <div className="w-11">
               <img
@@ -106,7 +106,7 @@ function Signup() {
           </p>
         </div>
       </div>
-      <div className="w-2/4 flex justify-center items-center">
+      <div className="w-2/4 pt-[80px] flex justify-center items-center md:pt-0">
         {/* <div className="w-2/4">
           <img
             className="w-full h-full"

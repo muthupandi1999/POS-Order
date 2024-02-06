@@ -12,6 +12,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -51,8 +52,70 @@ export default function Home() {
   const [activepopularItems, setActivePopularItems] = useState("Breakfast");
   const [filterItem, setFilterItem] = useState([0, 10]);
   const [startBookDate, setStartBookDate] = useState();
+  const [startBookTime, setStartBookTime] = useState();
 
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
+
+  // Generate time slots every 30 minutes from 9:00 AM to 9:00 PM
+  const generateTimeSlots = () => {
+    const slots = [];
+    const startTime = 9 * 60; // 9:00 AM in minutes
+    const endTime = 23 * 60; // 11:00 PM in minutes
+    const interval = 30; // 30 minutes interval
+  
+    for (let i = startTime; i < endTime; i += interval) {
+      const hour = Math.floor(i / 60);
+      const minute = i % 60;
+      let ampm = 'AM';
+      let displayHour = hour;
+      
+      if (hour >= 12) {
+        ampm = 'PM';
+        if (hour > 12) {
+          displayHour -= 12;
+        }
+      }
+      
+      if (hour === 0) {
+        displayHour = 12;
+      }
+      
+      const timeString = `${displayHour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")} ${ampm}`;
+      slots.push({ value: timeString, label: timeString });
+    }
+  
+    return slots;
+  };
+  
+  const bookedTimeSlots = ["09:30 AM", "12:00 PM", "03:30 PM"];
+
+  // Function to check if a time slot is disabled (booked)
+  const isDisabledTimeSlot = (timeSlot) => {
+    return bookedTimeSlots.includes(timeSlot.value);
+  };
+
+  // Filter out disabled time slots
+  const filteredTimeSlots = generateTimeSlots()
+
+  const getOptionLabel = (option) => {
+    const isDisabled = isDisabledTimeSlot(option);
+    return (
+      <button
+        className={`px-2 m-1 ${isDisabled ? 'opacity-[0.2] cursor-not-allowed' : 'text-Primary'} `}
+        disabled={isDisabled}
+        onClick={() => !isDisabled && setSelectedTimeSlot(option)}
+      >
+        {option.label}
+      </button>
+    );
+  };
+
+  const handleChangeTimeSlot = (selectedOption) => {
+    setSelectedTimeSlot(selectedOption);
+  };
   const [selectedPeoples, setSelectedPeoples] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleChangePeoples = (e) => {
     setSelectedPeoples(e);
@@ -69,6 +132,26 @@ export default function Home() {
     slidesToShow: 3,
     speed: 1000,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: true,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          autoplay: true,
+          infinite: true,
+        },
+      },
+    ],
   };
 
   const peoples = [
@@ -97,33 +180,41 @@ export default function Home() {
           background:
             "linear-gradient(rgba(69, 72, 89, .9), rgba(69, 72, 89, .9)), url(https://themewagon.github.io/restoran/img/bg-hero.jpg)",
         }}
-        className="bg-center bg-no-repeat bg-cover flex justify-between items-center py-10 px-10"
+        className="bg-center bg-no-repeat bg-cover flex flex-col-reverse gap-4 justify-between items-center px-4 py-5 md:flex-row md:py-10 md:px-10"
       >
         <div>
-          <h1
-            className="slideInLeft text-Light text-5xl font-bold w-[50%] pb-4"
-            style={{ lineHeight: "60px" }}
+          <h4
+            style={{ fontFamily: "Caveat, cursive" }}
+            className="text-Light capitalize font-semibold pb-3 text-2xl md:text-4xl "
           >
-            Enjoy Our Delicious Foods
+            on-the-go goodness
+          </h4>
+          <h1
+            className="slideInLeft text-Light  uppercase font-bold text-2xl w-[80%] pb-4 md:text-[60px] md:leading-[70px]"
+            // style={{ lineHeight: "70px" }}
+          >
+            Quick bites, big flavors
           </h1>
-          <p className="slideInLeft w-[70%] text-Light font-semibold pb-8 ">
-            Discover culinary bliss at QuickDine. Indulge in our delicious food,
-            a symphony of flavors awaits. Elevate your dining experience with us
-            today!"
+          <p className="slideInLeft  text-Light  text-sm font-semibold pb-8 md:text-xl md:w-[70%] md:tracking-[1px]">
+            Don't wait for food, let food wait for you!
           </p>
-          <button className=" btn bg-Pink py-3 w-[150px] border-0 text-Light uppercase hover:bg-Pink">
-            Book a table
+          <button
+            className=" btn bg-Pink py-4 w-[200px] border-0 text-Light uppercase hover:bg-Pink"
+            onClick={() => navigate("/test")}
+          >
+            Order Here
           </button>
         </div>
         <div className="headerRightSection">
           <img
+            className="w-[78%] m-auto sm:w-[50%]"
             src="https://themewagon.github.io/restoran/img/hero.png"
             alt=""
           />
         </div>
       </div>
-      <div className="py-10 px-5 bg-Light flex flex-wrap justify-between items-center  my-element">
-        <div className="group bg-white max-w-[300px] p-4 rounded hover:bg-Pink transition-colors duration-500 ease-in-out">
+      <div className="py-5 px-5 bg-Light flex flex-wrap gap-5 justify-between items-center  my-element md:py-10 md:gap-0">
+        <div className="group bg-white max-w-[300px] m-auto p-4 rounded hover:bg-Pink transition-colors duration-500 ease-in-out">
           <PeopleAltIcon
             className="my-3 text-Pink group-hover:text-Light"
             sx={{ fontSize: "50px" }}
@@ -140,7 +231,7 @@ export default function Home() {
             diam
           </p>
         </div>
-        <div className="group bg-white max-w-[300px] p-4 rounded transition-colors duration-500 ease-in-out hover:bg-Pink">
+        <div className="group bg-white max-w-[300px] m-auto p-4 rounded transition-colors duration-500 ease-in-out hover:bg-Pink">
           <RestaurantIcon
             className="my-3 text-Pink group-hover:text-Light"
             sx={{ fontSize: "50px" }}
@@ -157,7 +248,7 @@ export default function Home() {
             diam
           </p>
         </div>
-        <div className="group bg-white max-w-[300px] p-4 rounded transition-colors duration-500 ease-in-out hover:bg-Pink">
+        <div className="group bg-white max-w-[300px] m-auto p-4 rounded transition-colors duration-500 ease-in-out hover:bg-Pink">
           <ShoppingCartIcon
             className="my-3 text-Pink group-hover:text-Light"
             sx={{ fontSize: "50px" }}
@@ -174,7 +265,7 @@ export default function Home() {
             diam
           </p>
         </div>
-        <div className="group bg-white max-w-[300px] p-4 rounded transition-colors duration-500 ease-in-out hover:bg-Pink">
+        <div className="group bg-white max-w-[300px] m-auto p-4 rounded transition-colors duration-500 ease-in-out hover:bg-Pink">
           <HeadsetMicIcon
             className="my-3 text-Pink group-hover:text-Light"
             sx={{ fontSize: "50px" }}
@@ -192,9 +283,9 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <div className="pb-5 bg-Light px-5 flex flex-wrap items-center w-[100%]">
-        <div className="w-[48%] flex flex-col gap-4 ">
-          <div className="flex items-end gap-4">
+      <div className="pb-5 bg-Light px-5 flex flex-col-reverse flex-wrap items-center gap-4 w-[100%] md:flex-row md:gap-0">
+        <div className="w-[100%] flex flex-col gap-4 md:w-[48%] ">
+          <div className="flex flex-wrap items-end gap-4">
             <div className="w-[300px] h-[300px]">
               <img
                 className="aboutImg w-[100%] h-[100%] zoomIn"
@@ -202,7 +293,7 @@ export default function Home() {
                 alt=""
               />
             </div>
-            <div className="mt-[25%] w-[225px] h-[225px]">
+            <div className=" m-auto w-[225px] h-[225px] md:mt-[25%] md:m-[unset]">
               <img
                 className="aboutImg w-[100%] h-[100%]"
                 src="https://themewagon.github.io/restoran/img/about-2.jpg"
@@ -228,11 +319,11 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="w-[49%]">
+        <div className="md:w-[49%]">
           <div className="relative flex items-center gap-2">
             <h4
               className="text-xl text-Pink capitalize font-semibold"
-              style={{ fontFamily: "'Satisfy', cursive" }}
+              style={{ fontFamily: "Caveat, cursive" }}
             >
               about us
             </h4>
@@ -241,7 +332,7 @@ export default function Home() {
           <h2 className="text-4xl font-bold pb-6">
             Welcome to{" "}
             <RestaurantIcon
-              className="my-3 text-Pink"
+              className="my-3 text-Pink text-2xl md:text-4xl"
               sx={{ fontSize: "50px" }}
             />{" "}
             QuickDine
@@ -288,7 +379,7 @@ export default function Home() {
           <p className="h-0.5 w-12 text-Primary bg-Pink"></p>
           <h4
             className="text-Pink font-semibold text-xl capitalize"
-            style={{ fontFamily: "'Satisfy', cursive" }}
+            style={{ fontFamily: "Caveat, cursive" }}
           >
             food menu
           </h4>
@@ -299,7 +390,7 @@ export default function Home() {
         </h2>
         <div className="flex flex-wrap justify-center items-center gap-4 border-b border-Secondary w-fit m-auto pt-8">
           <div
-            className={`w-[145px] flex items-center gap-2 cursor-pointer transition-colors duration-300 ${
+            className={`w-[100%] flex items-center justify-center gap-2 cursor-pointer transition-colors duration-300 md:w-[145px] ${
               activepopularItems === "Breakfast"
                 ? "border-b-2 border-Pink"
                 : "border-b-2 border-transparent"
@@ -316,7 +407,7 @@ export default function Home() {
             </div>
           </div>
           <div
-            className={`w-[145px] flex items-center gap-2 cursor-pointer transition-colors duration-300 ${
+            className={`w-[100%] flex items-center justify-center gap-2 cursor-pointer transition-colors duration-300 md:w-[145px] ${
               activepopularItems === "Lunch"
                 ? "border-b-2 border-Pink"
                 : "border-b-2 border-transparent"
@@ -333,7 +424,7 @@ export default function Home() {
             </div>
           </div>
           <div
-            className={`w-[145px] flex items-center gap-2 cursor-pointer transition-colors duration-300 ${
+            className={`w-[100%] flex items-center justify-center gap-2 cursor-pointer transition-colors duration-300 md:w-[145px] ${
               activepopularItems === "Dinner"
                 ? "border-b-2 border-Pink"
                 : "border-b-2 border-transparent"
@@ -351,8 +442,8 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-wrap justify-between gap-4 w-[100%] py-10">
-          {foodItemListDatas?.slice(filterItem[0], filterItem[1])?.map((e) => (
-            <div className="flex items-center gap-5 w-[49%] m-auto">
+          {foodItemListDatas?.slice(filterItem[0], filterItem[1])?.map((e, index) => (
+            <div key={index} className="flex items-center gap-5  m-auto md:w-[49%]">
               <div className="w-[80px] h-[80px] object-cover">
                 <img
                   src={e?.image}
@@ -376,8 +467,8 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div className="flex">
-        <div className="home-page-video w-[50%]">
+      <div className="flex flex-col-reverse md:flex-row">
+        <div className="home-page-video w-[100%] md:w-[50%]">
           <button
             type="button"
             className="btn-play-home"
@@ -388,11 +479,11 @@ export default function Home() {
             <span></span>
           </button>
         </div>
-        <div className="bg-Primary p-[2.9rem] w-[50%]">
+        <div className="bg-Primary p-[1.9rem] w-[100%] md:w-[50%] md:p-[2.9rem]">
           <div className="flex justify-start items-center gap-1 pb-3">
             <h4
               className="text-Pink font-semibold text-xl capitalize"
-              style={{ fontFamily: "'Satisfy', cursive" }}
+              style={{ fontFamily: "Caveat, cursive" }}
             >
               reservation
             </h4>
@@ -401,25 +492,51 @@ export default function Home() {
           <h2 className="text-Light text-3xl font-semibold capitalize">
             Book a table online
           </h2>
-          <div className="w-[100%] flex flex-wrap gap-3 pt-5">
-            <div className="form-floating w-[48%] relative">
+          <div className="w-[100%] flex flex-wrap justify-between gap-3 pt-5">
+            <div className="form-floating relative w-[100%] md:w-[48%] ">
               <input
                 type="text"
-                className="form-control px-[12px] w-[100%] py-[16px] text-[16px] font-medium border border-Secondary rounded-sm transition-colors transition"
+                className="form-control px-[12px] w-[100%] py-[5px] text-[16px] font-medium border border-Secondary rounded-sm transition-colors focus:outline-none"
                 id="name"
                 placeholder="Your Name"
               />
             </div>
-            <div className="form-floating w-[48%] relative">
+            <div className="form-floating relative w-[100%] md:w-[48%] ">
               <input
                 type="email"
-                className="form-control px-[12px]  w-[100%]  py-[16px]  text-[16px] font-medium border border-Secondary rounded-sm transition-colors transition"
+                className="form-control px-[12px]  w-[100%]  py-[5px]  text-[16px] font-medium border border-Secondary rounded-sm transition-colors focus:outline-none"
                 id="email"
                 placeholder="Your Email"
               />
             </div>
             <div
-              className="form-floating relative pt-1 w-[48%]"
+              className="form-floating relative pt-1 w-[100%] md:w-[48%]"
+              style={{
+                // "& .react-datepicker-wrapper": {
+                //   width: "100%",
+                // },
+              }}
+            >
+              <DatePicker
+                selected={startBookDate}
+                onChange={(date) => setStartBookDate(date)}
+                placeholderText={"Select Date"}
+                className="px-[12px] py-[5px] border w-[100%] border-Secondary rounded focus:outline-none"
+              />
+            </div>
+            <div className="form-floating pt-1 relative w-[100%] md:w-[48%]">
+              <Select
+                className="w-[100%]"
+                placeholder="Select a time slot"
+                isClearable={true}
+                value={selectedTimeSlot}
+                options={filteredTimeSlots}
+                onChange={handleChangeTimeSlot}
+                getOptionLabel={getOptionLabel}
+              />
+            </div>
+            {/* <div
+              className="form-floating relative pt-1 w-[100%] md:w-[48%]"
               style={{
                 "& .react-datepicker-wrapper": {
                   width: "100%",
@@ -427,15 +544,18 @@ export default function Home() {
               }}
             >
               <DatePicker
-                // showIcon
-                showTimeInput
-                selected={startBookDate}
-                onChange={(date) => setStartBookDate(date)}
-                placeholderText={"Date & Time"}
-                className="px-[12px] py-[16px] border w-[100%] border-Secondary rounded focus:outline-none"
+                 showTimeSelect
+                 showTimeSelectOnly
+                 timeIntervals={15}
+                 timeCaption="Time"
+                 dateFormat="h:mm aa"
+                selected={startBookTime}
+                onChange={(date) => setStartBookTime(date)}
+                placeholderText={"Select Time"}
+                className="px-[12px] py-[5px] border w-[100%] border-Secondary rounded focus:outline-none"
               />
-            </div>
-            <div className="form-floating pt-1  w-[48%] relative">
+            </div> */}
+            <div className="form-floating pt-1 relative w-[100%] md:w-[100%] ">
               <Select
                 className="w-[100%]"
                 styles={{
@@ -445,7 +565,7 @@ export default function Home() {
                     padding: "16px 12px",
                   },
                 }}
-                placeholder="Select a unit"
+                placeholder="Select a people count"
                 isClearable={true}
                 value={selectedPeoples}
                 options={peoples}
@@ -455,11 +575,11 @@ export default function Home() {
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      fontSize: "12px",
+                      fontSize: "14px",
+                      fontWeight: 500,
                     }}
                   >
-                    {/* {e.icon} */}
-                    <span style={{ marginLeft: 5, fontSize: "13px" }}>
+                    <span style={{ marginLeft: 5, fontSize: "16px" }}>
                       {e.text}
                     </span>
                   </div>
@@ -472,7 +592,7 @@ export default function Home() {
                 rows="3"
                 cols="80"
                 type="text-area"
-                className="form-control resize-none rounded-sm w-[100%] px-[12px] py-[16px]  text-[16px] font-medium border border-Secondary rounded-sm transition-colors transition"
+                className="form-control resize-none rounded-sm w-[100%] px-[12px] py-[5px]  text-[16px] font-medium border border-Secondary  transition-colors focus:outline-none"
                 id="specialRequest"
                 placeholder="Special Request"
               ></textarea>
@@ -498,38 +618,11 @@ export default function Home() {
         <h4 className="font-semibold text-4xl capitalize text-center pb-6">
           our master chef's
         </h4>
-        {/* <div className=" flex flex-wrap justify-evenly px-5 py-5">
-          {homepageChefCard?.map((e) => (
-            <div className="bg-white max-w-[300px] text-center rounded overflow-hidden group">
-              <div className="rounded-full overflow-hidden m-4  transition-transform">
-                <img
-                  className="transition-all duration-500 group-hover:scale-110"
-                  src={e?.image}
-                  alt=""
-                />
-              </div>
-              <h5 className="font-semibold">{e?.name}</h5>
-              <small>{e?.designation}</small>
-
-              <div className="flex justify-center mt-3 gap-3  transition-height gap-1 h-[0px] group-hover:h-[40px]">
-                <a className="p-2bg-Pink text-Light p-2 bg-Pink rounded-t-full" href="">
-                  <TwitterIcon />
-                </a>
-                <a className="p-2bg-Pink text-Light p-2 bg-Pink rounded-t-full" href="">
-                  <TwitterIcon />
-                </a>
-                <a className="p-2bg-Pink text-Light p-2 bg-Pink rounded-t-full" href="">
-                  <TwitterIcon />
-                </a>
-              </div>
-            </div>
-          ))}
-        </div> */}
-        <div className=" flex flex-wrap justify-evenly px-5 py-5 h-[500px]">
+        <div className=" flex flex-wrap gap-12 justify-evenly px-5 py-5 min-h-[500px]">
           {homepageChefCard?.map((e, index) => (
             <div
               key={index}
-              className="bg-white w-[300px] h-[360px] overflow-hidden pb-10 transition-all ease-in-out duration-500 text-center rounded  group hover:h-[405px] group hover:overflow-visible"
+              className="bg-white w-[300px] h-[387px]  pb-10 transition-all ease-in-out duration-500 text-center rounded  group hover:h-[405px] group hover:overflow-visible md:overflow-hidden md:h-[360px] md:w-[300px]"
               style={{ boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px" }}
             >
               <div className="rounded-full overflow-hidden m-4  transition-transform">
@@ -602,36 +695,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-    // <div className="flex flex-col gap-y-4">
-    //   <div className="flex items-center justify-center gap-y-4 flex-col mt-16">
-    //     {/* <h2 className="text-3xl text-white font-semibold">
-    //       <Translate text="Localization Setup Integrated" />
-    //     </h2>
-    //     <Select
-    //       defaultValue={localStorage.getItem("locale") ?? "en"}
-    //       className="h-16 w-20"
-    //       style={{
-    //         width: "200px",
-    //       }}
-    //       options={languages}
-    //     /> */}
-    //   </div>
-
-    //   <h2 className="text-3xl text-center text-white font-semibold mt-20">
-    //     {/* <Translate text="Libraries used in this stater" /> */}
-    //   </h2>
-    //   <div className="grid grid-cols-5 items-center justify-center px-16 gap-4 text-LightGray">
-    //     <Card title="Ant Design" />
-    //     <Card title="React Intl" />
-    //     <Card title="React Query" />
-    //     <Card title="Axios" />
-    //     <Card title="Vite-Plugin-SVGR" />
-    //     <Card title="React-Router-DOM" />
-    //     <Card title="Lazy Loading" />
-    //     <Card title="Dayjs" />
-    //     <Card title="TailwindCSS" />
-    //     <Card title="Sass" />
-    //   </div>
-    // </div>
   );
 }
