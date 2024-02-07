@@ -599,19 +599,17 @@ img.aboutImg {
   p {
   color: white;
 }
-.slider-container
-  .slick-slide.slick-active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.slider-container .slick-slide.slick-active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .slider-container
   .slick-slide.slick-active.slick-center.slick-current
   div
   div
   div
-  h5
- {
+  h5 {
   color: white;
 }
 
@@ -620,11 +618,9 @@ img.aboutImg {
   div
   div
   div
-  small
- {
+  small {
   color: white;
 }
-
 
 /* Date picker z-index */
 
@@ -679,3 +675,55 @@ div.orderList {
   grid-gap: 4rem;
   display: grid;
 }
+
+/* Booking tables */
+
+.calendar-container {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent button wrapping */
+}
+
+/* .days-of-week {
+  display: flex;
+  flex-direction: row;
+}
+
+.day-of-week {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+} */
+
+/* .dates {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+} */
+
+.dates::-webkit-scrollbar {
+  /* scrollbar-width: 1px !important; */
+  width: 1px;
+  height: 4px;
+  background: #ff6969;
+}
+
+.dates::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgba(0,0,0,0);
+}
+
+.dates::-webkit-scrollbar-thumb {
+  background: rgba(255, 33, 33, 0.5);
+  border-radius: 5px;
+}
+
+/* .date-button {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+} */
+
+/* .date-button:hover {
+  background-color: #f0f0f0;
+} */

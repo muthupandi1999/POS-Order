@@ -7,6 +7,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CoffeeIcon from "@mui/icons-material/Coffee";
 import FlagIcon from "@mui/icons-material/Flag";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import TableBarIcon from '@mui/icons-material/TableBar';
 
 const dashboardArray = [
   {
@@ -58,12 +59,12 @@ const dashboardArray = [
     router: "/reports/sale-reports/dashboard",
   },
   {
-    title: "kitchen",
-    iconText: "kitchen",
-    image: "https://khadyo.softtechdemo.com/assets/img/product-img-9.jpg",
+    title: "bookings",
+    iconText: "bookings",
+    image: "https://img.freepik.com/free-vector/man-booking-appointment-smartphone_23-2148562877.jpg?w=1380&t=st=1707282249~exp=1707282849~hmac=ba307c7cabc061b71103adcf72309f92e37029e14ecb7b2ca3853e784972431c",
     color: "#f4bd0e",
-    icon: <CoffeeIcon className="text-[#f4bd0e] !w-4 mt-[-2px]" />,
-    router: "/kitchen/pos",
+    icon: <TableBarIcon className="text-[#f4bd0e] !w-4 mt-[-2px]" />,
+    router: "/bookings",
   },
   {
     title: "manage",

@@ -103,7 +103,7 @@ function BillPay({ billPayModal, setBillPayModal, billData }) {
   //     return option.data.text.toLowerCase().includes(inputValue.toLowerCase());
   //   };
   return (
-    <DynamicModal open={billPayModal} onClose={handleInputClose} width={800}>
+    <DynamicModal open={billPayModal} onClose={handleInputClose} maxWidth={800}>
       <div className="p-2">
         <div className="py-3 flex justify-between items-center">
           <h4 className="text-xl capitalize font-semibold text-Primary">

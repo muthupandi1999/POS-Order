@@ -5,6 +5,50 @@ import RestaurantIcon from "@mui/icons-material/Restaurant";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import SmsIcon from "@mui/icons-material/Sms";
 import SettingsIcon from "@mui/icons-material/Settings";
+
+export const bookedTimeSlots = ["09:00 AM", "12:00 PM", "03:00 PM"];
+export const bookedTimeSlotsForVip = ["10:00 AM", "1:00 PM", "08:00 PM"];
+
+export const peoples = [
+  {
+    value: 1,
+    text: "1Person",
+  },
+  {
+    value: 2,
+    text: "2Person",
+  },
+  {
+    value: 3,
+    text: "3Person",
+  },
+  {
+    value: 4,
+    text: "4Person",
+  },
+  {
+    value: 5,
+    text: "5Person",
+  },
+];
+
+export const monthNames = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "June",
+  "July",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+// Array of days of the week
+export const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 export const Categories = [
   {
     id: 1,
@@ -35468,7 +35512,8 @@ export const foodItemListDatas = [
     id: 1,
     name: "Classic Pancakes",
     description: "Fluffy pancakes served with maple syrup.",
-    image: "https://img.freepik.com/free-photo/top-view-delicious-pancakes-pile_140725-114719.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/top-view-delicious-pancakes-pile_140725-114719.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "8.99",
     category: "Breakfast",
   },
@@ -35476,7 +35521,8 @@ export const foodItemListDatas = [
     id: 2,
     name: "Vegetarian Omelette",
     description: "Delicious omelette with assorted vegetables.",
-    image: "https://img.freepik.com/free-photo/high-angle-breakfast-omelette-pan-with-tomatoes-herbs_23-2148417366.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/high-angle-breakfast-omelette-pan-with-tomatoes-herbs_23-2148417366.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "10.49",
     category: "Breakfast",
   },
@@ -35485,7 +35531,8 @@ export const foodItemListDatas = [
     name: "French Toast",
     description:
       "Sliced bread soaked in a mixture of eggs and milk, then pan-fried.",
-    image: "https://img.freepik.com/free-photo/delicious-peanut-butter-toast_144627-12491.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/delicious-peanut-butter-toast_144627-12491.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "7.99",
     category: "Breakfast",
   },
@@ -35493,7 +35540,8 @@ export const foodItemListDatas = [
     id: 4,
     name: "Eggs Benedict",
     description: "Poached eggs on English muffins with hollandaise sauce.",
-    image: "https://img.freepik.com/free-photo/eggs-benedict-with-ham-sauce-top_74190-757.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/eggs-benedict-with-ham-sauce-top_74190-757.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "12.99",
     category: "Breakfast",
   },
@@ -35501,7 +35549,8 @@ export const foodItemListDatas = [
     id: 5,
     name: "Breakfast Burrito",
     description: "Scrambled eggs, bacon, cheese, and vegetables in a tortilla.",
-    image: "https://img.freepik.com/free-photo/front-view-delicious-shaurma-sliced-pita-sandwich-with-french-fries-dark-surface-food-burger-bread-grill-meal-snack-toast_140725-153842.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/front-view-delicious-shaurma-sliced-pita-sandwich-with-french-fries-dark-surface-food-burger-bread-grill-meal-snack-toast_140725-153842.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "9.99",
     category: "Breakfast",
   },
@@ -35509,7 +35558,8 @@ export const foodItemListDatas = [
     id: 6,
     name: "Blueberry Muffins",
     description: "Soft and moist muffins with blueberries.",
-    image: "https://img.freepik.com/free-photo/fresh-homemade-delicious-blueberry-muffins_114579-43325.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/fresh-homemade-delicious-blueberry-muffins_114579-43325.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "6.49",
     category: "Breakfast",
   },
@@ -35517,7 +35567,8 @@ export const foodItemListDatas = [
     id: 7,
     name: "Greek Yogurt Parfait",
     description: "Layers of Greek yogurt, granola, and fresh berries.",
-    image: "https://img.freepik.com/free-photo/front-view-granola-with-fruits-nuts-glass-with-strawberries-pink-bowl-jam_141793-6427.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/front-view-granola-with-fruits-nuts-glass-with-strawberries-pink-bowl-jam_141793-6427.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "8.99",
     category: "Breakfast",
   },
@@ -35525,7 +35576,8 @@ export const foodItemListDatas = [
     id: 8,
     name: "Belgian Waffles",
     description: "Crispy Belgian waffles served with whipped cream and fruits.",
-    image: "https://img.freepik.com/free-photo/front-view-fruit-dessert-pancakes-with-chocolate-sliced-red-strawberries-bananas-inside-white-plate-grey_140725-13139.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/front-view-fruit-dessert-pancakes-with-chocolate-sliced-red-strawberries-bananas-inside-white-plate-grey_140725-13139.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "11.49",
     category: "Breakfast",
   },
@@ -35533,7 +35585,8 @@ export const foodItemListDatas = [
     id: 9,
     name: "Avocado Toast",
     description: "Sliced avocado on toasted bread with seasoning.",
-    image: "https://img.freepik.com/free-photo/avocado-open-toast-with-avocado-slices-lemon-flax-seeds-sesame-seeds-black-bread-slices-top-view_2831-797.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/avocado-open-toast-with-avocado-slices-lemon-flax-seeds-sesame-seeds-black-bread-slices-top-view_2831-797.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "9.99",
     category: "Breakfast",
   },
@@ -35541,7 +35594,8 @@ export const foodItemListDatas = [
     id: 10,
     name: "Fruit Smoothie Bowl",
     description: "A refreshing bowl with blended fruit smoothie and toppings.",
-    image: "https://img.freepik.com/free-photo/high-angle-closeup-shot-white-bowl-with-strawberry-banana-slices_181624-39472.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/high-angle-closeup-shot-white-bowl-with-strawberry-banana-slices_181624-39472.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "10.99",
     category: "Breakfast",
   },
@@ -35549,7 +35603,8 @@ export const foodItemListDatas = [
     id: 11,
     name: "Classic Cheeseburger",
     description: "Juicy beef patty topped with cheese, lettuce, and tomato.",
-    image: "https://img.freepik.com/free-photo/front-view-cheesy-meat-burger-with-pickles-greens-tomatoes-wooden-desk_140725-20092.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/front-view-cheesy-meat-burger-with-pickles-greens-tomatoes-wooden-desk_140725-20092.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "7.99",
     category: "Fastfood",
   },
@@ -35557,7 +35612,8 @@ export const foodItemListDatas = [
     id: 12,
     name: "Crispy Chicken Nuggets",
     description: "Golden and crispy chicken nuggets with dipping sauce.",
-    image: "https://img.freepik.com/free-photo/top-view-delicious-fried-chicken-with-french-fries_140725-114920.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/top-view-delicious-fried-chicken-with-french-fries_140725-114920.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "6.49",
     category: "Fastfood",
   },
@@ -35565,15 +35621,18 @@ export const foodItemListDatas = [
     id: 13,
     name: "Pepperoni Pizza Slice",
     description: "Classic pepperoni pizza slice with gooey cheese.",
-    image: "https://img.freepik.com/free-photo/still-life-fast-food-dishes_23-2149187953.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/still-life-fast-food-dishes_23-2149187953.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "4.99",
     category: "Fastfood",
   },
   {
     id: 14,
     name: "Loaded Nachos",
-    description: "Tortilla chips topped with cheese, salsa, guacamole, and sour cream.",
-    image: "https://img.freepik.com/free-photo/mexican-nachos-tortilla-chips-with-black-beans-guacamole-tomato-jalapeno-wooden-table_123827-20358.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "Tortilla chips topped with cheese, salsa, guacamole, and sour cream.",
+    image:
+      "https://img.freepik.com/free-photo/mexican-nachos-tortilla-chips-with-black-beans-guacamole-tomato-jalapeno-wooden-table_123827-20358.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "8.99",
     category: "Fastfood",
   },
@@ -35581,7 +35640,8 @@ export const foodItemListDatas = [
     id: 15,
     name: "Spicy Chicken Sandwich",
     description: "Spicy fried chicken breast in a bun with lettuce and mayo.",
-    image: "https://img.freepik.com/free-photo/front-view-tasty-ham-sandwiches-with-french-fries-dark-surface_179666-34644.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/front-view-tasty-ham-sandwiches-with-french-fries-dark-surface_179666-34644.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "9.49",
     category: "Fastfood",
   },
@@ -35589,7 +35649,8 @@ export const foodItemListDatas = [
     id: 16,
     name: "Vegetarian Quesadilla",
     description: "Grilled tortilla filled with cheese, veggies, and salsa.",
-    image: "https://img.freepik.com/premium-photo/latin-american-fried-empanadas-with-avocado-stone-table_156140-6626.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/premium-photo/latin-american-fried-empanadas-with-avocado-stone-table_156140-6626.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "7.99",
     category: "Fastfood",
   },
@@ -35597,7 +35658,8 @@ export const foodItemListDatas = [
     id: 17,
     name: "BBQ Bacon Burger",
     description: "Beef patty topped with crispy bacon and smoky BBQ sauce.",
-    image: "https://img.freepik.com/free-photo/grilled-gourmet-cheeseburger-homemade-with-fresh-meat-tomato-onion-generated-by-artificial-intelligence_25030-63182.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/grilled-gourmet-cheeseburger-homemade-with-fresh-meat-tomato-onion-generated-by-artificial-intelligence_25030-63182.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "10.99",
     category: "Fastfood",
   },
@@ -35605,7 +35667,8 @@ export const foodItemListDatas = [
     id: 18,
     name: "Crunchy Fish Tacos",
     description: "Crispy fish fillets in soft tortillas with slaw and sauce.",
-    image: "https://img.freepik.com/free-photo/mexican-tacos-with-meat-pork-carnitas-street-tacos-yellow-corn-tortilla-with-onion-cilantro-cabbage-red-cabbage-top-view-flat-lay_1150-44883.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/mexican-tacos-with-meat-pork-carnitas-street-tacos-yellow-corn-tortilla-with-onion-cilantro-cabbage-red-cabbage-top-view-flat-lay_1150-44883.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "11.99",
     category: "Fastfood",
   },
@@ -35613,7 +35676,8 @@ export const foodItemListDatas = [
     id: 19,
     name: "Chili Cheese Fries",
     description: "French fries smothered in chili and melted cheese.",
-    image: "https://img.freepik.com/free-photo/side-view-french-fries-with-melted-cheese-mayo-ketchup-table_141793-4898.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/side-view-french-fries-with-melted-cheese-mayo-ketchup-table_141793-4898.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "6.99",
     category: "Fastfood",
   },
@@ -35621,87 +35685,108 @@ export const foodItemListDatas = [
     id: 20,
     name: "Mushroom Swiss Burger",
     description: "Beef patty topped with sautéed mushrooms and Swiss cheese.",
-    image: "https://img.freepik.com/free-photo/front-view-burger-with-bacon-slate-board_23-2148784471.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/front-view-burger-with-bacon-slate-board_23-2148784471.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "9.99",
     category: "Fastfood",
   },
   {
     id: 21,
     name: "Classic Chicken Noodle Soup",
-    description: "Homemade chicken noodle soup with vegetables and hearty noodles.",
-    image: "https://img.freepik.com/free-photo/flat-lay-noodle-soup-winter-meals_23-2148717414.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "Homemade chicken noodle soup with vegetables and hearty noodles.",
+    image:
+      "https://img.freepik.com/free-photo/flat-lay-noodle-soup-winter-meals_23-2148717414.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "5.99",
     category: "Soups",
   },
   {
     id: 22,
     name: "Tomato Basil Bisque",
-    description: "Creamy tomato soup infused with fresh basil for a delightful flavor.",
-    image: "https://img.freepik.com/free-photo/tomato-soup-with-basil-bowl_114579-11507.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "Creamy tomato soup infused with fresh basil for a delightful flavor.",
+    image:
+      "https://img.freepik.com/free-photo/tomato-soup-with-basil-bowl_114579-11507.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "6.49",
     category: "Soups",
   },
   {
     id: 23,
     name: "Spicy Lentil Stew",
-    description: "A hearty and spicy stew made with lentils, vegetables, and bold spices.",
-    image: "https://img.freepik.com/free-photo/top-view-delicious-soup-inside-plate-dark-surface_140725-44024.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "A hearty and spicy stew made with lentils, vegetables, and bold spices.",
+    image:
+      "https://img.freepik.com/free-photo/top-view-delicious-soup-inside-plate-dark-surface_140725-44024.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "7.99",
     category: "Soups",
   },
   {
     id: 24,
     name: "Creamy Broccoli Cheddar Soup",
-    description: "Rich and creamy soup with tender broccoli florets and melted cheddar cheese.",
-    image: "https://img.freepik.com/free-photo/chicken-broth-vegetable-soup-disposable-cup-bowl-served-with-green-vegetables_114579-905.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "Rich and creamy soup with tender broccoli florets and melted cheddar cheese.",
+    image:
+      "https://img.freepik.com/free-photo/chicken-broth-vegetable-soup-disposable-cup-bowl-served-with-green-vegetables_114579-905.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "8.49",
     category: "Soups",
   },
   {
     id: 25,
     name: "Miso Ramen Bowl",
-    description: "Japanese-style ramen with savory miso broth, noodles, and assorted toppings.",
-    image: "https://img.freepik.com/free-photo/high-angle-delicious-ramen-bowl_23-2148678752.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "Japanese-style ramen with savory miso broth, noodles, and assorted toppings.",
+    image:
+      "https://img.freepik.com/free-photo/high-angle-delicious-ramen-bowl_23-2148678752.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "9.99",
     category: "Soups",
   },
   {
     id: 26,
     name: "Refreshing Lemon Iced Tea",
-    description: "Chilled black tea infused with lemon and served over ice for a refreshing taste.",
-    image: "https://img.freepik.com/free-photo/hot-dry-bael-fruit-tea-thai-herbal-cup_1150-26234.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "Chilled black tea infused with lemon and served over ice for a refreshing taste.",
+    image:
+      "https://img.freepik.com/free-photo/hot-dry-bael-fruit-tea-thai-herbal-cup_1150-26234.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "3.99",
     category: "Beverages",
   },
   {
     id: 27,
     name: "Mango Passionfruit Smoothie",
-    description: "A tropical blend of ripe mango and passionfruit, blended into a smooth and fruity beverage.",
-    image: "https://img.freepik.com/free-photo/fresh-passionfruit-smoothie-macro-shot_53876-30507.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "A tropical blend of ripe mango and passionfruit, blended into a smooth and fruity beverage.",
+    image:
+      "https://img.freepik.com/free-photo/fresh-passionfruit-smoothie-macro-shot_53876-30507.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "4.49",
     category: "Beverages",
   },
   {
     id: 28,
     name: "Classic Cappuccino",
-    description: "A classic cappuccino with rich espresso, steamed milk, and a frothy foam topping.",
-    image: "https://img.freepik.com/free-photo/refreshing-latte-coffee-white-glass_181624-45781.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "A classic cappuccino with rich espresso, steamed milk, and a frothy foam topping.",
+    image:
+      "https://img.freepik.com/free-photo/refreshing-latte-coffee-white-glass_181624-45781.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "4.99",
     category: "Beverages",
   },
   {
     id: 29,
     name: "Strawberry Mint Lemonade",
-    description: "Homemade lemonade with fresh strawberries and a hint of mint for a delightful twist.",
-    image: "https://img.freepik.com/free-photo/raspberry-lemonade-drink_123827-22236.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "Homemade lemonade with fresh strawberries and a hint of mint for a delightful twist.",
+    image:
+      "https://img.freepik.com/free-photo/raspberry-lemonade-drink_123827-22236.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "3.79",
     category: "Beverages",
   },
   {
     id: 30,
     name: "Espresso Shot",
-    description: "A single shot of intense espresso for those who prefer a strong and bold coffee experience.",
-    image: "https://img.freepik.com/free-photo/black-coffee-bread-with-seeds_23-2148623229.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "A single shot of intense espresso for those who prefer a strong and bold coffee experience.",
+    image:
+      "https://img.freepik.com/free-photo/black-coffee-bread-with-seeds_23-2148623229.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "2.49",
     category: "Beverages",
   },
@@ -35709,40 +35794,50 @@ export const foodItemListDatas = [
   {
     id: 31,
     name: "Crispy Potato Chips",
-    description: "Thinly sliced and perfectly seasoned potato chips for a satisfying crunch.",
-    image: "https://img.freepik.com/free-photo/yogurt-crispy-potato-chips-plate-marble-surface_114579-71666.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "Thinly sliced and perfectly seasoned potato chips for a satisfying crunch.",
+    image:
+      "https://img.freepik.com/free-photo/yogurt-crispy-potato-chips-plate-marble-surface_114579-71666.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "2.99",
     category: "Snacks",
   },
   {
     id: 32,
     name: "Assorted Nut Mix",
-    description: "A mix of roasted almonds, cashews, and walnuts for a nutritious and flavorful snack.",
-    image: "https://img.freepik.com/premium-photo/bowls-with-various-dried-fruits-nuts-gray-concrete-surface_87742-18152.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "A mix of roasted almonds, cashews, and walnuts for a nutritious and flavorful snack.",
+    image:
+      "https://img.freepik.com/premium-photo/bowls-with-various-dried-fruits-nuts-gray-concrete-surface_87742-18152.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "4.29",
     category: "Snacks",
   },
   {
     id: 33,
     name: "Cheese and Crackers Platter",
-    description: "A delightful combination of assorted cheeses and crispy crackers for a quick and tasty bite.",
-    image: "https://img.freepik.com/free-photo/cheese-plate-with-delicious-tilsiter-cheese-snacks_114579-29976.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "A delightful combination of assorted cheeses and crispy crackers for a quick and tasty bite.",
+    image:
+      "https://img.freepik.com/free-photo/cheese-plate-with-delicious-tilsiter-cheese-snacks_114579-29976.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "5.99",
     category: "Snacks",
   },
   {
     id: 34,
     name: "Vegetable Spring Rolls",
-    description: "Crispy spring rolls filled with a medley of fresh vegetables, perfect for snacking.",
-    image: "https://img.freepik.com/free-photo/fried-spring-rolls-cutting-board_1150-17010.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "Crispy spring rolls filled with a medley of fresh vegetables, perfect for snacking.",
+    image:
+      "https://img.freepik.com/free-photo/fried-spring-rolls-cutting-board_1150-17010.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "3.49",
     category: "Snacks",
   },
   {
     id: 35,
     name: "Spicy Buffalo Wings",
-    description: "Chicken wings coated in a spicy buffalo sauce for a flavorful and zesty snacking experience.",
-    image: "https://img.freepik.com/free-photo/high-angle-plate-with-fried-chicken-salad-with-sauce-cutlery_23-2148646615.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "Chicken wings coated in a spicy buffalo sauce for a flavorful and zesty snacking experience.",
+    image:
+      "https://img.freepik.com/free-photo/high-angle-plate-with-fried-chicken-salad-with-sauce-cutlery_23-2148646615.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: "6.99",
     category: "Snacks",
   },
@@ -35750,7 +35845,8 @@ export const foodItemListDatas = [
     id: 36,
     name: "Creamy Alfredo Pasta",
     description: "Rich and creamy Alfredo pasta with Parmesan cheese.",
-    image: "https://img.freepik.com/free-photo/fusilli-pasta-with-mushrooms-chicken_114579-8974.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/fusilli-pasta-with-mushrooms-chicken_114579-8974.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: 12.99,
     category: "Pasta",
   },
@@ -35758,7 +35854,8 @@ export const foodItemListDatas = [
     id: 37,
     name: "Spaghetti Bolognese",
     description: "Classic spaghetti with savory Bolognese meat sauce.",
-    image: "https://img.freepik.com/free-photo/pasta-plate-chopping-board-with-fork_23-2148357206.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/pasta-plate-chopping-board-with-fork_23-2148357206.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: 10.99,
     category: "Pasta",
   },
@@ -35766,7 +35863,8 @@ export const foodItemListDatas = [
     id: 38,
     name: "Pesto Genovese Linguine",
     description: "Linguine pasta with fresh basil pesto sauce.",
-    image: "https://img.freepik.com/free-photo/pesto-pasta_74190-52.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/pesto-pasta_74190-52.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: 11.99,
     category: "Pasta",
   },
@@ -35774,7 +35872,8 @@ export const foodItemListDatas = [
     id: 39,
     name: "Shrimp Scampi Fettuccine",
     description: "Fettuccine pasta with succulent shrimp scampi.",
-    image: "https://img.freepik.com/free-photo/spaghetti-with-shrimp_1339-1335.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/spaghetti-with-shrimp_1339-1335.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: 14.99,
     category: "Pasta",
   },
@@ -35782,7 +35881,8 @@ export const foodItemListDatas = [
     id: 40,
     name: "Roasted Vegetable Penne",
     description: "Penne pasta with a medley of roasted vegetables.",
-    image: "https://img.freepik.com/free-photo/closeup-shot-freshly-made-delicious-pasta-pan_181624-55204.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/closeup-shot-freshly-made-delicious-pasta-pan_181624-55204.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: 13.99,
     category: "Pasta",
   },
@@ -35790,8 +35890,10 @@ export const foodItemListDatas = [
   {
     id: 41,
     name: "Classic Chocolate Cake",
-    description: "Indulge in the timeless delight of our classic chocolate cake.",
-    image: "https://img.freepik.com/free-photo/slice-chocolate-cake-white-plate-with-glass-tea_114579-19104.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "Indulge in the timeless delight of our classic chocolate cake.",
+    image:
+      "https://img.freepik.com/free-photo/slice-chocolate-cake-white-plate-with-glass-tea_114579-19104.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: 24.99,
     category: "Cakes",
   },
@@ -35799,15 +35901,18 @@ export const foodItemListDatas = [
     id: 42,
     name: "Red Velvet Elegance",
     description: "Experience the velvety goodness of our red velvet cake.",
-    image: "https://img.freepik.com/free-photo/top-view-red-strawberry-cake-delicious-with-tea-table-fruit-color-cake-biscuit-sweet_140725-28319.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/top-view-red-strawberry-cake-delicious-with-tea-table-fruit-color-cake-biscuit-sweet_140725-28319.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: 26.99,
     category: "Cakes",
   },
   {
     id: 43,
     name: "Lemon Berry Bliss Cake",
-    description: "Zesty lemon cake layered with mixed berries for a burst of flavor.",
-    image: "https://img.freepik.com/premium-photo/tasty-piece-cheesecake-with-berry-sauce-plate-table-close-up_392895-232736.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "Zesty lemon cake layered with mixed berries for a burst of flavor.",
+    image:
+      "https://img.freepik.com/premium-photo/tasty-piece-cheesecake-with-berry-sauce-plate-table-close-up_392895-232736.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: 29.99,
     category: "Cakes",
   },
@@ -35815,15 +35920,18 @@ export const foodItemListDatas = [
     id: 44,
     name: "Carrot Walnut Delight",
     description: "A delightful carrot cake with the crunch of walnuts.",
-    image: "https://img.freepik.com/free-photo/closeup-tangerine-jam-plate-table-surrounded-by-dry-mandarines-leaves_181624-8983.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    image:
+      "https://img.freepik.com/free-photo/closeup-tangerine-jam-plate-table-surrounded-by-dry-mandarines-leaves_181624-8983.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: 22.99,
     category: "Cakes",
   },
   {
     id: 45,
     name: "Strawberry Shortcake Symphony",
-    description: "Layers of fresh strawberries and whipped cream in a shortcake masterpiece.",
-    image: "https://img.freepik.com/free-photo/bottom-view-berry-cake-white-oval-plate-red-shawl-biscuit-fork-dinner-knife-cinnamon-sticks-grey-surface_140725-102582.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
+    description:
+      "Layers of fresh strawberries and whipped cream in a shortcake masterpiece.",
+    image:
+      "https://img.freepik.com/free-photo/bottom-view-berry-cake-white-oval-plate-red-shawl-biscuit-fork-dinner-knife-cinnamon-sticks-grey-surface_140725-102582.jpg?size=626&ext=jpg&ga=GA1.1.1642642488.1699428383&semt=ais",
     price: 28.99,
     category: "Cakes",
   },

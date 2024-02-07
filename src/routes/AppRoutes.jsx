@@ -18,6 +18,7 @@ import WorkPeriod from "../pages/WorkPeriod";
 import Reports from "../pages/Reports";
 import Test from "../pages/Test";
 import CommonDrawer from "../components/Drawer/CommonDrawer";
+import Booking from "../pages/Bookings"
 
 export default function AppRoutes() {
   const navigate = useNavigate();
@@ -241,6 +242,7 @@ export default function AppRoutes() {
           <Route path="/dashboard/work-periods" element={<WorkPeriod />} />
           <Route path="/reports/*" element={<Reports />} />
           <Route path="/test" element={<Test />} />
+          <Route path="/bookings" element={<Booking />} />
         </Routes>
       </div>
 

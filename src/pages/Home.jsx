@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import BookingModal from "../components/modals/modalComponents/BookingModal";
 
 const homepageChefCard = [
   {
@@ -51,6 +52,7 @@ const homepageChefCard = [
 export default function Home() {
   const [activepopularItems, setActivePopularItems] = useState("Breakfast");
   const [filterItem, setFilterItem] = useState([0, 10]);
+  const [openModal, setOpenModal] = useState(false)
   const [startBookDate, setStartBookDate] = useState();
   const [startBookTime, setStartBookTime] = useState();
 
@@ -61,7 +63,7 @@ export default function Home() {
     const slots = [];
     const startTime = 9 * 60; // 9:00 AM in minutes
     const endTime = 23 * 60; // 11:00 PM in minutes
-    const interval = 30; // 30 minutes interval
+    const interval = 60; // 30 minutes interval
   
     for (let i = startTime; i < endTime; i += interval) {
       const hour = Math.floor(i / 60);
@@ -87,7 +89,7 @@ export default function Home() {
     return slots;
   };
   
-  const bookedTimeSlots = ["09:30 AM", "12:00 PM", "03:30 PM"];
+  const bookedTimeSlots = ["09:00 AM", "12:00 PM", "03:00 PM"];
 
   // Function to check if a time slot is disabled (booked)
   const isDisabledTimeSlot = (timeSlot) => {
@@ -101,9 +103,10 @@ export default function Home() {
     const isDisabled = isDisabledTimeSlot(option);
     return (
       <button
-        className={`px-2 m-1 ${isDisabled ? 'opacity-[0.2] cursor-not-allowed' : 'text-Primary'} `}
+        className={`px-2 text-sm m-1 ${isDisabled ? 'opacity-[0.2] cursor-not-allowed' : 'text-Primary'} `}
         disabled={isDisabled}
         onClick={() => !isDisabled && setSelectedTimeSlot(option)}
+        
       >
         {option.label}
       </button>
@@ -283,17 +286,17 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <div className="pb-5 bg-Light px-5 flex flex-col-reverse flex-wrap items-center gap-4 w-[100%] md:flex-row md:gap-0">
+      <div className="pb-5 bg-Light px-5 flex flex-col-reverse flex-wrap items-center gap-4 w-[100%] md:flex-row md:gap-3">
         <div className="w-[100%] flex flex-col gap-4 md:w-[48%] ">
-          <div className="flex flex-wrap items-end gap-4">
-            <div className="w-[300px] h-[300px]">
+          <div className="flex flex-wrap justify-center items-end gap-4">
+            <div className="w-[128px] h-[128px] sm:w-[190px] sm:h-[190px] lg:w-[300px] lg:h-[300px]">
               <img
                 className="aboutImg w-[100%] h-[100%] zoomIn"
                 src="https://themewagon.github.io/restoran/img/about-1.jpg"
                 alt=""
               />
             </div>
-            <div className=" m-auto w-[225px] h-[225px] md:mt-[25%] md:m-[unset]">
+            <div className="w-[96px] h-[96px] sm:w-[135px] sm:h-[135px] lg:w-[225px] lg:h-[225px] md:mt-[25%]">
               <img
                 className="aboutImg w-[100%] h-[100%]"
                 src="https://themewagon.github.io/restoran/img/about-2.jpg"
@@ -302,15 +305,15 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex items-start flex-wrap gap-4">
-            <div className="w-[225px] h-[225px] ml-[10.6%]">
+          <div className="flex justify-center items-start flex-wrap gap-4">
+            <div className="w-[96px] h-[96px] sm:w-[135px] sm:h-[135px] lg:w-[225px] lg:h-[225px] ml-[10.6%]">
               <img
                 className="aboutImg w-[100%] h-[100%]"
                 src="https://themewagon.github.io/restoran/img/about-3.jpg"
                 alt=""
               />
             </div>
-            <div className="w-[300px] h-[300px]">
+            <div className="w-[128px] h-[128px] sm:w-[190px] sm:h-[190px] lg:w-[300px] lg:h-[300px]">
               <img
                 className="aboutImg w-[100%] h-[100%]"
                 src="https://themewagon.github.io/restoran/img/about-4.jpg"
@@ -489,10 +492,11 @@ export default function Home() {
             </h4>
             <p className="h-0.5 w-12 text-Primary bg-Pink"></p>
           </div>
-          <h2 className="text-Light text-3xl font-semibold capitalize">
-            Book a table online
+          <h2 className="pt-4 text-Light text-5xl font-semibold capitalize leading-[70px">
+            Get a 25% off for tables booking online
           </h2>
-          <div className="w-[100%] flex flex-wrap justify-between gap-3 pt-5">
+          <h4 className="text-Light pt-4 leading-7">Lorem ipsum dolor, sit amet consectetur adipisicing elit. amet distinctio tenetur vero similique sapiente voluptatibus qui expedita. Consequatur velit quis illum?</h4>
+          <div className="w-[100%] flex flex-wrap justify-between gap-3 pt-10">
             <div className="form-floating relative w-[100%] md:w-[48%] ">
               <input
                 type="text"
@@ -509,7 +513,7 @@ export default function Home() {
                 placeholder="Your Email"
               />
             </div>
-            <div
+            {/* <div
               className="form-floating relative pt-1 w-[100%] md:w-[48%]"
               style={{
                 // "& .react-datepicker-wrapper": {
@@ -534,7 +538,7 @@ export default function Home() {
                 onChange={handleChangeTimeSlot}
                 getOptionLabel={getOptionLabel}
               />
-            </div>
+            </div> */}
             {/* <div
               className="form-floating relative pt-1 w-[100%] md:w-[48%]"
               style={{
@@ -555,7 +559,7 @@ export default function Home() {
                 className="px-[12px] py-[5px] border w-[100%] border-Secondary rounded focus:outline-none"
               />
             </div> */}
-            <div className="form-floating pt-1 relative w-[100%] md:w-[100%] ">
+            {/* <div className="form-floating pt-1 relative w-[100%] md:w-[100%] ">
               <Select
                 className="w-[100%]"
                 styles={{
@@ -585,9 +589,9 @@ export default function Home() {
                   </div>
                 )}
               />
-            </div>
+            </div> */}
 
-            <div>
+            {/* <div>
               <textarea
                 rows="3"
                 cols="80"
@@ -596,10 +600,12 @@ export default function Home() {
                 id="specialRequest"
                 placeholder="Special Request"
               ></textarea>
-            </div>
-            <button className="bg-Pink w-[100%] py-3 rounded-sm uppercase text-Light">
+            </div> */}
+            <button className="bg-Pink w-[100%] py-3 rounded-sm uppercase text-Light mt-4" onClick={() => setOpenModal(true)}>
               book now
             </button>
+
+            <BookingModal openModal={openModal} setOpenModal={setOpenModal}/>
           </div>
         </div>
       </div>

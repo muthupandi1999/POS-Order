@@ -8,13 +8,15 @@ import toast, { Toaster } from "react-hot-toast";
 import AddIcon from "@mui/icons-material/Add";
 import Dropdown from "../Common/Dropdown";
 
-function DynamicModal({ open, onClose, children, width }) {
+function DynamicModal({ open, onClose, children, maxWidth }) {
   const style = {
     position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: width || 600,
+    width: "98%",
+    margin:"auto",
+    maxWidth:maxWidth || 600,
     bgcolor: "white",
     borderRadius: "4px",
     boxShadow: 24,
